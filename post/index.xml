@@ -6,10 +6,47 @@
     <description>Recent content in Posts on nepp&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 24 Oct 2020 22:15:47 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2020 14:12:44 +0800</lastBuildDate>
     
 	<atom:link href="https://nepp-an.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Haystack</title>
+      <link>https://nepp-an.github.io/post/haystack/</link>
+      <pubDate>Fri, 30 Oct 2020 14:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/haystack/</guid>
+      <description>主要核心是减少硬盘操作 After reducing directory sizes to hundreds of images per directory, the resulting system would still generally incur 3 disk operations to fetch an image: one to read the directory metadata into memory, a second to load the inode into memory, and a third to read the file contents.</description>
+    </item>
+    
+    <item>
+      <title>lru</title>
+      <link>https://nepp-an.github.io/post/lru/</link>
+      <pubDate>Thu, 29 Oct 2020 15:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/lru/</guid>
+      <description>本地缓存常常使用LRU进行更新 LRU的go版本实现，借助了go自带的list类型 type Key interface{} type Cache struct { MaxEntries int //缓存容量 OnEvicted func(key Key, value interface{}) //缓存被淘汰时的回调函数 ll *list.List // 双链表 cache map[interface{}]*list.Element } type entry struct { key Key value interface{} } func New(maxEntries int) *Cache { return &amp;amp;Cache{ MaxEntries: maxEntries, ll: list.New(), cache: make(map[interface{}]*list.ELement), } } func (c *Cache) Add(key Key, value interface{}) { if c.cache == nil { c.cache = make(map[interface{}]*list.Element) c.ll = list.new() } if ee, ok := c.cache[key]; ok { c.ll.MoveToFront(ee) ee.Value.(*entry).value = value return } ele</description>
+    </item>
+    
+    <item>
+      <title>backtracking</title>
+      <link>https://nepp-an.github.io/post/backtracking/</link>
+      <pubDate>Wed, 28 Oct 2020 11:03:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/backtracking/</guid>
+      <description>回溯法属于DFS的一种，纯暴力搜索，一般配合剪枝使用。 leetcode 39 Combination Sum</description>
+    </item>
+    
+    <item>
+      <title>1025</title>
+      <link>https://nepp-an.github.io/post/1025/</link>
+      <pubDate>Sun, 25 Oct 2020 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/1025/</guid>
+      <description>6.824
+ mapReduce raft  </description>
+    </item>
     
     <item>
       <title>收益率为啥越来越低呢</title>
@@ -17,7 +54,7 @@
       <pubDate>Sat, 24 Oct 2020 22:15:47 +0800</pubDate>
       
       <guid>https://nepp-an.github.io/post/ROA_20201024/</guid>
-      <description>十年期国债可以说是无风险收益率标杆，普通民众买到的几率比较低。 对老百姓来说，银行定期存款就是无风险收益率。2020年的3年定期不到4%。 理财产品最近工行的4%收益率都暴雷违约了，银行会兜底。 202010月中国国债收益率3% 202010月美国国债 无风险收益率提高，理论上利空资产价格</description>
+      <description>十年期国债可以说是无风险收益率标杆，普通民众买到的几率比较低。 对老百姓来说，银行定期存款就是无风险收益率。2020年的3年定期不到4%。 理财产品最近工行的4%收益率都暴雷违约了，银行会兜底。 202010月中国国债收益率3.19% 202010月美国国债收益率0.83% 无风险收益率提</description>
     </item>
     
     <item>
