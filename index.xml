@@ -6,10 +6,55 @@
     <description>Recent content on nepp&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 30 Oct 2020 14:12:44 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 05 Dec 2020 21:12:44 +0800</lastBuildDate>
     
 	<atom:link href="https://nepp-an.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>stock</title>
+      <link>https://nepp-an.github.io/post/stock/</link>
+      <pubDate>Sat, 05 Dec 2020 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/stock/</guid>
+      <description>基本原则 闲钱投资 不动用大资产 经历完整牛熊过的人才是有经验的 提高胜率才是最主要的 关键要素 趋势投资，以月或者周为周期，建立分析系统 买卖策略，来行情该买什么 投资纪律和经验，怎样持续盈利 分析和判断市场 把影响市场的因素明确 政策：货币，财政 技术图：K线图，关注资金量 市场情绪：很难量化 资金变化</description>
+    </item>
+    
+    <item>
+      <title>sync_Pool_golang</title>
+      <link>https://nepp-an.github.io/post/sync.Pool_golang/</link>
+      <pubDate>Sat, 05 Dec 2020 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/sync.Pool_golang/</guid>
+      <description>syn.Pool leak.Pool io.Writer在使用sync.Pool之后，延迟变高 golang bufio的用法</description>
+    </item>
+    
+    <item>
+      <title>golang的append</title>
+      <link>https://nepp-an.github.io/post/append_golang/</link>
+      <pubDate>Sat, 07 Nov 2020 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/append_golang/</guid>
+      <description>golang的append不是值拷贝，特别是在append函数入参的时候，尽量使用copy函数先处理一下再append，否则会踩很多坑。</description>
+    </item>
+    
+    <item>
+      <title>蚂蚁金服</title>
+      <link>https://nepp-an.github.io/post/ant_group/</link>
+      <pubDate>Sat, 07 Nov 2020 11:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/ant_group/</guid>
+      <description>2020-11-03 中国银保监会 中国人民银行关于《网络小额贷款业务管理暂行办法（征求意见稿）》公开征求意见的公告。 正在公开征求意见，截止时间为2020年12月2日。 小额贷款公司经营网络小额贷款应当主要在注册地所属省级行政区域内开展；未经国务院银行业监督管理机构批准，小额贷款公司不得跨省级行政区域开</description>
+    </item>
+    
+    <item>
+      <title>2020年11月股市展望</title>
+      <link>https://nepp-an.github.io/post/November-Strategy/</link>
+      <pubDate>Sun, 01 Nov 2020 09:50:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/November-Strategy/</guid>
+      <description>11月各路财经大V意见整理 11月有几件大事 蚂蚁金服上市 美国大选 月底机构业绩排名，年度结账 蚂蚁上市会影响当天的流动性，只会对当天形成影响。 美国大选会影响美股的短期走势，从而影响A股。 月底机构结账这个是影响最大的，前期大批白马股跌停已经提前反映了。 11月的整体策略还是控制仓位，不超过</description>
+    </item>
     
     <item>
       <title>Haystack</title>
