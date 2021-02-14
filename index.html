@@ -116,12 +116,19 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/2021/" title="2021">2021</a>
+                <a href="https://nepp-an.github.io/post/2021/" title="2021 schedule">2021 schedule</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
             2021年1月10日
         </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/%E8%AE%A1%E5%88%92'>计划</a></span>
+            
+        </div>
         
         <div class="post-content">
             2021年需要回答的N个技术问题 通过问题的形式完成2021年的技术领域的学习计划，每个部分最少包含5个问题，问题总数在50个左右 数据结构与算法 决策树是什么 设计模式 分布式的AP CP CAP什么意思 缓存和数据库 redis的sentinel机制 哨兵 中间件 kafka CDN 分布式锁的实现 redis 编程语言 golang rust golang 连……
@@ -139,6 +146,13 @@
             2020年12月5日
         </date>
         
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/investment'>investment</a></span>
+            
+        </div>
+        
         <div class="post-content">
             基本原则 闲钱投资 不动用大资产 经历完整牛熊过的人才是有经验的 提高胜率才是最主要的 关键要素 趋势投资，以月或者周为周期，建立分析系统 买卖策略，来行情该买什么 投资纪律和经验，怎样持续盈利 分析和判断市场 把影响市场的因素明确 政策：货币，财政 技术图：K线图，关注资金量 市场情绪：很难量化 资金变化……
         </div>
@@ -155,6 +169,13 @@
             2020年12月5日
         </date>
         
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+        </div>
+        
         <div class="post-content">
             syn.Pool leak.Pool io.Writer在使用sync.Pool之后，延迟变高 golang bufio的用法……
         </div>
@@ -170,6 +191,13 @@
         <date class="post-meta meta-date">
             2020年11月7日
         </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+        </div>
         
         <div class="post-content">
             golang的append不是值拷贝，特别是在append函数入参的时候，尽量使用copy函数先处理一下再append，否则会踩很多坑。……
@@ -234,6 +262,13 @@
         <date class="post-meta meta-date">
             2020年10月29日
         </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95'>数据结构与算法</a></span>
+            
+        </div>
         
         <div class="post-content">
             本地缓存常常使用LRU进行更新 LRU的go版本实现，借助了go自带的list类型 type Key interface{} type Cache struct { MaxEntries int //缓存容量 OnEvicted func(key Key, value interface{}) //缓存被淘汰时的回调函数 ll *list.List // 双链表 cache map[interface{}]*list.Element } type entry struct { key Key value interface{} } func New(maxEntries int) *Cache { return &amp;Cache{ MaxEntries: maxEntries, ll: list.New(), cache: make(map[interface{}]*list.ELement), } } func (c *Cache) Add(key Key, value interface{}) { if c.cache == nil { c.cache = make(map[interface{}]*list.Element) c.ll = list.new() } if ee, ok := c.cache[key]; ok { c.ll.MoveToFront(ee) ee.Value.(*entry).value = value return } ele……
@@ -327,7 +362,7 @@
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/2021/" title="2021">2021</a>
+        <a href="https://nepp-an.github.io/post/2021/" title="2021 schedule">2021 schedule</a>
     </li>
     
     <li>
@@ -398,7 +433,15 @@
         <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
 <ul class="widget-list">
     
+    <li><a href="https://nepp-an.github.io/categories/golang/">golang (2)</a></li>
+    
     <li><a href="https://nepp-an.github.io/categories/golang%E7%AC%94%E8%AE%B0/">golang笔记 (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/investment/">investment (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法 (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E8%AE%A1%E5%88%92/">计划 (1)</a></li>
     
 </ul>
     </section>
@@ -408,6 +451,10 @@
 <div class="tagcloud">
     
     <a href="https://nepp-an.github.io/tags/golang/">golang</a>
+    
+    <a href="https://nepp-an.github.io/tags/investment/">investment</a>
+    
+    <a href="https://nepp-an.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
     
 </div>
     </section>

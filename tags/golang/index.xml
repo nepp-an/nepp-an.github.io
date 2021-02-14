@@ -20,5 +20,41 @@
       <description>微服务概览与治理 go语言实践 - error go语言实践 - concurrency go工程化实践 微服务可用性设计 评论系统架构设计 播放历史架构设计 分布式缓存&amp;amp;分布式事务 go语言实践 - 网络编程 日志&amp;amp;指标&amp;amp;链路追踪 DNS&amp;amp;CDN&amp;amp;多活架构</description>
     </item>
     
+    <item>
+      <title>2021 schedule</title>
+      <link>https://nepp-an.github.io/post/2021/</link>
+      <pubDate>Sun, 10 Jan 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/2021/</guid>
+      <description>2021年需要回答的N个技术问题 通过问题的形式完成2021年的技术领域的学习计划，每个部分最少包含5个问题，问题总数在50个左右 数据结构与算法 决策树是什么 设计模式 分布式的AP CP CAP什么意思 缓存和数据库 redis的sentinel机制 哨兵 中间件 kafka CDN 分布式锁的实现 redis 编程语言 golang rust golang 连</description>
+    </item>
+    
+    <item>
+      <title>sync_Pool_golang</title>
+      <link>https://nepp-an.github.io/post/sync.Pool_golang/</link>
+      <pubDate>Sat, 05 Dec 2020 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/sync.Pool_golang/</guid>
+      <description>syn.Pool leak.Pool io.Writer在使用sync.Pool之后，延迟变高 golang bufio的用法</description>
+    </item>
+    
+    <item>
+      <title>golang的append</title>
+      <link>https://nepp-an.github.io/post/append_golang/</link>
+      <pubDate>Sat, 07 Nov 2020 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/append_golang/</guid>
+      <description>golang的append不是值拷贝，特别是在append函数入参的时候，尽量使用copy函数先处理一下再append，否则会踩很多坑。</description>
+    </item>
+    
+    <item>
+      <title>lru</title>
+      <link>https://nepp-an.github.io/post/lru/</link>
+      <pubDate>Thu, 29 Oct 2020 15:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/lru/</guid>
+      <description>本地缓存常常使用LRU进行更新 LRU的go版本实现，借助了go自带的list类型 type Key interface{} type Cache struct { MaxEntries int //缓存容量 OnEvicted func(key Key, value interface{}) //缓存被淘汰时的回调函数 ll *list.List // 双链表 cache map[interface{}]*list.Element } type entry struct { key Key value interface{} } func New(maxEntries int) *Cache { return &amp;amp;Cache{ MaxEntries: maxEntries, ll: list.New(), cache: make(map[interface{}]*list.ELement), } } func (c *Cache) Add(key Key, value interface{}) { if c.cache == nil { c.cache = make(map[interface{}]*list.Element) c.ll = list.new() } if ee, ok := c.cache[key]; ok { c.ll.MoveToFront(ee) ee.Value.(*entry).value = value return } ele</description>
+    </item>
+    
   </channel>
 </rss>

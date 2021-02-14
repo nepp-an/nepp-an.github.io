@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>数据结构与算法 on nepp&#39;s blog</title>
+    <link>https://nepp-an.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</link>
+    <description>Recent content in 数据结构与算法 on nepp&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 29 Oct 2020 15:12:44 +0800</lastBuildDate>
+    
+	<atom:link href="https://nepp-an.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>lru</title>
+      <link>https://nepp-an.github.io/post/lru/</link>
+      <pubDate>Thu, 29 Oct 2020 15:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/lru/</guid>
+      <description>本地缓存常常使用LRU进行更新 LRU的go版本实现，借助了go自带的list类型 type Key interface{} type Cache struct { MaxEntries int //缓存容量 OnEvicted func(key Key, value interface{}) //缓存被淘汰时的回调函数 ll *list.List // 双链表 cache map[interface{}]*list.Element } type entry struct { key Key value interface{} } func New(maxEntries int) *Cache { return &amp;amp;Cache{ MaxEntries: maxEntries, ll: list.New(), cache: make(map[interface{}]*list.ELement), } } func (c *Cache) Add(key Key, value interface{}) { if c.cache == nil { c.cache = make(map[interface{}]*list.Element) c.ll = list.new() } if ee, ok := c.cache[key]; ok { c.ll.MoveToFront(ee) ee.Value.(*entry).value = value return } ele</description>
+    </item>
+    
+  </channel>
+</rss>

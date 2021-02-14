@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>golang on nepp&#39;s blog</title>
+    <link>https://nepp-an.github.io/categories/golang/</link>
+    <description>Recent content in golang on nepp&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 05 Dec 2020 21:12:44 +0800</lastBuildDate>
+    
+	<atom:link href="https://nepp-an.github.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>sync_Pool_golang</title>
+      <link>https://nepp-an.github.io/post/sync.Pool_golang/</link>
+      <pubDate>Sat, 05 Dec 2020 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/sync.Pool_golang/</guid>
+      <description>syn.Pool leak.Pool io.Writer在使用sync.Pool之后，延迟变高 golang bufio的用法</description>
+    </item>
+    
+    <item>
+      <title>golang的append</title>
+      <link>https://nepp-an.github.io/post/append_golang/</link>
+      <pubDate>Sat, 07 Nov 2020 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/append_golang/</guid>
+      <description>golang的append不是值拷贝，特别是在append函数入参的时候，尽量使用copy函数先处理一下再append，否则会踩很多坑。</description>
+    </item>
+    
+  </channel>
+</rss>
