@@ -6,10 +6,28 @@
     <description>Recent content in Posts on nepp&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 05 Dec 2020 21:12:44 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 14 Jan 2021 11:12:44 +0800</lastBuildDate>
     
 	<atom:link href="https://nepp-an.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>distributed locks</title>
+      <link>https://nepp-an.github.io/post/distributed_lock/</link>
+      <pubDate>Thu, 14 Jan 2021 11:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/distributed_lock/</guid>
+      <description>分布式锁 redis 实现 加锁:SETNX key value，当 key不存在时将 key的值设为 value ，返回值为 1；若给定的 key 已经存在，则 SETNX不做任何动作，返回值为 0 。 解锁命令：DEL key，通过删除键值对释放锁，以便其他线程可以通过 SETNX 命令来获取锁。 锁超时：EXPIRE key timeout, 设置 key 的超时时间，以保证</description>
+    </item>
+    
+    <item>
+      <title>2021</title>
+      <link>https://nepp-an.github.io/post/2021/</link>
+      <pubDate>Sun, 10 Jan 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/2021/</guid>
+      <description>2021年需要回答的N个技术问题 通过问题的形式完成2021年的技术领域的学习计划，每个部分最少包含5个问题，问题总数在50个左右 数据结构与算法 决策树是什么 设计模式 分布式的AP CP CAP什么意思 缓存和数据库 redis的sentinel机制 哨兵 中间件 kafka CDN 分布式锁的实现 redis 编程语言 golang rust golang 连</description>
+    </item>
     
     <item>
       <title>stock</title>

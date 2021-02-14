@@ -79,6 +79,42 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/distributed_lock/" title="distributed locks">distributed locks</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年1月14日
+        </date>
+        
+        <div class="post-content">
+            分布式锁 redis 实现 加锁:SETNX key value，当 key不存在时将 key的值设为 value ，返回值为 1；若给定的 key 已经存在，则 SETNX不做任何动作，返回值为 0 。 解锁命令：DEL key，通过删除键值对释放锁，以便其他线程可以通过 SETNX 命令来获取锁。 锁超时：EXPIRE key timeout, 设置 key 的超时时间，以保证……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/distributed_lock/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/2021/" title="2021">2021</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年1月10日
+        </date>
+        
+        <div class="post-content">
+            2021年需要回答的N个技术问题 通过问题的形式完成2021年的技术领域的学习计划，每个部分最少包含5个问题，问题总数在50个左右 数据结构与算法 决策树是什么 设计模式 分布式的AP CP CAP什么意思 缓存和数据库 redis的sentinel机制 哨兵 中间件 kafka CDN 分布式锁的实现 redis 编程语言 golang rust golang 连……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/2021/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://nepp-an.github.io/post/sync.Pool_golang/" title="sync_Pool_golang">sync_Pool_golang</a>
             </h1>
         </header>
@@ -220,43 +256,6 @@
     
     
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/1025/" title="1025">1025</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年10月25日
-        </date>
-        
-        <div class="post-content">
-            6.824
- mapReduce raft  ……
-        </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/1025/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/ROA_20201024/" title="收益率为啥越来越低呢">收益率为啥越来越低呢</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年10月24日
-        </date>
-        
-        <div class="post-content">
-            十年期国债可以说是无风险收益率标杆，普通民众买到的几率比较低。 对老百姓来说，银行定期存款就是无风险收益率。2020年的3年定期不到4%。 理财产品最近工行的4%收益率都暴雷违约了，银行会兜底。 202010月中国国债收益率3.19% 202010月美国国债收益率0.83% 无风险收益率提……
-        </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/ROA_20201024/">阅读全文</a></p>
-    </article>
-    
-    
-    
 
 
 
@@ -286,7 +285,7 @@
 
                     <footer id="footer">
     <div>
-        &copy; 2020 <a href="https://nepp-an.github.io">nepp&#39;s blog By nepp</a>
+        &copy; 2021 <a href="https://nepp-an.github.io">nepp&#39;s blog By nepp</a>
         
     </div>
     <br />
@@ -334,6 +333,14 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://nepp-an.github.io/post/distributed_lock/" title="distributed locks">distributed locks</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/2021/" title="2021">2021</a>
+    </li>
+    
+    <li>
         <a href="https://nepp-an.github.io/post/stock/" title="stock">stock</a>
     </li>
     
@@ -363,14 +370,6 @@
     
     <li>
         <a href="https://nepp-an.github.io/post/backtracking/" title="backtracking">backtracking</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/1025/" title="1025">1025</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/ROA_20201024/" title="收益率为啥越来越低呢">收益率为啥越来越低呢</a>
     </li>
     
 </ul>
