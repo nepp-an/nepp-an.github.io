@@ -6,10 +6,19 @@
     <description>Recent content in Posts on nepp&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 14 Jan 2021 11:12:44 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 14 Feb 2021 10:49:44 +0800</lastBuildDate>
     
 	<atom:link href="https://nepp-an.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>golang进阶 summary</title>
+      <link>https://nepp-an.github.io/post/golang%E8%BF%9B%E9%98%B6summary/</link>
+      <pubDate>Sun, 14 Feb 2021 10:49:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/golang%E8%BF%9B%E9%98%B6summary/</guid>
+      <description>微服务概览与治理 go语言实践 - error go语言实践 - concurrency go工程化实践 微服务可用性设计 评论系统架构设计 播放历史架构设计 分布式缓存&amp;amp;分布式事务 go语言实践 - 网络编程 日志&amp;amp;指标&amp;amp;链路追踪 DNS&amp;amp;CDN&amp;amp;多活架构</description>
+    </item>
     
     <item>
       <title>distributed locks</title>

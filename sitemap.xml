@@ -3,17 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://nepp-an.github.io/post/distributed_lock/</loc>
-    <lastmod>2021-01-14T11:12:44+08:00</lastmod>
+    <loc>https://nepp-an.github.io/post/golang%E8%BF%9B%E9%98%B6summary/</loc>
+    <lastmod>2021-02-14T10:49:44+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://nepp-an.github.io/</loc>
-    <lastmod>2021-01-14T11:12:44+08:00</lastmod>
+    <lastmod>2021-02-14T10:49:44+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://nepp-an.github.io/post/</loc>
+    <lastmod>2021-02-14T10:49:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://nepp-an.github.io/post/distributed_lock/</loc>
     <lastmod>2021-01-14T11:12:44+08:00</lastmod>
   </url>
   
