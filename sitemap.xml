@@ -78,16 +78,15 @@
   </url>
   
   <url>
-    <loc>https://nepp-an.github.io/archives/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://nepp-an.github.io/categories/</loc>
   </url>
   
   <url>
     <loc>https://nepp-an.github.io/tags/</loc>
+  </url>
+  
+  <url>
+    <loc>https://nepp-an.github.io/archives/</loc>
   </url>
   
   <url>
