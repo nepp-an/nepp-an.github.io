@@ -6,10 +6,73 @@
     <description>Recent content in golang on nepp&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 05 Dec 2020 21:12:44 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 31 May 2021 21:12:44 +0800</lastBuildDate>
     
 	<atom:link href="https://nepp-an.github.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ledis_db</title>
+      <link>https://nepp-an.github.io/post/Ledis_db/</link>
+      <pubDate>Mon, 31 May 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/Ledis_db/</guid>
+      <description>LSM-Tree Log Structured-Merge Tree，在面对亿级别之上的海量数据的存储和检索的场景下，我们选择的数据库通常都是各种强力的NoSQL，比如Hbase，Cassandra，Leveldb，RocksDB等等，这其中前两者是Apache下面的顶级开源项目数据库，后两者分别是Google和Facebook开源</description>
+    </item>
+    
+    <item>
+      <title>golang worker pool 协程池</title>
+      <link>https://nepp-an.github.io/post/golang_worker-_pool/</link>
+      <pubDate>Tue, 25 May 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/golang_worker-_pool/</guid>
+      <description>协程池 golang语言原生的goroutine和channel等机制，对于并发编程提供了很简单的实现。一个go关键字即可生成一个独立的协程。协程的管理需要协程池去实现。 对worker的总协程数量进行限制 限制并发 有任务排队时也不阻塞任务的提交 数据结构 1 2 3 4 5 6 7 8 9 10 11 12 type TaskHandler func() error</description>
+    </item>
+    
+    <item>
+      <title>golang网络轮询器</title>
+      <link>https://nepp-an.github.io/post/golang%E7%BD%91%E7%BB%9C%E8%BD%AE%E8%AF%A2%E5%99%A8/</link>
+      <pubDate>Sat, 15 May 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/golang%E7%BD%91%E7%BB%9C%E8%BD%AE%E8%AF%A2%E5%99%A8/</guid>
+      <description>网络轮询器 大部分服务都是I/O密集型的，程序会花费大量时间等待I/O操作的完成。网络轮询器是golang runtime用来处理I/O操作的关键部件，它使用了操作系统提供的I/O多路复用机制增强并发能力。 设计原理 网络轮询器不仅用于监控网络I/O，还用于监控文件I/O。 I/O模型 操作</description>
+    </item>
+    
+    <item>
+      <title>golang调度器</title>
+      <link>https://nepp-an.github.io/post/golang%E8%B0%83%E5%BA%A6%E5%99%A8/</link>
+      <pubDate>Fri, 14 May 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/golang%E8%B0%83%E5%BA%A6%E5%99%A8/</guid>
+      <description>调度器 golang语言强大的并发编程能力，得益于语言在原生层面对并发的支持。接下来介绍go语言运行时调度器的设计和实现，以及运行调度相关的数据结构。 进程与线程 process/thread 多个线程可以同属于一个进程，并共享内存空间。线程之间的通信就是通过基于共享的内存进行的，与重量的进程相比，线程更轻。但是</description>
+    </item>
+    
+    <item>
+      <title>评论系统架构设计</title>
+      <link>https://nepp-an.github.io/post/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Fri, 07 May 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</guid>
+      <description>架构设计 架构设计最重要的就是理解整个产品体系在系统中的定位。搞清楚系统背后的背景，才能做出最佳的设计和抽象，不要做需求的翻译机。评论系统，需要做成评论平台，可以接入各种业务形态。 需要实现以下几个功能： 发布评论：支持回复楼层 读取评论：按照时间、热度排序 删除评论：用户和up主可以删除</description>
+    </item>
+    
+    <item>
+      <title>golang的内存模型</title>
+      <link>https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Sun, 14 Mar 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</guid>
+      <description>memory model https://golang.org/ref/mem heppens-before的概念 内存重排 为了读写内存的效率，会对读写指令进行重新排列，这是cpu重排。 还有编译器重排： x = 0 for i in range(100): x = 1 fmt.Println(x) 编译器优化后 x = 1 for i in range(100): fmt.Println(x) 但是一旦x被别的goroutine修改，就会无法出现预期的结果。 CPU为了抚平内核、内存和硬盘之间的读写</description>
+    </item>
+    
+    <item>
+      <title>golang相关</title>
+      <link>https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 15 Feb 2021 10:49:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/</guid>
+      <description>go test 介绍 https://geektutu.com/post/quick-go-test.html https://pkg.go.dev/testing go modules 依赖管理 https://blog.golang.org/using-go-modules</description>
+    </item>
     
     <item>
       <title>sync_Pool_golang</title>
@@ -21,12 +84,12 @@
     </item>
     
     <item>
-      <title>golang的append</title>
-      <link>https://nepp-an.github.io/post/append_golang/</link>
+      <title>golang中的坑</title>
+      <link>https://nepp-an.github.io/post/golang%E5%9D%91/</link>
       <pubDate>Sat, 07 Nov 2020 21:12:44 +0800</pubDate>
       
-      <guid>https://nepp-an.github.io/post/append_golang/</guid>
-      <description>golang的append不是值拷贝，特别是在append函数入参的时候，尽量使用copy函数先处理一下再append，否则会踩很多坑。</description>
+      <guid>https://nepp-an.github.io/post/golang%E5%9D%91/</guid>
+      <description>slice 1 2 3 4 // a[low : high : max] path := []byte(&amp;#34;AAAA/BBBBBBBBB&amp;#34;) sepIndex := bytes.IndexByte(path,&amp;#39;/&amp;#39;) dir1 := path[:sepIndex:sepIndex] //Full slice expression, last index is capacity append golang的append不是值拷贝，特别是在append函数入参的时候，尽量使用copy函数先处理一下再append，否则会踩很多坑。 slice的核心内容有两点： 函数为值复制传递 slice的属性包含指向底层数组的指针、ca</description>
     </item>
     
   </channel>

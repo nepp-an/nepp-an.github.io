@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>db on nepp&#39;s blog</title>
+    <link>https://nepp-an.github.io/categories/db/</link>
+    <description>Recent content in db on nepp&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 31 May 2021 21:12:44 +0800</lastBuildDate>
+    
+	<atom:link href="https://nepp-an.github.io/categories/db/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ledis_db</title>
+      <link>https://nepp-an.github.io/post/Ledis_db/</link>
+      <pubDate>Mon, 31 May 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/Ledis_db/</guid>
+      <description>LSM-Tree Log Structured-Merge Tree，在面对亿级别之上的海量数据的存储和检索的场景下，我们选择的数据库通常都是各种强力的NoSQL，比如Hbase，Cassandra，Leveldb，RocksDB等等，这其中前两者是Apache下面的顶级开源项目数据库，后两者分别是Google和Facebook开源</description>
+    </item>
+    
+  </channel>
+</rss>

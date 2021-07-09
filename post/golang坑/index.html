@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>golang中的坑 | nepp&#39;s blog</title>
+    <meta property="og:title" content="golang中的坑 - nepp&#39;s blog">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-11-07T21:12:44&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-11-07T21:12:44&#43;08:00'>
+        
+    <meta name="Keywords" content="golang,go语言">
+    <meta name="description" content="golang中的坑">
+        
+    <meta name="author" content="nepp">
+    <meta property="og:url" content="https://nepp-an.github.io/post/golang%E5%9D%91/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://nepp-an.github.io">
+                        nepp&#39;s blog
+                    </a>
+                
+                <p class="description">专注于golang, 软件架构,金融理财</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://nepp-an.github.io">首页</a>
+                    
+                    <a  href="https://nepp-an.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://nepp-an.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://nepp-an.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#slice">slice</a></li>
+        <li><a href="#append">append</a></li>
+        <li><a href="#heading">结构体</a></li>
+        <li><a href="#mutex">mutex</a></li>
+        <li><a href="#golang">golang的死锁监控</a></li>
+        <li><a href="#channel">channel</a></li>
+        <li><a href="#http">http</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">golang中的坑</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年11月7日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <h3 id="slice">slice</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#998;font-style:italic">// a[low : high : max]
+</span><span style="color:#998;font-style:italic"></span>path <span style="color:#000;font-weight:bold">:=</span> []<span style="color:#0086b3">byte</span>(<span style="color:#d14">&#34;AAAA/BBBBBBBBB&#34;</span>)
+sepIndex <span style="color:#000;font-weight:bold">:=</span> bytes.<span style="color:#900;font-weight:bold">IndexByte</span>(path,<span style="color:#d14">&#39;/&#39;</span>)
+dir1 <span style="color:#000;font-weight:bold">:=</span> path[:sepIndex:sepIndex] <span style="color:#998;font-style:italic">//Full slice expression, last index is capacity
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="append">append</h3>
+<p>golang的append不是值拷贝，特别是在append函数入参的时候，尽量使用copy函数先处理一下再append，否则会踩很多坑。</p>
+<p>slice的核心内容有两点：</p>
+<ul>
+<li>函数为值复制传递</li>
+<li>slice的属性包含指向底层数组的指针、cap和len</li>
+</ul>
+<h3 id="heading">结构体</h3>
+<p>结构体比较大小</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">import</span> (
+    <span style="color:#d14">&#34;fmt&#34;</span>
+    <span style="color:#d14">&#34;reflect&#34;</span>
+)
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
+    v1 <span style="color:#000;font-weight:bold">:=</span> data{}
+    v2 <span style="color:#000;font-weight:bold">:=</span> data{}
+    fmt.<span style="color:#900;font-weight:bold">Println</span>(<span style="color:#d14">&#34;v1 == v2:&#34;</span>,reflect.<span style="color:#900;font-weight:bold">DeepEqual</span>(v1,v2))
+    <span style="color:#998;font-style:italic">//prints: v1 == v2: true
+</span><span style="color:#998;font-style:italic"></span>    m1 <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">string</span>{<span style="color:#d14">&#34;one&#34;</span>: <span style="color:#d14">&#34;a&#34;</span>,<span style="color:#d14">&#34;two&#34;</span>: <span style="color:#d14">&#34;b&#34;</span>}
+    m2 <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">string</span>{<span style="color:#d14">&#34;two&#34;</span>: <span style="color:#d14">&#34;b&#34;</span>, <span style="color:#d14">&#34;one&#34;</span>: <span style="color:#d14">&#34;a&#34;</span>}
+    fmt.<span style="color:#900;font-weight:bold">Println</span>(<span style="color:#d14">&#34;m1 == m2:&#34;</span>,reflect.<span style="color:#900;font-weight:bold">DeepEqual</span>(m1, m2))
+    <span style="color:#998;font-style:italic">//prints: m1 == m2: true
+</span><span style="color:#998;font-style:italic"></span>    s1 <span style="color:#000;font-weight:bold">:=</span> []<span style="color:#458;font-weight:bold">int</span>{<span style="color:#099">1</span>, <span style="color:#099">2</span>, <span style="color:#099">3</span>}
+    s2 <span style="color:#000;font-weight:bold">:=</span> []<span style="color:#458;font-weight:bold">int</span>{<span style="color:#099">1</span>, <span style="color:#099">2</span>, <span style="color:#099">3</span>}
+    fmt.<span style="color:#900;font-weight:bold">Println</span>(<span style="color:#d14">&#34;s1 == s2:&#34;</span>,reflect.<span style="color:#900;font-weight:bold">DeepEqual</span>(s1, s2))
+    <span style="color:#998;font-style:italic">//prints: s1 == s2: true
+</span><span style="color:#998;font-style:italic"></span>}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="mutex">mutex</h3>
+<p>最近在工作中发现有部分goroutine没有执行到的情况，而且非必现，在测试过程中没有出现该问题，上线后就出现了:dog: ，就是这么神奇。经过一番排查发现可能是mutex使用有问题，出现了死锁，因为该问题及其偶发，所以先增加了一个监控死锁的脚本定时判断是否出现死锁，同时针对可能的死锁进行了修改，查询了网上关于锁的注意事项在此整理。</p>
+<h3 id="golang">golang的死锁监控</h3>
+<p><a href="https://blog.csdn.net/u013536232/article/details/107868474">这部分参考了这篇文章</a>，是通过pprof定时获取程序中的goroutine情况，检查其中是否存在sync.runtime_SemacquireMutex，它表示信号量阻塞在当前的gouroutine。出现这个信号不一定表示出现死锁，也可能是刚好处在等待锁的状态，只有长时间出现才会证明死锁了。</p>
+<h4 id="heading-1">锁的使用注意</h4>
+<ul>
+<li>
+<p>尽量减少锁的持有时间，不在持有锁期间进行IO操作</p>
+</li>
+<li>
+<p>使用defer来进行锁的释放</p>
+</li>
+<li>
+<p>适当时使用读写锁</p>
+</li>
+<li>
+<p>copy结构体可能导致非预期的死锁！！</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#998;font-style:italic">//copy结构体的时候，如果结构体中有锁，需要谨慎，多测试
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">package</span> main
+  
+<span style="color:#000;font-weight:bold">import</span> (
+    <span style="color:#d14">&#34;fmt&#34;</span>
+    <span style="color:#d14">&#34;sync&#34;</span>
+)
+  
+<span style="color:#000;font-weight:bold">type</span> User <span style="color:#000;font-weight:bold">struct</span> {
+    sync.Mutex
+    name <span style="color:#458;font-weight:bold">string</span>
+}
+  
+<span style="color:#000;font-weight:bold">var</span> UserArr = <span style="color:#0086b3">make</span>(<span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#000;font-weight:bold">*</span>User)
+  
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
+    UserArr[<span style="color:#d14">&#34;a&#34;</span>] = <span style="color:#000;font-weight:bold">&amp;</span>User{
+        Mutex: sync.Mutex{},
+        name:  <span style="color:#d14">&#34;A&#34;</span>,
+    }
+    test1 <span style="color:#000;font-weight:bold">:=</span> UserArr[<span style="color:#d14">&#34;a&#34;</span>]
+    test1.<span style="color:#900;font-weight:bold">Lock</span>()
+    fmt.<span style="color:#900;font-weight:bold">Println</span>(test1.name)
+    <span style="color:#000;font-weight:bold">defer</span> test1.<span style="color:#900;font-weight:bold">Unlock</span>()
+  
+    test2 <span style="color:#000;font-weight:bold">:=</span> UserArr[<span style="color:#d14">&#34;a&#34;</span>]
+    test2.<span style="color:#900;font-weight:bold">Lock</span>()            <span style="color:#998;font-style:italic">//死锁，同一个锁对象，多次lock
+</span><span style="color:#998;font-style:italic"></span>    fmt.<span style="color:#900;font-weight:bold">Println</span>(test2.name)
+  
+    <span style="color:#000;font-weight:bold">defer</span> test2.<span style="color:#900;font-weight:bold">Unlock</span>()
+}
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>使用go vet检查锁的使用问题</p>
+</li>
+<li>
+<p>使用 -race检查数据竞争</p>
+</li>
+<li>
+<p>改为使用channel，减少锁的使用</p>
+</li>
+<li>
+<p>针对读多写少的场景，使用sync.Map代替map加锁</p>
+</li>
+</ul>
+<h4 id="reference">Reference</h4>
+<p><a href="https://mozillazg.com/2019/04/notes-about-go-lock-mutex.html">https://mozillazg.com/2019/04/notes-about-go-lock-mutex.html</a></p>
+<p><a href="https://blog.csdn.net/u013536232/article/details/107868474">https://blog.csdn.net/u013536232/article/details/107868474</a></p>
+<p><a href="https://mp.weixin.qq.com/s/TzHvDdtfp0FZ9y1ndqeCRw">https://mp.weixin.qq.com/s/TzHvDdtfp0FZ9y1ndqeCRw</a></p>
+<h3 id="channel">channel</h3>
+<h4 id="channel-1">无限缓存的channel</h4>
+<p>这是个学习channel，select用法的很好案例！！大力推荐</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">package</span> test_channel
+
+<span style="color:#998;font-style:italic">// https://github.com/smallnest/chanx/blob/main/unbounded_chan.go
+</span><span style="color:#998;font-style:italic"></span><span style="color:#998;font-style:italic">// used for generic type
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">type</span> T <span style="color:#000;font-weight:bold">interface</span>{}
+
+<span style="color:#000;font-weight:bold">type</span> UnboundedChan <span style="color:#000;font-weight:bold">struct</span> {
+	In     <span style="color:#000;font-weight:bold">chan</span><span style="color:#000;font-weight:bold">&lt;-</span> T <span style="color:#998;font-style:italic">// channel for write
+</span><span style="color:#998;font-style:italic"></span>	Out    <span style="color:#000;font-weight:bold">&lt;-</span><span style="color:#000;font-weight:bold">chan</span> T <span style="color:#998;font-style:italic">// channel for read
+</span><span style="color:#998;font-style:italic"></span>	buffer []T
+}
+
+<span style="color:#000;font-weight:bold">func</span> (c UnboundedChan) <span style="color:#900;font-weight:bold">Len</span>() <span style="color:#458;font-weight:bold">int</span> {
+	<span style="color:#000;font-weight:bold">return</span> <span style="color:#0086b3">len</span>(c.buffer) <span style="color:#000;font-weight:bold">+</span> <span style="color:#0086b3">len</span>(c.Out)
+}
+
+<span style="color:#000;font-weight:bold">func</span> (c UnboundedChan) <span style="color:#900;font-weight:bold">BufLen</span>() <span style="color:#458;font-weight:bold">int</span> {
+	<span style="color:#000;font-weight:bold">return</span> <span style="color:#0086b3">len</span>(c.buffer)
+}
+
+<span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">NewBoundedChan</span>(initCapacity <span style="color:#458;font-weight:bold">int</span>) UnboundedChan {
+	in <span style="color:#000;font-weight:bold">:=</span> <span style="color:#0086b3">make</span>(<span style="color:#000;font-weight:bold">chan</span> T, initCapacity)
+	out <span style="color:#000;font-weight:bold">:=</span> <span style="color:#0086b3">make</span>(<span style="color:#000;font-weight:bold">chan</span> T, initCapacity)
+	ch <span style="color:#000;font-weight:bold">:=</span> UnboundedChan{
+		In:     in,
+		Out:    out,
+		buffer: <span style="color:#0086b3">make</span>([]T, <span style="color:#099">0</span>, initCapacity),
+	}
+
+	<span style="color:#000;font-weight:bold">go</span> <span style="color:#000;font-weight:bold">func</span>() {
+		<span style="color:#000;font-weight:bold">defer</span> <span style="color:#0086b3">close</span>(out)
+
+		<span style="color:#000;font-weight:bold">for</span> {
+			val, ok <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">&lt;-</span>in
+			<span style="color:#000;font-weight:bold">if</span> !ok {
+				<span style="color:#998;font-style:italic">// in channel closed
+</span><span style="color:#998;font-style:italic"></span>				<span style="color:#000;font-weight:bold">break</span>
+			}
+
+			<span style="color:#000;font-weight:bold">select</span> {
+			<span style="color:#000;font-weight:bold">case</span> out <span style="color:#000;font-weight:bold">&lt;-</span> val: <span style="color:#998;font-style:italic">//out没有满，还可以写入，buffer中也没数据
+</span><span style="color:#998;font-style:italic"></span>				<span style="color:#000;font-weight:bold">continue</span>
+			<span style="color:#000;font-weight:bold">default</span>:
+			}
+
+			<span style="color:#998;font-style:italic">//以下为out满的时候
+</span><span style="color:#998;font-style:italic"></span>			ch.buffer = <span style="color:#0086b3">append</span>(ch.buffer, val)
+
+			<span style="color:#000;font-weight:bold">for</span> <span style="color:#0086b3">len</span>(ch.buffer) &gt; <span style="color:#099">0</span> {
+				<span style="color:#000;font-weight:bold">select</span> {
+				<span style="color:#000;font-weight:bold">case</span> val, ok <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">&lt;-</span>in:
+					<span style="color:#000;font-weight:bold">if</span> !ok {
+						<span style="color:#000;font-weight:bold">break</span> <span style="color:#998;font-style:italic">// in closed
+</span><span style="color:#998;font-style:italic"></span>					}
+					ch.buffer = <span style="color:#0086b3">append</span>(ch.buffer, val)
+				<span style="color:#000;font-weight:bold">case</span> out <span style="color:#000;font-weight:bold">&lt;-</span> ch.buffer[<span style="color:#099">0</span>]:
+					ch.buffer = ch.buffer[<span style="color:#099">1</span>:]
+					<span style="color:#000;font-weight:bold">if</span> <span style="color:#0086b3">len</span>(ch.buffer) <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">0</span> {
+						ch.buffer = <span style="color:#0086b3">make</span>([]T, <span style="color:#099">0</span>, initCapacity)
+					}
+				}
+			}
+
+		}
+
+		<span style="color:#000;font-weight:bold">for</span> <span style="color:#0086b3">len</span>(ch.buffer) &gt; <span style="color:#099">0</span> {
+			out <span style="color:#000;font-weight:bold">&lt;-</span> ch.buffer[<span style="color:#099">0</span>]
+			ch.buffer = ch.buffer[<span style="color:#099">1</span>:]
+		}
+	}()
+
+	<span style="color:#000;font-weight:bold">return</span> ch
+}
+
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="reference-1">Reference</h5>
+<p><a href="https://colobu.com/2021/05/11/unbounded-channel-in-go/">https://colobu.com/2021/05/11/unbounded-channel-in-go/</a></p>
+<h3 id="http">http</h3>
+<p>服务上线测试时主要观察的几点：</p>
+<ol>
+<li>功能实现</li>
+<li>关键日志和监控点</li>
+<li>cpu和内存使用情况</li>
+<li>连接数和goroutine数量</li>
+</ol>
+<p>今天测试上线了一个小服务，发现goroutine数量缓慢增长，tcp的CLOSE_WAIT数量也增加</p>
+<p>pprof监控</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">goroutine <span style="color:#099">80318</span> [<span style="color:#000;font-weight:bold">select</span>, <span style="color:#099">5</span> minutes]:
+net<span style="color:#000;font-weight:bold">/</span>http.(<span style="color:#000;font-weight:bold">*</span>persistConn).<span style="color:#900;font-weight:bold">writeLoop</span>(<span style="color:#099">0xc008d46240</span>)
+	<span style="color:#000;font-weight:bold">/</span>usr<span style="color:#000;font-weight:bold">/</span>local<span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">go</span><span style="color:#000;font-weight:bold">/</span>src<span style="color:#000;font-weight:bold">/</span>net<span style="color:#000;font-weight:bold">/</span>http<span style="color:#000;font-weight:bold">/</span>transport.<span style="color:#000;font-weight:bold">go</span>:<span style="color:#099">2340</span> <span style="color:#000;font-weight:bold">+</span><span style="color:#099">0x11c</span>
+created by net<span style="color:#000;font-weight:bold">/</span>http.(<span style="color:#000;font-weight:bold">*</span>Transport).dialConn
+	<span style="color:#000;font-weight:bold">/</span>usr<span style="color:#000;font-weight:bold">/</span>local<span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">go</span><span style="color:#000;font-weight:bold">/</span>src<span style="color:#000;font-weight:bold">/</span>net<span style="color:#000;font-weight:bold">/</span>http<span style="color:#000;font-weight:bold">/</span>transport.<span style="color:#000;font-weight:bold">go</span>:<span style="color:#099">1709</span> <span style="color:#000;font-weight:bold">+</span><span style="color:#099">0xcdc</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>http response.Body一定要close，只要client.Do不返回error，后面的response.Body都要close</p>
+<p>当没有去read response Body的时候，可以通过一个CancelFunc去主动cancel掉</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">request, err <span style="color:#000;font-weight:bold">:=</span> http.<span style="color:#900;font-weight:bold">NewRequest</span>(<span style="color:#d14">&#34;GET&#34;</span>, url, bytes.<span style="color:#900;font-weight:bold">NewReader</span>([]<span style="color:#0086b3">byte</span>(<span style="color:#d14">&#34;&#34;</span>)))
+	<span style="color:#000;font-weight:bold">if</span> err <span style="color:#000;font-weight:bold">!=</span> <span style="color:#000;font-weight:bold">nil</span> {
+		<span style="color:#000;font-weight:bold">return</span> <span style="color:#d14">&#34;&#34;</span>
+	}
+	ctx, cancelFunc <span style="color:#000;font-weight:bold">:=</span> context.<span style="color:#900;font-weight:bold">WithCancel</span>(context.<span style="color:#900;font-weight:bold">Background</span>())
+	request = request.<span style="color:#900;font-weight:bold">WithContext</span>(ctx)
+	client <span style="color:#000;font-weight:bold">:=</span> http.Client{}
+	resp, err <span style="color:#000;font-weight:bold">:=</span> client.<span style="color:#900;font-weight:bold">Do</span>(request)
+	<span style="color:#000;font-weight:bold">if</span> err <span style="color:#000;font-weight:bold">!=</span> <span style="color:#000;font-weight:bold">nil</span> {
+		<span style="color:#000;font-weight:bold">return</span> <span style="color:#d14">&#34;&#34;</span>
+	}
+	<span style="color:#000;font-weight:bold">defer</span> <span style="color:#900;font-weight:bold">cancelFunc</span>()
+
+	<span style="color:#000;font-weight:bold">if</span> resp.StatusCode <span style="color:#000;font-weight:bold">!=</span> http.StatusOK {
+		<span style="color:#000;font-weight:bold">return</span> <span style="color:#d14">&#34;&#34;</span>
+	}
+</code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://nepp-an.github.io">nepp</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://nepp-an.github.io/post/golang%E5%9D%91/">https://nepp-an.github.io/post/golang%E5%9D%91/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/post/lru/">lru的实现</a></li>
+        
+        <li><a href="/post/ant_group/">蚂蚁金服</a></li>
+        
+        <li><a href="/post/November-Strategy/">2020年11月股市展望</a></li>
+        
+        <li><a href="/post/haystack/">Haystack 图片存储系统</a></li>
+        
+        <li><a href="/post/1025/">6.824课程</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='/tags/golang'>golang</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "your github repo"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://nepp-an.github.io">nepp&#39;s blog By nepp</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://nepp-an.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://nepp-an.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/Ledis_db/" title="Ledis_db">Ledis_db</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/golang_worker-_pool/" title="golang worker pool 协程池">golang worker pool 协程池</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/golang%E7%BD%91%E7%BB%9C%E8%BD%AE%E8%AF%A2%E5%99%A8/" title="golang网络轮询器">golang网络轮询器</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/golang%E8%B0%83%E5%BA%A6%E5%99%A8/" title="golang调度器">golang调度器</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/%E6%92%AD%E6%94%BE%E5%8E%86%E5%8F%B2%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" title="播放历史架构设计">播放历史架构设计</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" title="评论系统架构设计">评论系统架构设计</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="经典排序算法">经典排序算法</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/" title="golang的内存模型">golang的内存模型</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/leetcode_pattern/" title="leetcode">leetcode</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/" title="golang相关">golang相关</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title" style="color:red">福利派送</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a href="" title="" target="_blank" style="color:red">
+                
+                    
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="" title="" target="_blank" style="color:red">
+                
+                    
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="" title="" target="_blank" style="color:red">
+                
+                    
+                
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://nepp-an.github.io/categories/algorithm/">algorithm (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/db/">db (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/golang/">golang (9)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/golang%E7%AC%94%E8%AE%B0/">golang笔记 (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/investment/">investment (2)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/linux/">linux (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/structure/">structure (2)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法 (2)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E8%AE%A1%E5%88%92/">计划 (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="https://nepp-an.github.io/tags/db/">db</a>
+    
+    <a href="https://nepp-an.github.io/tags/golang/">golang</a>
+    
+    <a href="https://nepp-an.github.io/tags/investment/">investment</a>
+    
+    <a href="https://nepp-an.github.io/tags/leetcode/">leetcode</a>
+    
+    <a href="https://nepp-an.github.io/tags/linux/">linux</a>
+    
+    <a href="https://nepp-an.github.io/tags/structure/">structure</a>
+    
+    <a href="https://nepp-an.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="http://yuedu.baidu.com/ebook/14a722970740be1e640e9a3e" title="Android Gradle权威指南">Android Gradle权威指南</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://nepp-an.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

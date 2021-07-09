@@ -6,18 +6,27 @@
     <description>Recent content in 数据结构与算法 on nepp&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 29 Oct 2020 15:12:44 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 03 May 2021 21:12:44 +0800</lastBuildDate>
     
 	<atom:link href="https://nepp-an.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>lru</title>
+      <title>经典排序算法</title>
+      <link>https://nepp-an.github.io/post/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Mon, 03 May 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</guid>
+      <description>排序算法分析 排序是指将一组对象根据一定的逻辑进行重新排列的过程。排序的算法应用于计算机的各个领域中，排序的快慢对社会运转起着至关重要的作用。 常见的基础排序算法有：冒泡排序、选择排序、插入排序、希尔排序等，这些排序算法的时间复杂度较高，仅适用于小规模数据的排序。 针对于大规模数据，常</description>
+    </item>
+    
+    <item>
+      <title>lru的实现</title>
       <link>https://nepp-an.github.io/post/lru/</link>
       <pubDate>Thu, 29 Oct 2020 15:12:44 +0800</pubDate>
       
       <guid>https://nepp-an.github.io/post/lru/</guid>
-      <description>本地缓存常常使用LRU进行更新 LRU的go版本实现，借助了go自带的list类型 type Key interface{} type Cache struct { MaxEntries int //缓存容量 OnEvicted func(key Key, value interface{}) //缓存被淘汰时的回调函数 ll *list.List // 双链表 cache map[interface{}]*list.Element } type entry struct { key Key value interface{} } func New(maxEntries int) *Cache { return &amp;amp;Cache{ MaxEntries: maxEntries, ll: list.New(), cache: make(map[interface{}]*list.ELement), } } func (c *Cache) Add(key Key, value interface{}) { if c.cache == nil { c.cache = make(map[interface{}]*list.Element) c.ll = list.new() } if ee, ok := c.cache[key]; ok { c.ll.MoveToFront(ee) ee.Value.(*entry).value = value return } ele</description>
+      <description>本地缓存常常使用LRU进行更新 LRU的go版本实现，借助了go自带的list类型 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 type Key interface{} type</description>
     </item>
     
   </channel>

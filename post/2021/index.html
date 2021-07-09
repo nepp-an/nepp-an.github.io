@@ -143,7 +143,13 @@
     <div class="post-toc-content">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#2021n">2021年需要回答的N个技术问题</a></li>
+    <li><a href="#2021n">2021年的N个问题</a>
+      <ul>
+        <li><a href="#tcp3">tcp建立连接为什么需要3次握手：</a></li>
+        <li><a href="#dnsudp">DNS为什么用UDP</a></li>
+        <li><a href="#io-">I/O模型 多路复用</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
     </div>
@@ -198,43 +204,91 @@
         
         
         <div class="post-content">
-            <h2 id="2021n">2021年需要回答的N个技术问题</h2>
+            <h2 id="2021n">2021年的N个问题</h2>
 <p>通过问题的形式完成2021年的技术领域的学习计划，每个部分最少包含5个问题，问题总数在50个左右</p>
 <ul>
-<li>数据结构与算法
+<li>
+<p>数据结构与算法</p>
 <ul>
 <li>决策树是什么</li>
+<li>深度优先遍历</li>
+<li>广度优先遍历</li>
 </ul>
 </li>
-<li>设计模式
+<li>
+<p>设计模式</p>
 <ul>
 <li>分布式的AP CP CAP什么意思</li>
 </ul>
 </li>
-<li>缓存和数据库
+<li>
+<p>缓存和数据库</p>
 <ul>
 <li>redis的sentinel机制 哨兵</li>
 </ul>
 </li>
-<li>中间件 kafka CDN
+<li>
+<p>中间件 kafka CDN</p>
 <ul>
 <li>分布式锁的实现 redis</li>
 </ul>
 </li>
-<li>编程语言 golang rust
+<li>
+<p>编程语言 golang rust</p>
 <ul>
 <li>golang 连接池的实现</li>
 <li>golang interface 依赖倒置</li>
 <li>单元测试的最佳实践</li>
 <li>go的并发编程怎么搞的</li>
+<li>仿照rosedb实现一个golang版本的kv缓存数据库</li>
 </ul>
 </li>
-<li>linux
+<li>
+<p>linux</p>
 <ul>
 <li>I/O模型</li>
+<li>tcp协议状态</li>
+</ul>
+<p>关闭连接过程：</p>
+<ol>
+<li>客户端没有待发送的数据时，向服务端发送FIN消息，发送消息后进入FIN_WAIT_1状态；</li>
+<li>服务端接收到FIN消息后，进入CLOSE_WAIT状态并向客户端发送ACK消息，客户端接收到ACK进入到FIN_WAIT_2状态；</li>
+<li>服务端没有待发送数据时，服务端会发送FIN消息；</li>
+<li>客户端接收到FIN消息后，会进入TIME_WAIT状态，并给服务端发送ACK消息，服务端收到后CLOSED；</li>
+<li>客户端等待两个最大数据段生命周期后进入CLOSED状态。</li>
+</ol>
+<h3 id="tcp3">tcp建立连接为什么需要3次握手：</h3>
+<h5 id="reference">reference</h5>
+<p><a href="https://draveness.me/whys-the-design-tcp-three-way-handshake/">https://draveness.me/whys-the-design-tcp-three-way-handshake/</a></p>
+<p><a href="https://mp.weixin.qq.com/s/8WmASie_DjDDMQRdQi1FDg">https://mp.weixin.qq.com/s/8WmASie_DjDDMQRdQi1FDg</a></p>
+<p>transmission control protocol 传输控制协议
+用于保证可靠性和流控制机制的信息。
+其中一个tcp连接包括socket、序列号和窗口大小。</p>
+<ul>
+<li>socket由ip和端口组成</li>
+<li>窗口大小用于进行流控制</li>
+<li>序列号用来追踪数据包序号，保证不丢失。</li>
+</ul>
+<ol>
+<li>三次握手才能阻止重复历史连接的初始化（主要）</li>
+<li>三次握手才能对通信双方的序列号进行初始化</li>
+<li>其他次数握手的可能性</li>
+</ol>
+<p>引入RST控制信息，发送方会判断是否为历史连接</p>
+<ul>
+<li>判断SEQ即序号，SEQ过期或者超时，发送方会发送RST中止连接。</li>
+<li>如果不是，发送ACK建立连接。</li>
 </ul>
 </li>
 </ul>
+<p>​	<!-- raw HTML omitted -->**三次握手把是否连接的控制权交给发送方。**<!-- raw HTML omitted --></p>
+<p>Time_Wait的作用</p>
+<ol>
+<li>防止前一个连接上延迟的数据包被后面的链接复用</li>
+</ol>
+<h3 id="dnsudp">DNS为什么用UDP</h3>
+<h3 id="io-">I/O模型 多路复用</h3>
+<p>select epoll区别</p>
 
         </div>
 
@@ -258,9 +312,9 @@
         
         <li><a href="/post/sync.Pool_golang/">sync_Pool_golang</a></li>
         
-        <li><a href="/post/append_golang/">golang的append</a></li>
+        <li><a href="/post/golang%E5%9D%91/">golang中的坑</a></li>
         
-        <li><a href="/post/lru/">lru</a></li>
+        <li><a href="/post/lru/">lru的实现</a></li>
         
         <li><a href="/post/stock/">stock</a></li>
         
@@ -376,43 +430,43 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://nepp-an.github.io/post/golang%E8%BF%9B%E9%98%B6summary/" title="golang进阶 summary">golang进阶 summary</a>
+        <a href="https://nepp-an.github.io/post/Ledis_db/" title="Ledis_db">Ledis_db</a>
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/distributed_lock/" title="distributed locks">distributed locks</a>
+        <a href="https://nepp-an.github.io/post/golang_worker-_pool/" title="golang worker pool 协程池">golang worker pool 协程池</a>
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/2021/" title="2021 schedule">2021 schedule</a>
+        <a href="https://nepp-an.github.io/post/golang%E7%BD%91%E7%BB%9C%E8%BD%AE%E8%AF%A2%E5%99%A8/" title="golang网络轮询器">golang网络轮询器</a>
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/stock/" title="stock">stock</a>
+        <a href="https://nepp-an.github.io/post/golang%E8%B0%83%E5%BA%A6%E5%99%A8/" title="golang调度器">golang调度器</a>
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/sync.Pool_golang/" title="sync_Pool_golang">sync_Pool_golang</a>
+        <a href="https://nepp-an.github.io/post/%E6%92%AD%E6%94%BE%E5%8E%86%E5%8F%B2%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" title="播放历史架构设计">播放历史架构设计</a>
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/append_golang/" title="golang的append">golang的append</a>
+        <a href="https://nepp-an.github.io/post/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" title="评论系统架构设计">评论系统架构设计</a>
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/ant_group/" title="蚂蚁金服">蚂蚁金服</a>
+        <a href="https://nepp-an.github.io/post/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="经典排序算法">经典排序算法</a>
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/November-Strategy/" title="2020年11月股市展望">2020年11月股市展望</a>
+        <a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/" title="golang的内存模型">golang的内存模型</a>
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/haystack/" title="Haystack">Haystack</a>
+        <a href="https://nepp-an.github.io/post/leetcode_pattern/" title="leetcode">leetcode</a>
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/lru/" title="lru">lru</a>
+        <a href="https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/" title="golang相关">golang相关</a>
     </li>
     
 </ul>
@@ -455,13 +509,21 @@
         <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
 <ul class="widget-list">
     
-    <li><a href="https://nepp-an.github.io/categories/golang/">golang (2)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/algorithm/">algorithm (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/db/">db (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/golang/">golang (9)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/golang%E7%AC%94%E8%AE%B0/">golang笔记 (1)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/investment/">investment (1)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/investment/">investment (2)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法 (1)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/linux/">linux (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/structure/">structure (2)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法 (2)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/%E8%AE%A1%E5%88%92/">计划 (1)</a></li>
     
@@ -472,9 +534,17 @@
         <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
 <div class="tagcloud">
     
+    <a href="https://nepp-an.github.io/tags/db/">db</a>
+    
     <a href="https://nepp-an.github.io/tags/golang/">golang</a>
     
     <a href="https://nepp-an.github.io/tags/investment/">investment</a>
+    
+    <a href="https://nepp-an.github.io/tags/leetcode/">leetcode</a>
+    
+    <a href="https://nepp-an.github.io/tags/linux/">linux</a>
+    
+    <a href="https://nepp-an.github.io/tags/structure/">structure</a>
     
     <a href="https://nepp-an.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
     

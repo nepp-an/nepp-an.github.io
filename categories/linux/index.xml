@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>linux on nepp&#39;s blog</title>
+    <link>https://nepp-an.github.io/categories/linux/</link>
+    <description>Recent content in linux on nepp&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 30 Oct 2020 14:12:44 +0800</lastBuildDate>
+    
+	<atom:link href="https://nepp-an.github.io/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Haystack 图片存储系统</title>
+      <link>https://nepp-an.github.io/post/haystack/</link>
+      <pubDate>Fri, 30 Oct 2020 14:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/haystack/</guid>
+      <description>主要核心是减少硬盘操作 After reducing directory sizes to hundreds of images per directory, the resulting system would still generally incur 3 disk operations to fetch an image: one to read the directory metadata into memory, a second to load the inode into memory, and a third to read the file contents.</description>
+    </item>
+    
+  </channel>
+</rss>

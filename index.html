@@ -77,96 +77,36 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/golang%E8%BF%9B%E9%98%B6summary/" title="golang进阶 summary">golang进阶 summary</a>
+                <a href="https://nepp-an.github.io/post/Ledis_db/" title="Ledis_db">Ledis_db</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2021年2月14日
+            2021年5月31日
         </date>
         
         <div class="post-meta">
             <span>|</span>
             
-            <span class="meta-category"><a href='/categories/golang%E7%AC%94%E8%AE%B0'>golang笔记</a></span>
+            <span class="meta-category"><a href='/categories/db'>db</a></span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
             
         </div>
         
         <div class="post-content">
-            微服务概览与治理 go语言实践 - error go语言实践 - concurrency go工程化实践 微服务可用性设计 评论系统架构设计 播放历史架构设计 分布式缓存&amp;分布式事务 go语言实践 - 网络编程 日志&amp;指标&amp;链路追踪 DNS&amp;CDN&amp;多活架构……
+            LSM-Tree Log Structured-Merge Tree，在面对亿级别之上的海量数据的存储和检索的场景下，我们选择的数据库通常都是各种强力的NoSQL，比如Hbase，Cassandra，Leveldb，RocksDB等等，这其中前两者是Apache下面的顶级开源项目数据库，后两者分别是Google和Facebook开源……
         </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/golang%E8%BF%9B%E9%98%B6summary/">阅读全文</a></p>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/Ledis_db/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/distributed_lock/" title="distributed locks">distributed locks</a>
+                <a href="https://nepp-an.github.io/post/golang_worker-_pool/" title="golang worker pool 协程池">golang worker pool 协程池</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2021年1月14日
-        </date>
-        
-        <div class="post-content">
-            分布式锁 redis 实现 加锁:SETNX key value，当 key不存在时将 key的值设为 value ，返回值为 1；若给定的 key 已经存在，则 SETNX不做任何动作，返回值为 0 。 解锁命令：DEL key，通过删除键值对释放锁，以便其他线程可以通过 SETNX 命令来获取锁。 锁超时：EXPIRE key timeout, 设置 key 的超时时间，以保证……
-        </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/distributed_lock/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/2021/" title="2021 schedule">2021 schedule</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年1月10日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/categories/%E8%AE%A1%E5%88%92'>计划</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            2021年需要回答的N个技术问题 通过问题的形式完成2021年的技术领域的学习计划，每个部分最少包含5个问题，问题总数在50个左右 数据结构与算法 决策树是什么 设计模式 分布式的AP CP CAP什么意思 缓存和数据库 redis的sentinel机制 哨兵 中间件 kafka CDN 分布式锁的实现 redis 编程语言 golang rust golang 连……
-        </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/2021/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/stock/" title="stock">stock</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年12月5日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/categories/investment'>investment</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            基本原则 闲钱投资 不动用大资产 经历完整牛熊过的人才是有经验的 提高胜率才是最主要的 关键要素 趋势投资，以月或者周为周期，建立分析系统 买卖策略，来行情该买什么 投资纪律和经验，怎样持续盈利 分析和判断市场 把影响市场的因素明确 政策：货币，财政 技术图：K线图，关注资金量 市场情绪：很难量化 资金变化……
-        </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/stock/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/sync.Pool_golang/" title="sync_Pool_golang">sync_Pool_golang</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年12月5日
+            2021年5月25日
         </date>
         
         <div class="post-meta">
@@ -177,19 +117,19 @@
         </div>
         
         <div class="post-content">
-            syn.Pool leak.Pool io.Writer在使用sync.Pool之后，延迟变高 golang bufio的用法……
+            协程池 golang语言原生的goroutine和channel等机制，对于并发编程提供了很简单的实现。一个go关键字即可生成一个独立的协程。协程的管理需要协程池去实现。 对worker的总协程数量进行限制 限制并发 有任务排队时也不阻塞任务的提交 数据结构 1 2 3 4 5 6 7 8 9 10 11 12 type TaskHandler func() error……
         </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/sync.Pool_golang/">阅读全文</a></p>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/golang_worker-_pool/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/append_golang/" title="golang的append">golang的append</a>
+                <a href="https://nepp-an.github.io/post/golang%E7%BD%91%E7%BB%9C%E8%BD%AE%E8%AF%A2%E5%99%A8/" title="golang网络轮询器">golang网络轮询器</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年11月7日
+            2021年5月15日
         </date>
         
         <div class="post-meta">
@@ -200,67 +140,90 @@
         </div>
         
         <div class="post-content">
-            golang的append不是值拷贝，特别是在append函数入参的时候，尽量使用copy函数先处理一下再append，否则会踩很多坑。……
+            网络轮询器 大部分服务都是I/O密集型的，程序会花费大量时间等待I/O操作的完成。网络轮询器是golang runtime用来处理I/O操作的关键部件，它使用了操作系统提供的I/O多路复用机制增强并发能力。 设计原理 网络轮询器不仅用于监控网络I/O，还用于监控文件I/O。 I/O模型 操作……
         </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/append_golang/">阅读全文</a></p>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/golang%E7%BD%91%E7%BB%9C%E8%BD%AE%E8%AF%A2%E5%99%A8/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/ant_group/" title="蚂蚁金服">蚂蚁金服</a>
+                <a href="https://nepp-an.github.io/post/golang%E8%B0%83%E5%BA%A6%E5%99%A8/" title="golang调度器">golang调度器</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年11月7日
+            2021年5月14日
         </date>
         
-        <div class="post-content">
-            2020-11-03 中国银保监会 中国人民银行关于《网络小额贷款业务管理暂行办法（征求意见稿）》公开征求意见的公告。 正在公开征求意见，截止时间为2020年12月2日。 小额贷款公司经营网络小额贷款应当主要在注册地所属省级行政区域内开展；未经国务院银行业监督管理机构批准，小额贷款公司不得跨省级行政区域开……
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
         </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/ant_group/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/November-Strategy/" title="2020年11月股市展望">2020年11月股市展望</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年11月1日
-        </date>
         
         <div class="post-content">
-            11月各路财经大V意见整理 11月有几件大事 蚂蚁金服上市 美国大选 月底机构业绩排名，年度结账 蚂蚁上市会影响当天的流动性，只会对当天形成影响。 美国大选会影响美股的短期走势，从而影响A股。 月底机构结账这个是影响最大的，前期大批白马股跌停已经提前反映了。 11月的整体策略还是控制仓位，不超过……
+            调度器 golang语言强大的并发编程能力，得益于语言在原生层面对并发的支持。接下来介绍go语言运行时调度器的设计和实现，以及运行调度相关的数据结构。 进程与线程 process/thread 多个线程可以同属于一个进程，并共享内存空间。线程之间的通信就是通过基于共享的内存进行的，与重量的进程相比，线程更轻。但是……
         </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/November-Strategy/">阅读全文</a></p>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/golang%E8%B0%83%E5%BA%A6%E5%99%A8/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/haystack/" title="Haystack">Haystack</a>
+                <a href="https://nepp-an.github.io/post/%E6%92%AD%E6%94%BE%E5%8E%86%E5%8F%B2%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" title="播放历史架构设计">播放历史架构设计</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年10月30日
+            2021年5月13日
         </date>
         
-        <div class="post-content">
-            主要核心是减少硬盘操作 After reducing directory sizes to hundreds of images per directory, the resulting system would still generally incur 3 disk operations to fetch an image: one to read the directory metadata into memory, a second to load the inode into memory, and a third to read the file contents.……
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/structure'>structure</a></span>
+            
         </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/haystack/">阅读全文</a></p>
+        
+        <div class="post-content">
+            ……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/%E6%92%AD%E6%94%BE%E5%8E%86%E5%8F%B2%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/lru/" title="lru">lru</a>
+                <a href="https://nepp-an.github.io/post/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" title="评论系统架构设计">评论系统架构设计</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年10月29日
+            2021年5月7日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+            <span class="meta-category"><a href='/categories/structure'>structure</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            架构设计 架构设计最重要的就是理解整个产品体系在系统中的定位。搞清楚系统背后的背景，才能做出最佳的设计和抽象，不要做需求的翻译机。评论系统，需要做成评论平台，可以接入各种业务形态。 需要实现以下几个功能： 发布评论：支持回复楼层 读取评论：按照时间、热度排序 删除评论：用户和up主可以删除……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="经典排序算法">经典排序算法</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年5月3日
         </date>
         
         <div class="post-meta">
@@ -271,9 +234,78 @@
         </div>
         
         <div class="post-content">
-            本地缓存常常使用LRU进行更新 LRU的go版本实现，借助了go自带的list类型 type Key interface{} type Cache struct { MaxEntries int //缓存容量 OnEvicted func(key Key, value interface{}) //缓存被淘汰时的回调函数 ll *list.List // 双链表 cache map[interface{}]*list.Element } type entry struct { key Key value interface{} } func New(maxEntries int) *Cache { return &amp;Cache{ MaxEntries: maxEntries, ll: list.New(), cache: make(map[interface{}]*list.ELement), } } func (c *Cache) Add(key Key, value interface{}) { if c.cache == nil { c.cache = make(map[interface{}]*list.Element) c.ll = list.new() } if ee, ok := c.cache[key]; ok { c.ll.MoveToFront(ee) ee.Value.(*entry).value = value return } ele……
+            排序算法分析 排序是指将一组对象根据一定的逻辑进行重新排列的过程。排序的算法应用于计算机的各个领域中，排序的快慢对社会运转起着至关重要的作用。 常见的基础排序算法有：冒泡排序、选择排序、插入排序、希尔排序等，这些排序算法的时间复杂度较高，仅适用于小规模数据的排序。 针对于大规模数据，常……
         </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/lru/">阅读全文</a></p>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/" title="golang的内存模型">golang的内存模型</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年3月14日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            memory model https://golang.org/ref/mem heppens-before的概念 内存重排 为了读写内存的效率，会对读写指令进行重新排列，这是cpu重排。 还有编译器重排： x = 0 for i in range(100): x = 1 fmt.Println(x) 编译器优化后 x = 1 for i in range(100): fmt.Println(x) 但是一旦x被别的goroutine修改，就会无法出现预期的结果。 CPU为了抚平内核、内存和硬盘之间的读写……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/leetcode_pattern/" title="leetcode">leetcode</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年2月19日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/algorithm'>algorithm</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            算法题的几种模式 滑动窗口 滑动窗口用于在给定数组或者链表的特定窗口大小上执行所需的操作，比如查找最长的子字符串或者子数组。 题目 1004. 最大连续1的个数 III 给定一个由若干 0 和 1 组成的数组 A，我们最多可以将 K 个值从 0 变成 1 。返回仅包含 1 的最长（连续）子数组的长度。 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/leetcode_pattern/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/" title="golang相关">golang相关</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年2月15日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            go test 介绍 https://geektutu.com/post/quick-go-test.html https://pkg.go.dev/testing go modules 依赖管理 https://blog.golang.org/using-go-modules……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/">阅读全文</a></p>
     </article>
     
     
@@ -290,6 +322,10 @@
     
     <li >
         <a href="https://nepp-an.github.io/page/2/">2</a>
+    </li>
+    
+    <li >
+        <a href="https://nepp-an.github.io/page/3/">3</a>
     </li>
     
 
@@ -354,43 +390,43 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://nepp-an.github.io/post/golang%E8%BF%9B%E9%98%B6summary/" title="golang进阶 summary">golang进阶 summary</a>
+        <a href="https://nepp-an.github.io/post/Ledis_db/" title="Ledis_db">Ledis_db</a>
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/distributed_lock/" title="distributed locks">distributed locks</a>
+        <a href="https://nepp-an.github.io/post/golang_worker-_pool/" title="golang worker pool 协程池">golang worker pool 协程池</a>
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/2021/" title="2021 schedule">2021 schedule</a>
+        <a href="https://nepp-an.github.io/post/golang%E7%BD%91%E7%BB%9C%E8%BD%AE%E8%AF%A2%E5%99%A8/" title="golang网络轮询器">golang网络轮询器</a>
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/stock/" title="stock">stock</a>
+        <a href="https://nepp-an.github.io/post/golang%E8%B0%83%E5%BA%A6%E5%99%A8/" title="golang调度器">golang调度器</a>
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/sync.Pool_golang/" title="sync_Pool_golang">sync_Pool_golang</a>
+        <a href="https://nepp-an.github.io/post/%E6%92%AD%E6%94%BE%E5%8E%86%E5%8F%B2%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" title="播放历史架构设计">播放历史架构设计</a>
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/append_golang/" title="golang的append">golang的append</a>
+        <a href="https://nepp-an.github.io/post/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" title="评论系统架构设计">评论系统架构设计</a>
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/ant_group/" title="蚂蚁金服">蚂蚁金服</a>
+        <a href="https://nepp-an.github.io/post/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="经典排序算法">经典排序算法</a>
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/November-Strategy/" title="2020年11月股市展望">2020年11月股市展望</a>
+        <a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/" title="golang的内存模型">golang的内存模型</a>
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/haystack/" title="Haystack">Haystack</a>
+        <a href="https://nepp-an.github.io/post/leetcode_pattern/" title="leetcode">leetcode</a>
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/lru/" title="lru">lru</a>
+        <a href="https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/" title="golang相关">golang相关</a>
     </li>
     
 </ul>
@@ -433,13 +469,21 @@
         <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
 <ul class="widget-list">
     
-    <li><a href="https://nepp-an.github.io/categories/golang/">golang (2)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/algorithm/">algorithm (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/db/">db (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/golang/">golang (9)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/golang%E7%AC%94%E8%AE%B0/">golang笔记 (1)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/investment/">investment (1)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/investment/">investment (2)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法 (1)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/linux/">linux (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/structure/">structure (2)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法 (2)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/%E8%AE%A1%E5%88%92/">计划 (1)</a></li>
     
@@ -450,9 +494,17 @@
         <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
 <div class="tagcloud">
     
+    <a href="https://nepp-an.github.io/tags/db/">db</a>
+    
     <a href="https://nepp-an.github.io/tags/golang/">golang</a>
     
     <a href="https://nepp-an.github.io/tags/investment/">investment</a>
+    
+    <a href="https://nepp-an.github.io/tags/leetcode/">leetcode</a>
+    
+    <a href="https://nepp-an.github.io/tags/linux/">linux</a>
+    
+    <a href="https://nepp-an.github.io/tags/structure/">structure</a>
     
     <a href="https://nepp-an.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
     
