@@ -30,15 +30,6 @@
     </item>
     
     <item>
-      <title>虚拟内存</title>
-      <link>https://nepp-an.github.io/post/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/</link>
-      <pubDate>Mon, 31 May 2021 21:12:44 +0800</pubDate>
-      
-      <guid>https://nepp-an.github.io/post/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/</guid>
-      <description>mmap： 在进程的虚拟内存地址空间中分配地址，创建和物理内存之间的映射关系。mmap在虚拟内存中分配空间，只有在第一次使用虚拟内存的时候才分配物理内存。 mmap的write： 1. 用户态将需要写入的数据直接拷贝到mmap的地址 2. 若mmap地址未对应物理地址，缺页异常，由内核处理 3. 若对</description>
-    </item>
-    
-    <item>
       <title>golang worker pool 协程池</title>
       <link>https://nepp-an.github.io/post/golang_worker-_pool/</link>
       <pubDate>Tue, 25 May 2021 21:12:44 +0800</pubDate>
