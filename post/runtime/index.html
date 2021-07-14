@@ -262,30 +262,6 @@
 <h5 id="stringsbuilder">字符串拼接用strings.Builder</h5>
 <h5 id="memory-copy">不必要的memory copy</h5>
 <p>Readv、Writev 非连续内存不用memory copy直接发到socket里面，原本需要拷到大buffer里面刷进去，使用这个不用了。类似于mmap。</p>
-<h6 id="mmap">mmap：</h6>
-<p>在进程的虚拟内存地址空间中分配地址，创建和物理内存之间的映射关系。mmap在虚拟内存中分配空间，只有在第一次使用虚拟内存的时候才分配物理内存。</p>
-<p>mmap的write：</p>
-<pre><code>    1. 用户态将需要写入的数据直接拷贝到mmap的地址
-    2. 若mmap地址未对应物理地址，缺页异常，由内核处理
-    3. 若对应，copy到对应物理内存
-</code></pre>
-<p>因为物理内存是有限的，mmap在写入数据超过物理内存时，操作系统会进行页置换，根据淘汰算法，将需要淘汰的页置换成所需的新页，所以mmap对应的内存是可以被淘汰的（若内存页是&quot;脏&quot;的，则操作系统会先将数据回写磁盘再淘汰）。这样，就算mmap的数据远大于物理内存，操作系统也能很好地处理，不会产生功能上的问题。</p>
-<p>mmap的read：</p>
-<p>mmap要比普通的read系统调用少了一次copy的过程。因为read调用，进程是无法直接访问kernel space的，所以在read系统调用返回前，<strong>内核需要将数据从内核复制到进程指定的buffer</strong>。但mmap之后，进程可以直接访问mmap的数据(page cache)。</p>
-<h6 id="heading-7">传统文件读写过程：</h6>
-<p>常规文件操作为了提高读写效率和保护磁盘，使用了页缓存机制。这样造成读文件时需要先将文件页从磁盘拷贝到页缓存中，由于页缓存处在内核空间，不能被用户进程直接寻址，所以还需要将页缓存中数据页再次拷贝到内存对应的用户空间中。这样，通过了两次数据拷贝过程，才能完成进程对文件内容的获取任务。写操作也是一样，待写入的buffer在内核空间不能直接访问，必须要先拷贝至内核空间对应的主存，再写回磁盘中（延迟写回），也是需要两次数据拷贝。</p>
-<p>当存在多个进程同时读取同一个文件时，每一个进程中的地址空间都会保存一份副本，这样肯定不是最优方式的，造成了物理内存的浪费</p>
-<h6 id="reference">Reference</h6>
-<p><a href="http://lihaizhou.top/2020/05/25/mmap%E6%9C%BA%E5%88%B6%E5%88%9D%E6%8E%A2/">http://lihaizhou.top/2020/05/25/mmap%E6%9C%BA%E5%88%B6%E5%88%9D%E6%8E%A2/</a></p>
-<h5 id="heading-8">虚拟内存</h5>
-<p>Virtual addressing虚拟寻址，将虚拟地址翻译为物理地址，访问到真正的物理内存。由MMU内存管理单元实现。</p>
-<ul>
-<li>程序可以使用一系列相邻的虚拟地址来访问物理内存中不相邻的大内存缓冲区。</li>
-<li>程序可以使用一系列虚拟地址来访问大于可用物理内存的内存缓冲区。当物理内存的供应量变小时，内存管理器会将物理内存页（通常大小为 4 KB）保存到磁盘文件。数据或代码页会根据需要在物理内存与磁盘之间移动。</li>
-<li>不同进程使用的虚拟地址彼此隔离。一个进程中的代码无法更改正在由另一进程或操作系统使用的物理内存。</li>
-</ul>
-<h6 id="reference-1">Reference</h6>
-<p><a href="https://draveness.me/whys-the-design-os-virtual-memory/">https://draveness.me/whys-the-design-os-virtual-memory/</a></p>
 
         </div>
 
@@ -309,13 +285,13 @@
         
         <li><a href="/post/Ledis_db/">Ledis_db</a></li>
         
+        <li><a href="/post/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/">虚拟内存</a></li>
+        
         <li><a href="/post/golang_worker-_pool/">golang worker pool 协程池</a></li>
         
         <li><a href="/post/golang%E7%BD%91%E7%BB%9C%E8%BD%AE%E8%AF%A2%E5%99%A8/">golang网络轮询器</a></li>
         
         <li><a href="/post/golang%E8%B0%83%E5%BA%A6%E5%99%A8/">golang调度器</a></li>
-        
-        <li><a href="/post/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">评论系统架构设计</a></li>
         
     </ul>
 </div>
@@ -437,6 +413,10 @@
     </li>
     
     <li>
+        <a href="https://nepp-an.github.io/post/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/" title="虚拟内存">虚拟内存</a>
+    </li>
+    
+    <li>
         <a href="https://nepp-an.github.io/post/golang_worker-_pool/" title="golang worker pool 协程池">golang worker pool 协程池</a>
     </li>
     
@@ -462,10 +442,6 @@
     
     <li>
         <a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/" title="golang的内存模型">golang的内存模型</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/leetcode_pattern/" title="leetcode_pattern">leetcode_pattern</a>
     </li>
     
 </ul>
@@ -518,7 +494,7 @@
     
     <li><a href="https://nepp-an.github.io/categories/investment/">investment (2)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/linux/">linux (2)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/linux/">linux (3)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/structure/">structure (2)</a></li>
     

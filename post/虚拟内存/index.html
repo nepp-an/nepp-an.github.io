@@ -9,16 +9,20 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title> | nepp&#39;s blog</title>
-    <meta property="og:title" content=" - nepp&#39;s blog">
+    <title>虚拟内存 | nepp&#39;s blog</title>
+    <meta property="og:title" content="虚拟内存 - nepp&#39;s blog">
     <meta property="og:type" content="article">
         
+    <meta property="article:published_time" content='2021-05-31T21:12:44&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2021-05-31T21:12:44&#43;08:00'>
         
     <meta name="Keywords" content="golang,go语言">
-    <meta name="description" content="">
+    <meta name="description" content="虚拟内存">
         
     <meta name="author" content="nepp">
-    <meta property="og:url" content="https://nepp-an.github.io/post/redis%E5%AE%9E%E7%8E%B0/">
+    <meta property="og:url" content="https://nepp-an.github.io/post/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/">
     <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
@@ -177,11 +181,18 @@
 </script>
     <article class="post">
         <header>
-            <h1 class="post-title"></h1>
+            <h1 class="post-title">虚拟内存</h1>
         </header>
         <date class="post-meta meta-date">
-            1年1月1日
+            2021年5月31日
         </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/linux'>linux</a></span>
+            
+        </div>
         
         
         <div class="post-meta">
@@ -191,24 +202,30 @@
         
         
         <div class="post-content">
-            <h4 id="sds">SDS动态字符串</h4>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#000;font-weight:bold">struct</span> sdshdr {
-	<span style="color:#458;font-weight:bold">int</span> len;
-  <span style="color:#458;font-weight:bold">int</span> free;
-  <span style="color:#458;font-weight:bold">char</span> buf[];
-}
-</code></pre></td></tr></table>
-</div>
-</div><p>Char buf[]最后一个字节保存空字符&rsquo;\0&rsquo;</p>
+            <h6 id="mmap">mmap：</h6>
+<p>在进程的虚拟内存地址空间中分配地址，创建和物理内存之间的映射关系。mmap在虚拟内存中分配空间，只有在第一次使用虚拟内存的时候才分配物理内存。</p>
+<p>mmap的write：</p>
+<pre><code>    1. 用户态将需要写入的数据直接拷贝到mmap的地址
+    2. 若mmap地址未对应物理地址，缺页异常，由内核处理
+    3. 若对应，copy到对应物理内存
+</code></pre>
+<p>因为物理内存是有限的，mmap在写入数据超过物理内存时，操作系统会进行页置换，根据淘汰算法，将需要淘汰的页置换成所需的新页，所以mmap对应的内存是可以被淘汰的（若内存页是&quot;脏&quot;的，则操作系统会先将数据回写磁盘再淘汰）。这样，就算mmap的数据远大于物理内存，操作系统也能很好地处理，不会产生功能上的问题。</p>
+<p>mmap的read：</p>
+<p>mmap要比普通的read系统调用少了一次copy的过程。因为read调用，进程是无法直接访问kernel space的，所以在read系统调用返回前，<strong>内核需要将数据从内核复制到进程指定的buffer</strong>。但mmap之后，进程可以直接访问mmap的数据(page cache)。</p>
+<h6 id="heading">传统文件读写过程：</h6>
+<p>常规文件操作为了提高读写效率和保护磁盘，使用了页缓存机制。这样造成读文件时需要先将文件页从磁盘拷贝到页缓存中，由于页缓存处在内核空间，不能被用户进程直接寻址，所以还需要将页缓存中数据页再次拷贝到内存对应的用户空间中。这样，通过了两次数据拷贝过程，才能完成进程对文件内容的获取任务。写操作也是一样，待写入的buffer在内核空间不能直接访问，必须要先拷贝至内核空间对应的主存，再写回磁盘中（延迟写回），也是需要两次数据拷贝。</p>
+<p>当存在多个进程同时读取同一个文件时，每一个进程中的地址空间都会保存一份副本，这样肯定不是最优方式的，造成了物理内存的浪费</p>
+<h6 id="reference">Reference</h6>
+<p><a href="http://lihaizhou.top/2020/05/25/mmap%E6%9C%BA%E5%88%B6%E5%88%9D%E6%8E%A2/">http://lihaizhou.top/2020/05/25/mmap%E6%9C%BA%E5%88%B6%E5%88%9D%E6%8E%A2/</a></p>
+<h5 id="heading-1">虚拟内存</h5>
+<p>Virtual addressing虚拟寻址，将虚拟地址翻译为物理地址，访问到真正的物理内存。由MMU内存管理单元实现。</p>
+<ul>
+<li>程序可以使用一系列相邻的虚拟地址来访问物理内存中不相邻的大内存缓冲区。</li>
+<li>程序可以使用一系列虚拟地址来访问大于可用物理内存的内存缓冲区。当物理内存的供应量变小时，内存管理器会将物理内存页（通常大小为 4 KB）保存到磁盘文件。数据或代码页会根据需要在物理内存与磁盘之间移动。</li>
+<li>不同进程使用的虚拟地址彼此隔离。一个进程中的代码无法更改正在由另一进程或操作系统使用的物理内存。</li>
+</ul>
+<h6 id="reference-1">Reference</h6>
+<p><a href="https://draveness.me/whys-the-design-os-virtual-memory/">https://draveness.me/whys-the-design-os-virtual-memory/</a></p>
 
         </div>
 
@@ -216,7 +233,7 @@
 <div class="post-archive">
     <ul class="post-copyright">
         <li><strong>原文作者：</strong><a rel="author" href="https://nepp-an.github.io">nepp</a></li>
-        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://nepp-an.github.io/post/redis%E5%AE%9E%E7%8E%B0/">https://nepp-an.github.io/post/redis%E5%AE%9E%E7%8E%B0/</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://nepp-an.github.io/post/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/">https://nepp-an.github.io/post/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/</a></li>
         <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
     </ul>
 </div>
@@ -230,15 +247,15 @@
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/post/runtime/">runtime</a></li>
+        <li><a href="/post/haystack/">Haystack 图片存储系统</a></li>
         
         <li><a href="/post/Ledis_db/">Ledis_db</a></li>
-        
-        <li><a href="/post/%E8%99%9A%E6%8B%9F%E5%86%85%E5%AD%98/">虚拟内存</a></li>
         
         <li><a href="/post/golang_worker-_pool/">golang worker pool 协程池</a></li>
         
         <li><a href="/post/golang%E7%BD%91%E7%BB%9C%E8%BD%AE%E8%AF%A2%E5%99%A8/">golang网络轮询器</a></li>
+        
+        <li><a href="/post/golang%E8%B0%83%E5%BA%A6%E5%99%A8/">golang调度器</a></li>
         
     </ul>
 </div>
@@ -246,7 +263,11 @@
 
         <div class="post-meta meta-tags">
             
-            没有标签
+            <ul class="clearfix">
+                
+                <li><a href='/tags/linux'>linux</a></li>
+                
+            </ul>
             
         </div>
     </article>
