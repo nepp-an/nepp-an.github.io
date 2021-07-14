@@ -77,6 +77,29 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/lru/" title="lru的实现">lru的实现</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年10月29日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95'>数据结构与算法</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            本地缓存常常使用LRU进行更新 LRU的go版本实现，借助了go自带的list类型 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 type Key interface{} type……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/lru/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://nepp-an.github.io/post/1025/" title="6.824课程">6.824课程</a>
             </h1>
         </header>
@@ -176,6 +199,38 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/Mysql/" title=""></a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            1年1月1日
+        </date>
+        
+        <div class="post-content">
+            title: &ldquo;mysql相关&rdquo; date: 2021-07-11T09:50:44+08:00 draft: false……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/Mysql/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/redis%E5%AE%9E%E7%8E%B0/" title=""></a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            1年1月1日
+        </date>
+        
+        <div class="post-content">
+            SDS动态字符串 1 2 3 4 5  struct sdshdr { int len; int free; char buf[]; }   Char buf[]最后一个字节保存空字符&rsquo;\0&rsquo;……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/redis%E5%AE%9E%E7%8E%B0/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://nepp-an.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title=""></a>
             </h1>
         </header>
@@ -184,25 +239,10 @@
         </date>
         
         <div class="post-content">
-            进程间通信 ![image-20210512113039490](/Users/anpuqiang/Library/Application Support/typora-user-images/image-20210512113039490.png)……
+            title: &ldquo;UNIX环境高级编程&rdquo; date: 2021-05-03T21:12:44+08:00 draft: false categories: [&ldquo;数据结构与算法&rdquo;] tags: [&ldquo;数据结构与算法&rdquo;]
+第15章 进程间通信 ![image-20210512113039490](/Users/anpuqiang/Library/Application Support/typora-user-images/image-20210512113039490.png)……
         </div>
         <p class="readmore"><a href="https://nepp-an.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/%E9%9C%80%E6%B1%82/" title=""></a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            1年1月1日
-        </date>
-        
-        <div class="post-content">
-            Ai push scheduler分时区发送增加俄罗斯  在us-en基础上增加ru-ru 本地落盘缓存延迟发送的token  原有实现将延迟发送的token和延迟时间保存在内存中sleep 程序重启后内存中数据会丢失，增加落盘    落盘实现  分文件保存，文件名称country_language_send_time(send_time加个随机，防止重复) delayWriteAIMsgsToKafka中函数开始写文件，若成功发送后删除缓存文件 缓存文件内格式- json 重启后，获取local-time， 遍历缓存文件，计算sleep-time  图片服务  错误图片替换  复用upload页面 后台增加cdn删除接口的调用   搜索近似图的过程展示  ……
-        </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/%E9%9C%80%E6%B1%82/">阅读全文</a></p>
     </article>
     
     
@@ -229,7 +269,15 @@
         <a href="https://nepp-an.github.io/page/3/">3</a>
     </li>
     
+    <li >
+        <a href="https://nepp-an.github.io/page/4/">4</a>
+    </li>
+    
 
+    
+    <li class="next">
+        <a href="https://nepp-an.github.io/page/4/">下一页</a>
+    </li>
     
 </ol>
 
@@ -287,6 +335,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://nepp-an.github.io/post/runtime/" title="runtime">runtime</a>
+    </li>
+    
+    <li>
         <a href="https://nepp-an.github.io/post/Ledis_db/" title="Ledis_db">Ledis_db</a>
     </li>
     
@@ -319,11 +371,7 @@
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/leetcode_pattern/" title="leetcode">leetcode</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/" title="golang相关">golang相关</a>
+        <a href="https://nepp-an.github.io/post/leetcode_pattern/" title="leetcode_pattern">leetcode_pattern</a>
     </li>
     
 </ul>
@@ -370,13 +418,13 @@
     
     <li><a href="https://nepp-an.github.io/categories/db/">db (1)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/golang/">golang (9)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/golang/">golang (10)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/golang%E7%AC%94%E8%AE%B0/">golang笔记 (1)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/investment/">investment (2)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/linux/">linux (1)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/linux/">linux (2)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/structure/">structure (2)</a></li>
     

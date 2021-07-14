@@ -86,6 +86,31 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/runtime/">runtime</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年7月11日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='/categories/linux'>linux</a>
+            
+            <a href='/categories/golang'>golang</a>
+            
+        </div>
+        
+        <div class="post-content">
+            goroutine M:N模型 go创建M个线程，之后创建个N个goroutine会依附在M个线程上执行。 pstree 命令看进程下几个线程 同一时刻，一个线程只能跑一个goroutine，当goroutine发生阻塞（chan阻塞，mutex，syscall陷入内核）时，go的runtime会进行调度，让其他g……
+            <p class="readmore"><a href="https://nepp-an.github.io/post/runtime/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://nepp-an.github.io/post/Ledis_db/">Ledis_db</a>
             </h1>
         </header>
@@ -294,29 +319,6 @@
         </div>
     </article>
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/sync.Pool_golang/">sync_Pool_golang</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年12月5日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='/categories/golang'>golang</a>
-            
-        </div>
-        
-        <div class="post-content">
-            syn.Pool leak.Pool io.Writer在使用sync.Pool之后，延迟变高 golang bufio的用法……
-            <p class="readmore"><a href="https://nepp-an.github.io/post/sync.Pool_golang/">阅读全文</a></p>
-        </div>
-    </article>
-    
 
     
 
@@ -396,6 +398,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://nepp-an.github.io/post/runtime/" title="runtime">runtime</a>
+    </li>
+    
+    <li>
         <a href="https://nepp-an.github.io/post/Ledis_db/" title="Ledis_db">Ledis_db</a>
     </li>
     
@@ -428,11 +434,7 @@
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/leetcode_pattern/" title="leetcode">leetcode</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/" title="golang相关">golang相关</a>
+        <a href="https://nepp-an.github.io/post/leetcode_pattern/" title="leetcode_pattern">leetcode_pattern</a>
     </li>
     
 </ul>
@@ -479,13 +481,13 @@
     
     <li><a href="https://nepp-an.github.io/categories/db/">db (1)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/golang/">golang (9)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/golang/">golang (10)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/golang%E7%AC%94%E8%AE%B0/">golang笔记 (1)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/investment/">investment (2)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/linux/">linux (1)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/linux/">linux (2)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/structure/">structure (2)</a></li>
     
