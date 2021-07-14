@@ -79,6 +79,31 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/lru/" title="lru的实现">lru的实现</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年10月29日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95'>数据结构与算法</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            本地缓存常常使用LRU进行更新 LRU的go版本实现，借助了go自带的list类型 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 type Key interface{} type……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/lru/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://nepp-an.github.io/post/1025/" title="6.824课程">6.824课程</a>
             </h1>
         </header>
@@ -133,6 +158,44 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/%E9%9D%A2%E8%AF%95/" title=""></a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            1年1月1日
+        </date>
+        
+        <div class="post-content">
+            title: &ldquo;面试&rdquo; date: 2021-05-03T21:12:44+08:00 draft: false categories: [&ldquo;面试&rdquo;] tags: [&ldquo;面试&rdquo;]
+  自我介绍
+   考察表达能力，面试准备情况 5    校内情况讨论
+    项目、竞赛、论文方面
+   硕士期间研究方向    考察对计算机的学习热情、自主学习能力 4
+    计算机基础
+    基于简历，从操作系统、网络、编译原理和体系结构里出2-3个问题
+    进程
+  操作系统运行程序大概流程
+   必须做的第一件事是将代码和所有静态数据（例如初始化变量）加载（load）到内存中，加载到进程的地址空间中。 堆/栈区别    线程 共享地址空间
+  字节序 数据在内存中的存储顺序 大端/小端
+  tcp/udp 传输层区别
+  tcp三次握手/四次挥手
+    考察专业基础是否扎实
+   grpc      语言基础
+    c/c++为主
+   HashMap底层结构 哈希表和红黑树 vector 和数组区别    结合编译和运行时
+   内存对齐的原理与意义 内存泄露 https://www.cnblogs.com/skynet/archive/2011/02/20/1959162.html      代码题目
+   排序算法，归并排序，快排 二叉树层次遍历，z型打印 LRU/堆 判断链表环 判断是否为二叉搜索树    /**
+* Definition for a binary tree node.
+* struct TreeNode {……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/%E9%9D%A2%E8%AF%95/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://nepp-an.github.io/post/%E9%9C%80%E6%B1%82/" title=""></a>
             </h1>
         </header>
@@ -141,7 +204,10 @@
         </date>
         
         <div class="post-content">
-            Ai push scheduler分时区发送增加俄罗斯  在us-en基础上增加ru-ru 本地落盘缓存延迟发送的token  原有实现将延迟发送的token和延迟时间保存在内存中sleep 程序重启后内存中数据会丢失，增加落盘    落盘实现  分文件保存，文件名称country_language_send_time(send_time加个随机，防止重复) delayWriteAIMsgsToKafka中函数开始写文件，若成功发送后删除缓存文件 缓存文件内格式- json 重启后，获取local-time， 遍历缓存文件，计算sleep-time  图片服务  错误图片替换  复用upload页面 后台增加cdn删除接口的调用   搜索近似图的过程展示  ……
+            Ai push scheduler分时区发送增加俄罗斯  在us-en基础上增加ru-ru 本地落盘缓存延迟发送的token  原有实现将延迟发送的token和延迟时间保存在内存中sleep 程序重启后内存中数据会丢失，增加落盘    落盘实现  分文件保存，文件名称country_language_send_time(send_time加个随机，防止重复) delayWriteAIMsgsToKafka中函数开始写文件，若成功发送后删除缓存文件 缓存文件内格式- json 重启后，获取local-time， 遍历缓存文件，计算sleep-time  图片服务   错误图片替换
+ 复用upload页面 后台增加cdn删除接口的调用    搜索近似图的过程展示
+​
+  ……
         </div>
         <p class="readmore"><a href="https://nepp-an.github.io/post/%E9%9C%80%E6%B1%82/">阅读全文</a></p>
     </article>
@@ -159,9 +225,46 @@
         </date>
         
         <div class="post-content">
-            进程间通信 ![image-20210512113039490](/Users/anpuqiang/Library/Application Support/typora-user-images/image-20210512113039490.png)……
+            title: &ldquo;UNIX环境高级编程&rdquo; date: 2021-05-03T21:12:44+08:00 draft: false categories: [&ldquo;数据结构与算法&rdquo;] tags: [&ldquo;数据结构与算法&rdquo;]
+第15章 进程间通信 ![image-20210512113039490](/Users/anpuqiang/Library/Application Support/typora-user-images/image-20210512113039490.png)……
         </div>
         <p class="readmore"><a href="https://nepp-an.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/redis%E5%AE%9E%E7%8E%B0/" title=""></a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            1年1月1日
+        </date>
+        
+        <div class="post-content">
+            SDS动态字符串 1 2 3 4 5  struct sdshdr { int len; int free; char buf[]; }   Char buf[]最后一个字节保存空字符&rsquo;\0&rsquo;……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/redis%E5%AE%9E%E7%8E%B0/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/Mysql/" title=""></a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            1年1月1日
+        </date>
+        
+        <div class="post-content">
+            title: &ldquo;mysql相关&rdquo; date: 2021-07-11T09:50:44+08:00 draft: false……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/Mysql/">阅读全文</a></p>
     </article>
     
     
@@ -180,45 +283,6 @@
             linux 查问题 yum install nmon top pref top us: user cpu time (or) % CPU time spent in user space sy: system cpu time (or) % CPU time spent in kernel space ni: user nice cpu time (or) % CPU time spent on low priority processes id: idle cpu time (or) % CPU time spent idle wa: io wait cpu time (or) % CPU time spent in wait (on disk) hi: hardware irq (or) % CPU time spent servicing/handling hardware interrupts si: software irq (or) % CPU time spent servicing/handling software interrupts st: steal time - - % CPU time in involuntary wait by virtual cpu while hypervisor is servicing another processor (or) % CPU time stolen from a virtual machine si不均衡：网卡多队列/ DPDK……
         </div>
         <p class="readmore"><a href="https://nepp-an.github.io/post/linux/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/grpc/" title=""></a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            1年1月1日
-        </date>
-        
-        <div class="post-content">
-            gRPC是Google开源的RPC框架，具有以下的优点：
- 提供高效的进程间通信。gRPC没有使用XML或者Json的文本格式，而是采用基于protocol buffers的二进制协议；同时使用HTTP/2作为通信协议，从而能快速的处理进程间通信。 简单且良好的服务接口和模式。契约优先，先定义接口，再实现细节。 支持多语言  再介绍下RPC： RPC：Remote Procedure Call 远程过程调用，简单的理解是一个节点请求另一个节点的服务。与远程过程调用相对的就是本地过程调用，通过函数指针进行实现。那远程过程调用如何通知远程机器要调用这个方法呢？
-// Client端 // Student student = Call(ServerAddr, addAge, student) 1. 将这个调用映射为Call ID。 2. 将Call ID，student（params）序列化，以二进制形式打包 3. 把2中得到的数据包发送给ServerAddr，这需要使用网络传输层 4. 等待服务器返回结果 5. 如果服务器调用成功，那么就将结果反序列化，并赋给student，年龄更新 // Server端 1. 在本地维护一个Call ID到函数指针的映射call_id_map，可以用Map&lt;String, Method&gt; callIdMap 2. 等待客户端请求 3. 得到一个请求后，将其数据包反序列化，得到Call ID 4. 通过在callIdMap中查找，得到相应的函数指针 5. 将student（params）反序列化后，在本地调用addAge()函数，得到结果 6. 将student结果序列化后通过网络返回给Client gRPC包含四种基础的通信模式：
- 一元模式 服务器端流RPC 客户端流RPC 双向流RPC  ……
-        </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/grpc/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/golang%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title=""></a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            1年1月1日
-        </date>
-        
-        <div class="post-content">
-            1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77  package main import ( &#34;context&#34; &#34;fmt&#34; &#34;os&#34; &#34;os/signal&#34; &#34;syscall&#34; &#34;time&#34; ) type Result struct { Hit string Err error } //// Search runs query on a backend and returns the result. //type Search func(query string) Result  // //// First runs query on replicas and returns the first result. //func First(query string, replicas ...Search) Result { // c := make(chan Result, len(replicas)) // search := func(replica Search) { c &lt;- replica(query) } // for _, replica := range replicas { // go search(replica) // } // return &lt;-c //}  // Search runs query on a backend and returns the result.……
-        </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/golang%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">阅读全文</a></p>
     </article>
     
     
@@ -246,7 +310,15 @@
         <a href="https://nepp-an.github.io/post/page/3/">3</a>
     </li>
     
+    <li >
+        <a href="https://nepp-an.github.io/post/page/4/">4</a>
+    </li>
+    
 
+    
+    <li class="next">
+        <a href="https://nepp-an.github.io/post/page/4/">下一页</a>
+    </li>
     
 </ol>
 
@@ -304,6 +376,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://nepp-an.github.io/post/runtime/" title="runtime">runtime</a>
+    </li>
+    
+    <li>
         <a href="https://nepp-an.github.io/post/Ledis_db/" title="Ledis_db">Ledis_db</a>
     </li>
     
@@ -337,10 +413,6 @@
     
     <li>
         <a href="https://nepp-an.github.io/post/leetcode_pattern/" title="leetcode_pattern">leetcode_pattern</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/" title="golang相关">golang相关</a>
     </li>
     
 </ul>
@@ -387,13 +459,13 @@
     
     <li><a href="https://nepp-an.github.io/categories/db/">db (1)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/golang/">golang (9)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/golang/">golang (10)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/golang%E7%AC%94%E8%AE%B0/">golang笔记 (1)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/investment/">investment (2)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/linux/">linux (1)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/linux/">linux (2)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/structure/">structure (2)</a></li>
     

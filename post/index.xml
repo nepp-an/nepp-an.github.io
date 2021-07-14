@@ -6,10 +6,19 @@
     <description>Recent content in Posts on nepp&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 31 May 2021 21:12:44 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 10 Jul 2021 21:12:44 +0800</lastBuildDate>
     
 	<atom:link href="https://nepp-an.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>runtime</title>
+      <link>https://nepp-an.github.io/post/runtime/</link>
+      <pubDate>Sat, 10 Jul 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/runtime/</guid>
+      <description>goroutine M:N模型 go创建M个线程，之后创建个N个goroutine会依附在M个线程上执行。 pstree 命令看进程下几个线程 同一时刻，一个线程只能跑一个goroutine，当goroutine发生阻塞（chan阻塞，mutex，syscall陷入内核）时，go的runtime会进行调度，让其他g</description>
+    </item>
     
     <item>
       <title>Ledis_db</title>
@@ -250,11 +259,30 @@
     
     <item>
       <title></title>
+      <link>https://nepp-an.github.io/post/Mysql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/Mysql/</guid>
+      <description>title: &amp;ldquo;mysql相关&amp;rdquo; date: 2021-07-11T09:50:44+08:00 draft: false</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://nepp-an.github.io/post/redis%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/redis%E5%AE%9E%E7%8E%B0/</guid>
+      <description>SDS动态字符串 1 2 3 4 5  struct sdshdr { int len; int free; char buf[]; }   Char buf[]最后一个字节保存空字符&amp;rsquo;\0&amp;rsquo;</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>https://nepp-an.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://nepp-an.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</guid>
-      <description>进程间通信 ![image-20210512113039490](/Users/anpuqiang/Library/Application Support/typora-user-images/image-20210512113039490.png)</description>
+      <description>title: &amp;ldquo;UNIX环境高级编程&amp;rdquo; date: 2021-05-03T21:12:44+08:00 draft: false categories: [&amp;ldquo;数据结构与算法&amp;rdquo;] tags: [&amp;ldquo;数据结构与算法&amp;rdquo;]
+第15章 进程间通信 ![image-20210512113039490](/Users/anpuqiang/Library/Application Support/typora-user-images/image-20210512113039490.png)</description>
     </item>
     
     <item>
@@ -263,7 +291,39 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://nepp-an.github.io/post/%E9%9C%80%E6%B1%82/</guid>
-      <description>Ai push scheduler分时区发送增加俄罗斯  在us-en基础上增加ru-ru 本地落盘缓存延迟发送的token  原有实现将延迟发送的token和延迟时间保存在内存中sleep 程序重启后内存中数据会丢失，增加落盘    落盘实现  分文件保存，文件名称country_language_send_time(send_time加个随机，防止重复) delayWriteAIMsgsToKafka中函数开始写文件，若成功发送后删除缓存文件 缓存文件内格式- json 重启后，获取local-time， 遍历缓存文件，计算sleep-time  图片服务  错误图片替换  复用upload页面 后台增加cdn删除接口的调用   搜索近似图的过程展示  </description>
+      <description>Ai push scheduler分时区发送增加俄罗斯  在us-en基础上增加ru-ru 本地落盘缓存延迟发送的token  原有实现将延迟发送的token和延迟时间保存在内存中sleep 程序重启后内存中数据会丢失，增加落盘    落盘实现  分文件保存，文件名称country_language_send_time(send_time加个随机，防止重复) delayWriteAIMsgsToKafka中函数开始写文件，若成功发送后删除缓存文件 缓存文件内格式- json 重启后，获取local-time， 遍历缓存文件，计算sleep-time  图片服务   错误图片替换
+ 复用upload页面 后台增加cdn删除接口的调用    搜索近似图的过程展示
+​
+  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://nepp-an.github.io/post/%E9%9D%A2%E8%AF%95/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/%E9%9D%A2%E8%AF%95/</guid>
+      <description>title: &amp;ldquo;面试&amp;rdquo; date: 2021-05-03T21:12:44+08:00 draft: false categories: [&amp;ldquo;面试&amp;rdquo;] tags: [&amp;ldquo;面试&amp;rdquo;]
+  自我介绍
+   考察表达能力，面试准备情况 5    校内情况讨论
+    项目、竞赛、论文方面
+   硕士期间研究方向    考察对计算机的学习热情、自主学习能力 4
+    计算机基础
+    基于简历，从操作系统、网络、编译原理和体系结构里出2-3个问题
+    进程
+  操作系统运行程序大概流程
+   必须做的第一件事是将代码和所有静态数据（例如初始化变量）加载（load）到内存中，加载到进程的地址空间中。 堆/栈区别    线程 共享地址空间
+  字节序 数据在内存中的存储顺序 大端/小端
+  tcp/udp 传输层区别
+  tcp三次握手/四次挥手
+    考察专业基础是否扎实
+   grpc      语言基础
+    c/c++为主
+   HashMap底层结构 哈希表和红黑树 vector 和数组区别    结合编译和运行时
+   内存对齐的原理与意义 内存泄露 https://www.cnblogs.com/skynet/archive/2011/02/20/1959162.html      代码题目
+   排序算法，归并排序，快排 二叉树层次遍历，z型打印 LRU/堆 判断链表环 判断是否为二叉搜索树    /**
+* Definition for a binary tree node.
+* struct TreeNode {</description>
     </item>
     
   </channel>
