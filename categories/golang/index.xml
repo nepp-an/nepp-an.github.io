@@ -6,10 +6,28 @@
     <description>Recent content in golang on nepp&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 11 Jul 2021 21:12:44 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 17 Jul 2021 15:12:44 +0800</lastBuildDate>
     
 	<atom:link href="https://nepp-an.github.io/categories/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>gopool</title>
+      <link>https://nepp-an.github.io/post/gopool/</link>
+      <pubDate>Sat, 17 Jul 2021 15:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/gopool/</guid>
+      <description>gopool-头条使用的协程池 原生goroutine使用很方便 1 2 3 go func() { // do something } 但是原生goroutine存在一些问题，包括无法限制使用的goroutine总数。 单个goroutine使用的内存虽然很少2KB，但是大量的goroutine并发可能会导致OOM，所以协程池的使用还</description>
+    </item>
+    
+    <item>
+      <title>golang的内存模型</title>
+      <link>https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Wed, 14 Jul 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</guid>
+      <description>memory model https://golang.org/ref/mem heppens-before的概念 内存重排 为了读写内存的效率，会对读写指令进行重新排列，这是cpu重排。 还有编译器重排： x = 0 for i in range(100): x = 1 fmt.Println(x) 编译器优化后 x = 1 for i in range(100): fmt.Println(x) 但是一旦x被别的goroutine修改，就会无法出现预期的结果。 CPU为了抚平内核、内存和硬盘之间的读写</description>
+    </item>
     
     <item>
       <title>runtime</title>
@@ -63,15 +81,6 @@
       
       <guid>https://nepp-an.github.io/post/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</guid>
       <description>架构设计 架构设计最重要的就是理解整个产品体系在系统中的定位。搞清楚系统背后的背景，才能做出最佳的设计和抽象，不要做需求的翻译机。评论系统，需要做成评论平台，可以接入各种业务形态。 需要实现以下几个功能： 发布评论：支持回复楼层 读取评论：按照时间、热度排序 删除评论：用户和up主可以删除</description>
-    </item>
-    
-    <item>
-      <title>golang的内存模型</title>
-      <link>https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</link>
-      <pubDate>Sun, 14 Mar 2021 21:12:44 +0800</pubDate>
-      
-      <guid>https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</guid>
-      <description>memory model https://golang.org/ref/mem heppens-before的概念 内存重排 为了读写内存的效率，会对读写指令进行重新排列，这是cpu重排。 还有编译器重排： x = 0 for i in range(100): x = 1 fmt.Println(x) 编译器优化后 x = 1 for i in range(100): fmt.Println(x) 但是一旦x被别的goroutine修改，就会无法出现预期的结果。 CPU为了抚平内核、内存和硬盘之间的读写</description>
     </item>
     
     <item>

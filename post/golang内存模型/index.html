@@ -13,10 +13,10 @@
     <meta property="og:title" content="golang的内存模型 - nepp&#39;s blog">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2021-03-14T21:12:44&#43;08:00'>
+    <meta property="article:published_time" content='2021-07-14T21:12:44&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2021-03-14T21:12:44&#43;08:00'>
+    <meta property="article:modified_time" content='2021-07-14T21:12:44&#43;08:00'>
         
     <meta name="Keywords" content="golang,go语言">
     <meta name="description" content="golang的内存模型">
@@ -143,16 +143,10 @@
     <div class="post-toc-content">
         <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#memory-model">memory model</a>
       <ul>
-        <li></li>
-      </ul>
-    </li>
-    <li><a href="#copy-on-write">copy-on-write</a></li>
-    <li><a href="#reference">reference</a>
-      <ul>
-        <li><a href="#errgroup">errgroup</a></li>
-        <li><a href="#syncpool">sync.Pool</a></li>
+        <li><a href="#heppens-before">heppens-before的概念</a></li>
+        <li><a href="#heading-1">内存管理</a></li>
       </ul>
     </li>
   </ul>
@@ -191,13 +185,15 @@
             <h1 class="post-title">golang的内存模型</h1>
         </header>
         <date class="post-meta meta-date">
-            2021年3月14日
+            2021年7月14日
         </date>
         
         <div class="post-meta">
             <span>|</span>
             
             <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+            <span class="meta-category"><a href='/categories/memory'>memory</a></span>
             
         </div>
         
@@ -209,9 +205,9 @@
         
         
         <div class="post-content">
-            <h4 id="memory-model">memory model</h4>
+            <h2 id="memory-model">memory model</h2>
 <p><a href="https://golang.org/ref/mem">https://golang.org/ref/mem</a></p>
-<h4 id="heppens-before">heppens-before的概念</h4>
+<h3 id="heppens-before">heppens-before的概念</h3>
 <h4 id="heading">内存重排</h4>
 <p>为了读写内存的效率，会对读写指令进行重新排列，这是cpu重排。
 还有编译器重排：</p>
@@ -226,7 +222,7 @@ for i in range(100):
 </code></pre><p>但是一旦x被别的goroutine修改，就会无法出现预期的结果。</p>
 <p>CPU为了抚平内核、内存和硬盘之间的读写速度差异，使用多级缓存。 <br>
 因此对于多线程的程序，CPU提供锁机制，即内存屏障，memory barrier，要求所有到cache line中的操作都要立马刷到内存中去，对于多核cpu还有mesi 缓存一致性协议去保障。</p>
-<h2 id="copy-on-write">copy-on-write</h2>
+<h4 id="copy-on-write">copy-on-write</h4>
 <p>写入时复制（英语：Copy-on-write，简称COW）是一种计算机程序设计领域的优化策略。其核心思想是，如果有多个调用者（callers）同时请求相同资源（如内存或磁盘上的数据存储），他们会共同获取相同的指针指向相同的资源，直到某个调用者试图修改资源的内容时，系统才会真正复制一份专用副本（private copy）给该调用者，而其他调用者所见到的最初的资源仍然保持不变。这过程对其他的调用者都是透明的（transparently）。此作法主要的优点是如果调用者没有修改该资源，就不会有副本（private copy）被建立，因此多个调用者只是读取操作时可以共享同一份资源。</p>
 <ul>
 <li>redis如何实现bgsave
@@ -242,17 +238,16 @@ for i in range(100):
 </ul>
 </li>
 </ul>
-<h2 id="reference">reference</h2>
+<h4 id="reference">reference</h4>
 <p><a href="https://juejin.cn/post/6844903702373859335">https://juejin.cn/post/6844903702373859335</a></p>
-<h3 id="errgroup">errgroup</h3>
-<h3 id="syncpool">sync.Pool</h3>
-<ul>
-<li>http里面的sync.Pool
-<ul>
-<li>处理header时使用sync.Pool</li>
-</ul>
-</li>
-</ul>
+<h3 id="heading-1">内存管理</h3>
+<p>参考TCMalloc，Thread Cache Malloc，Go的内存管理借鉴了TCMalloc。</p>
+<p>内存碎片：内存的不断申请和释放，内存会存在大量的碎片，降低内存使用率。为了解决内存碎片，可以将几个连续的未使用的内存块合并。</p>
+<p>去大锁：每个线程的内存使用有一个大锁。</p>
+<p><strong>每个P会挂载一个mcache，goroutine程序申请小块内存时，会从mcache中分配，这样不用加锁。</strong></p>
+<p>所有工作线程还共用mcentral，mcache中不够用，就会去mcentral中获取。还有下一级的mhead，mheap中没有会到操作系统中要。</p>
+<p>page：内存页，8k内存空间。Go和操作系统之间内存申请和释放，都是page单位。</p>
+<p>span：内存块，一个或者连续多个page组成span。</p>
 
         </div>
 
@@ -274,15 +269,15 @@ for i in range(100):
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/post/go_%E4%BD%BF%E7%94%A8/">golang相关</a></li>
+        <li><a href="/post/runtime/">runtime</a></li>
         
-        <li><a href="/post/golang%E8%BF%9B%E9%98%B6summary/">geektime golang课程总结</a></li>
+        <li><a href="/post/Ledis_db/">Ledis_db</a></li>
         
-        <li><a href="/post/2021/">2021 schedule</a></li>
+        <li><a href="/post/golang_worker-_pool/">golang worker pool 协程池</a></li>
         
-        <li><a href="/post/sync.Pool_golang/">sync_Pool_golang</a></li>
+        <li><a href="/post/golang%E7%BD%91%E7%BB%9C%E8%BD%AE%E8%AF%A2%E5%99%A8/">golang网络轮询器</a></li>
         
-        <li><a href="/post/golang%E5%9D%91/">golang中的坑</a></li>
+        <li><a href="/post/golang%E8%B0%83%E5%BA%A6%E5%99%A8/">golang调度器</a></li>
         
     </ul>
 </div>
@@ -293,6 +288,8 @@ for i in range(100):
             <ul class="clearfix">
                 
                 <li><a href='/tags/golang'>golang</a></li>
+                
+                <li><a href='/tags/memory'>memory</a></li>
                 
             </ul>
             
@@ -394,6 +391,18 @@ for i in range(100):
 <ul class="widget-list">
     
     <li>
+        <a href="https://nepp-an.github.io/post/gopool/" title="gopool">gopool</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/" title="golang的内存模型">golang的内存模型</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/epoll/" title="epoll">epoll</a>
+    </li>
+    
+    <li>
         <a href="https://nepp-an.github.io/post/runtime/" title="runtime">runtime</a>
     </li>
     
@@ -419,18 +428,6 @@ for i in range(100):
     
     <li>
         <a href="https://nepp-an.github.io/post/%E6%92%AD%E6%94%BE%E5%8E%86%E5%8F%B2%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" title="播放历史架构设计">播放历史架构设计</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" title="评论系统架构设计">评论系统架构设计</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="经典排序算法">经典排序算法</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/" title="golang的内存模型">golang的内存模型</a>
     </li>
     
 </ul>
@@ -475,15 +472,23 @@ for i in range(100):
     
     <li><a href="https://nepp-an.github.io/categories/algorithm/">algorithm (1)</a></li>
     
+    <li><a href="https://nepp-an.github.io/categories/atomic/">atomic (1)</a></li>
+    
     <li><a href="https://nepp-an.github.io/categories/db/">db (1)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/golang/">golang (10)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/golang/">golang (11)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/golang%E7%AC%94%E8%AE%B0/">golang笔记 (1)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/investment/">investment (2)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/linux/">linux (3)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/linux/">linux (4)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/memory/">memory (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/network/">network (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/pool/">pool (1)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/structure/">structure (2)</a></li>
     
@@ -507,6 +512,12 @@ for i in range(100):
     <a href="https://nepp-an.github.io/tags/leetcode/">leetcode</a>
     
     <a href="https://nepp-an.github.io/tags/linux/">linux</a>
+    
+    <a href="https://nepp-an.github.io/tags/memory/">memory</a>
+    
+    <a href="https://nepp-an.github.io/tags/network/">network</a>
+    
+    <a href="https://nepp-an.github.io/tags/pool/">pool</a>
     
     <a href="https://nepp-an.github.io/tags/structure/">structure</a>
     

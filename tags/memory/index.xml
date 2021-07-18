@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>memory on nepp&#39;s blog</title>
+    <link>https://nepp-an.github.io/tags/memory/</link>
+    <description>Recent content in memory on nepp&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 14 Jul 2021 21:12:44 +0800</lastBuildDate>
+    
+	<atom:link href="https://nepp-an.github.io/tags/memory/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>golang的内存模型</title>
+      <link>https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Wed, 14 Jul 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</guid>
+      <description>memory model https://golang.org/ref/mem heppens-before的概念 内存重排 为了读写内存的效率，会对读写指令进行重新排列，这是cpu重排。 还有编译器重排： x = 0 for i in range(100): x = 1 fmt.Println(x) 编译器优化后 x = 1 for i in range(100): fmt.Println(x) 但是一旦x被别的goroutine修改，就会无法出现预期的结果。 CPU为了抚平内核、内存和硬盘之间的读写</description>
+    </item>
+    
+  </channel>
+</rss>

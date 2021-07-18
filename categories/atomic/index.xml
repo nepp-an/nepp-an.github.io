@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>atomic on nepp&#39;s blog</title>
+    <link>https://nepp-an.github.io/categories/atomic/</link>
+    <description>Recent content in atomic on nepp&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 17 Jul 2021 15:12:44 +0800</lastBuildDate>
+    
+	<atom:link href="https://nepp-an.github.io/categories/atomic/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>gopool</title>
+      <link>https://nepp-an.github.io/post/gopool/</link>
+      <pubDate>Sat, 17 Jul 2021 15:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/gopool/</guid>
+      <description>gopool-头条使用的协程池 原生goroutine使用很方便 1 2 3 go func() { // do something } 但是原生goroutine存在一些问题，包括无法限制使用的goroutine总数。 单个goroutine使用的内存虽然很少2KB，但是大量的goroutine并发可能会导致OOM，所以协程池的使用还</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,17 +6,44 @@
     <description>Recent content in Categories on nepp&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 11 Jul 2021 21:12:44 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 17 Jul 2021 15:12:44 +0800</lastBuildDate>
     
 	<atom:link href="https://nepp-an.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>atomic</title>
+      <link>https://nepp-an.github.io/categories/atomic/</link>
+      <pubDate>Sat, 17 Jul 2021 15:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/categories/atomic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>golang</title>
       <link>https://nepp-an.github.io/categories/golang/</link>
-      <pubDate>Sun, 11 Jul 2021 21:12:44 +0800</pubDate>
+      <pubDate>Sat, 17 Jul 2021 15:12:44 +0800</pubDate>
       
       <guid>https://nepp-an.github.io/categories/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pool</title>
+      <link>https://nepp-an.github.io/categories/pool/</link>
+      <pubDate>Sat, 17 Jul 2021 15:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/categories/pool/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>memory</title>
+      <link>https://nepp-an.github.io/categories/memory/</link>
+      <pubDate>Wed, 14 Jul 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/categories/memory/</guid>
       <description></description>
     </item>
     
@@ -26,6 +53,15 @@
       <pubDate>Sun, 11 Jul 2021 21:12:44 +0800</pubDate>
       
       <guid>https://nepp-an.github.io/categories/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>network</title>
+      <link>https://nepp-an.github.io/categories/network/</link>
+      <pubDate>Sun, 11 Jul 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/categories/network/</guid>
       <description></description>
     </item>
     

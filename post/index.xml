@@ -6,10 +6,37 @@
     <description>Recent content in Posts on nepp&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 11 Jul 2021 21:12:44 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 17 Jul 2021 15:12:44 +0800</lastBuildDate>
     
 	<atom:link href="https://nepp-an.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>gopool</title>
+      <link>https://nepp-an.github.io/post/gopool/</link>
+      <pubDate>Sat, 17 Jul 2021 15:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/gopool/</guid>
+      <description>gopool-头条使用的协程池 原生goroutine使用很方便 1 2 3 go func() { // do something } 但是原生goroutine存在一些问题，包括无法限制使用的goroutine总数。 单个goroutine使用的内存虽然很少2KB，但是大量的goroutine并发可能会导致OOM，所以协程池的使用还</description>
+    </item>
+    
+    <item>
+      <title>golang的内存模型</title>
+      <link>https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</link>
+      <pubDate>Wed, 14 Jul 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</guid>
+      <description>memory model https://golang.org/ref/mem heppens-before的概念 内存重排 为了读写内存的效率，会对读写指令进行重新排列，这是cpu重排。 还有编译器重排： x = 0 for i in range(100): x = 1 fmt.Println(x) 编译器优化后 x = 1 for i in range(100): fmt.Println(x) 但是一旦x被别的goroutine修改，就会无法出现预期的结果。 CPU为了抚平内核、内存和硬盘之间的读写</description>
+    </item>
+    
+    <item>
+      <title>epoll</title>
+      <link>https://nepp-an.github.io/post/epoll/</link>
+      <pubDate>Sun, 11 Jul 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/epoll/</guid>
+      <description>epoll epoll是一种I/O事件通知机制，是linux内核实现IO多路复用的一种方式。select和poll属于轮询机制。 假设有大量的请求和一个进程保持着TCP连接，但是其中只有一小部分是活跃的，这需要监听这些连接，在需要的时候返回，从而对其进行读写操作。 https://www.jianshu.com/p/31cdfd6f5a48</description>
+    </item>
     
     <item>
       <title>runtime</title>
@@ -90,15 +117,6 @@
       
       <guid>https://nepp-an.github.io/post/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</guid>
       <description>排序算法分析 排序是指将一组对象根据一定的逻辑进行重新排列的过程。排序的算法应用于计算机的各个领域中，排序的快慢对社会运转起着至关重要的作用。 常见的基础排序算法有：冒泡排序、选择排序、插入排序、希尔排序等，这些排序算法的时间复杂度较高，仅适用于小规模数据的排序。 针对于大规模数据，常</description>
-    </item>
-    
-    <item>
-      <title>golang的内存模型</title>
-      <link>https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</link>
-      <pubDate>Sun, 14 Mar 2021 21:12:44 +0800</pubDate>
-      
-      <guid>https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/</guid>
-      <description>memory model https://golang.org/ref/mem heppens-before的概念 内存重排 为了读写内存的效率，会对读写指令进行重新排列，这是cpu重排。 还有编译器重排： x = 0 for i in range(100): x = 1 fmt.Println(x) 编译器优化后 x = 1 for i in range(100): fmt.Println(x) 但是一旦x被别的goroutine修改，就会无法出现预期的结果。 CPU为了抚平内核、内存和硬盘之间的读写</description>
     </item>
     
     <item>
@@ -325,14 +343,13 @@
   字节序 数据在内存中的存储顺序 大端/小端
   tcp/udp 传输层区别
   tcp三次握手/四次挥手
+  I/O多路复用，select poll epoll
     考察专业基础是否扎实
    grpc      语言基础
     c/c++为主
-   HashMap底层结构 哈希表和红黑树 vector 和数组区别    结合编译和运行时
+   HashMap底层结构 哈希表和红黑树 vector 和数组区别 volatile cpu多级缓存和内存屏障 memcpy和strcpy的差别 函数重载    结合编译和运行时
    内存对齐的原理与意义 内存泄露 https://www.cnblogs.com/skynet/archive/2011/02/20/1959162.html      代码题目
-   排序算法，归并排序，快排 二叉树层次遍历，z型打印 LRU/堆 判断链表环 判断是否为二叉搜索树    /**
-* Definition for a binary tree node.
-* struct TreeNode {</description>
+   排序算法，归并排序，快排 二叉树层次遍历，z型打印 LRU/堆 判断链表环 判断是否为二叉搜索树 二叉树中序遍历 根据前序遍历，中序遍历结果还原二叉树 判断平衡二叉树 求二叉树深度    /**</description>
     </item>
     
   </channel>

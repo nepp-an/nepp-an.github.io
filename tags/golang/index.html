@@ -86,6 +86,58 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/gopool/">gopool</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年7月17日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='/categories/golang'>golang</a>
+            
+            <a href='/categories/pool'>pool</a>
+            
+            <a href='/categories/atomic'>atomic</a>
+            
+        </div>
+        
+        <div class="post-content">
+            gopool-头条使用的协程池 原生goroutine使用很方便 1 2 3 go func() { // do something } 但是原生goroutine存在一些问题，包括无法限制使用的goroutine总数。 单个goroutine使用的内存虽然很少2KB，但是大量的goroutine并发可能会导致OOM，所以协程池的使用还……
+            <p class="readmore"><a href="https://nepp-an.github.io/post/gopool/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/">golang的内存模型</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年7月14日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='/categories/golang'>golang</a>
+            
+            <a href='/categories/memory'>memory</a>
+            
+        </div>
+        
+        <div class="post-content">
+            memory model https://golang.org/ref/mem heppens-before的概念 内存重排 为了读写内存的效率，会对读写指令进行重新排列，这是cpu重排。 还有编译器重排： x = 0 for i in range(100): x = 1 fmt.Println(x) 编译器优化后 x = 1 for i in range(100): fmt.Println(x) 但是一旦x被别的goroutine修改，就会无法出现预期的结果。 CPU为了抚平内核、内存和硬盘之间的读写……
+            <p class="readmore"><a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://nepp-an.github.io/post/runtime/">runtime</a>
             </h1>
         </header>
@@ -230,29 +282,6 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/">golang的内存模型</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年3月14日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='/categories/golang'>golang</a>
-            
-        </div>
-        
-        <div class="post-content">
-            memory model https://golang.org/ref/mem heppens-before的概念 内存重排 为了读写内存的效率，会对读写指令进行重新排列，这是cpu重排。 还有编译器重排： x = 0 for i in range(100): x = 1 fmt.Println(x) 编译器优化后 x = 1 for i in range(100): fmt.Println(x) 但是一旦x被别的goroutine修改，就会无法出现预期的结果。 CPU为了抚平内核、内存和硬盘之间的读写……
-            <p class="readmore"><a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/">阅读全文</a></p>
-        </div>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
                 <a href="https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/">golang相关</a>
             </h1>
         </header>
@@ -293,29 +322,6 @@
         <div class="post-content">
             微服务概览与治理 go语言实践 - error go语言实践 - concurrency go工程化实践 微服务可用性设计 评论系统架构设计 播放历史架构设计 分布式缓存&amp;分布式事务 go语言实践 - 网络编程 日志&amp;指标&amp;链路追踪 DNS&amp;CDN&amp;多活架构……
             <p class="readmore"><a href="https://nepp-an.github.io/post/golang%E8%BF%9B%E9%98%B6summary/">阅读全文</a></p>
-        </div>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/2021/">2021 schedule</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年1月10日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='/categories/%E8%AE%A1%E5%88%92'>计划</a>
-            
-        </div>
-        
-        <div class="post-content">
-            2021年的N个问题 通过问题的形式完成2021年的技术领域的学习计划，每个部分最少包含5个问题，问题总数在50个左右 数据结构与算法 决策树是什么 深度优先遍历 广度优先遍历 设计模式 分布式的AP CP CAP什么意思 缓存和数据库 redis的sentinel机制 哨兵 中间件 kafka CDN 分布式锁的实现 redis 编程……
-            <p class="readmore"><a href="https://nepp-an.github.io/post/2021/">阅读全文</a></p>
         </div>
     </article>
     
@@ -398,6 +404,18 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://nepp-an.github.io/post/gopool/" title="gopool">gopool</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/" title="golang的内存模型">golang的内存模型</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/epoll/" title="epoll">epoll</a>
+    </li>
+    
+    <li>
         <a href="https://nepp-an.github.io/post/runtime/" title="runtime">runtime</a>
     </li>
     
@@ -423,18 +441,6 @@
     
     <li>
         <a href="https://nepp-an.github.io/post/%E6%92%AD%E6%94%BE%E5%8E%86%E5%8F%B2%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" title="播放历史架构设计">播放历史架构设计</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" title="评论系统架构设计">评论系统架构设计</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="经典排序算法">经典排序算法</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/" title="golang的内存模型">golang的内存模型</a>
     </li>
     
 </ul>
@@ -479,15 +485,23 @@
     
     <li><a href="https://nepp-an.github.io/categories/algorithm/">algorithm (1)</a></li>
     
+    <li><a href="https://nepp-an.github.io/categories/atomic/">atomic (1)</a></li>
+    
     <li><a href="https://nepp-an.github.io/categories/db/">db (1)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/golang/">golang (10)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/golang/">golang (11)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/golang%E7%AC%94%E8%AE%B0/">golang笔记 (1)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/investment/">investment (2)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/linux/">linux (3)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/linux/">linux (4)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/memory/">memory (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/network/">network (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/pool/">pool (1)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/structure/">structure (2)</a></li>
     
@@ -511,6 +525,12 @@
     <a href="https://nepp-an.github.io/tags/leetcode/">leetcode</a>
     
     <a href="https://nepp-an.github.io/tags/linux/">linux</a>
+    
+    <a href="https://nepp-an.github.io/tags/memory/">memory</a>
+    
+    <a href="https://nepp-an.github.io/tags/network/">network</a>
+    
+    <a href="https://nepp-an.github.io/tags/pool/">pool</a>
     
     <a href="https://nepp-an.github.io/tags/structure/">structure</a>
     

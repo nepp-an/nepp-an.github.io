@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>network on nepp&#39;s blog</title>
+    <link>https://nepp-an.github.io/tags/network/</link>
+    <description>Recent content in network on nepp&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 11 Jul 2021 21:12:44 +0800</lastBuildDate>
+    
+	<atom:link href="https://nepp-an.github.io/tags/network/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>epoll</title>
+      <link>https://nepp-an.github.io/post/epoll/</link>
+      <pubDate>Sun, 11 Jul 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/epoll/</guid>
+      <description>epoll epoll是一种I/O事件通知机制，是linux内核实现IO多路复用的一种方式。select和poll属于轮询机制。 假设有大量的请求和一个进程保持着TCP连接，但是其中只有一小部分是活跃的，这需要监听这些连接，在需要的时候返回，从而对其进行读写操作。 https://www.jianshu.com/p/31cdfd6f5a48</description>
+    </item>
+    
+  </channel>
+</rss>

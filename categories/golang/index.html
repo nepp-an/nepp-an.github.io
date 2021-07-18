@@ -86,6 +86,58 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/gopool/">gopool</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年7月17日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='/categories/golang'>golang</a>
+            
+            <a href='/categories/pool'>pool</a>
+            
+            <a href='/categories/atomic'>atomic</a>
+            
+        </div>
+        
+        <div class="post-content">
+            gopool-头条使用的协程池 原生goroutine使用很方便 1 2 3 go func() { // do something } 但是原生goroutine存在一些问题，包括无法限制使用的goroutine总数。 单个goroutine使用的内存虽然很少2KB，但是大量的goroutine并发可能会导致OOM，所以协程池的使用还……
+            <p class="readmore"><a href="https://nepp-an.github.io/post/gopool/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/">golang的内存模型</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年7月14日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='/categories/golang'>golang</a>
+            
+            <a href='/categories/memory'>memory</a>
+            
+        </div>
+        
+        <div class="post-content">
+            memory model https://golang.org/ref/mem heppens-before的概念 内存重排 为了读写内存的效率，会对读写指令进行重新排列，这是cpu重排。 还有编译器重排： x = 0 for i in range(100): x = 1 fmt.Println(x) 编译器优化后 x = 1 for i in range(100): fmt.Println(x) 但是一旦x被别的goroutine修改，就会无法出现预期的结果。 CPU为了抚平内核、内存和硬盘之间的读写……
+            <p class="readmore"><a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://nepp-an.github.io/post/runtime/">runtime</a>
             </h1>
         </header>
@@ -230,29 +282,6 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/">golang的内存模型</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年3月14日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='/categories/golang'>golang</a>
-            
-        </div>
-        
-        <div class="post-content">
-            memory model https://golang.org/ref/mem heppens-before的概念 内存重排 为了读写内存的效率，会对读写指令进行重新排列，这是cpu重排。 还有编译器重排： x = 0 for i in range(100): x = 1 fmt.Println(x) 编译器优化后 x = 1 for i in range(100): fmt.Println(x) 但是一旦x被别的goroutine修改，就会无法出现预期的结果。 CPU为了抚平内核、内存和硬盘之间的读写……
-            <p class="readmore"><a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/">阅读全文</a></p>
-        </div>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
                 <a href="https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/">golang相关</a>
             </h1>
         </header>
@@ -296,33 +325,30 @@
         </div>
     </article>
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/golang%E5%9D%91/">golang中的坑</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年11月7日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='/categories/golang'>golang</a>
-            
-        </div>
-        
-        <div class="post-content">
-            slice 1 2 3 4 // a[low : high : max] path := []byte(&#34;AAAA/BBBBBBBBB&#34;) sepIndex := bytes.IndexByte(path,&#39;/&#39;) dir1 := path[:sepIndex:sepIndex] //Full slice expression, last index is capacity append golang的append不是值拷贝，特别是在append函数入参的时候，尽量使用copy函数先处理一下再append，否则会踩很多坑。 slice的核心内容有两点： 函数为值复制传递 slice的属性包含指向底层数组的指针、ca……
-            <p class="readmore"><a href="https://nepp-an.github.io/post/golang%E5%9D%91/">阅读全文</a></p>
-        </div>
-    </article>
-    
 
     
 
 
+
+<ol class="page-navigator">
+    
+
+    
+    <li  class="current">
+        <a href="https://nepp-an.github.io/categories/golang/">1</a>
+    </li>
+    
+    <li >
+        <a href="https://nepp-an.github.io/categories/golang/page/2/">2</a>
+    </li>
+    
+
+    
+    <li class="next">
+        <a href="https://nepp-an.github.io/categories/golang/page/2/">下一页</a>
+    </li>
+    
+</ol>
 
 
 
@@ -378,6 +404,18 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://nepp-an.github.io/post/gopool/" title="gopool">gopool</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/" title="golang的内存模型">golang的内存模型</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/epoll/" title="epoll">epoll</a>
+    </li>
+    
+    <li>
         <a href="https://nepp-an.github.io/post/runtime/" title="runtime">runtime</a>
     </li>
     
@@ -403,18 +441,6 @@
     
     <li>
         <a href="https://nepp-an.github.io/post/%E6%92%AD%E6%94%BE%E5%8E%86%E5%8F%B2%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" title="播放历史架构设计">播放历史架构设计</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" title="评论系统架构设计">评论系统架构设计</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="经典排序算法">经典排序算法</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/" title="golang的内存模型">golang的内存模型</a>
     </li>
     
 </ul>
@@ -459,15 +485,23 @@
     
     <li><a href="https://nepp-an.github.io/categories/algorithm/">algorithm (1)</a></li>
     
+    <li><a href="https://nepp-an.github.io/categories/atomic/">atomic (1)</a></li>
+    
     <li><a href="https://nepp-an.github.io/categories/db/">db (1)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/golang/">golang (10)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/golang/">golang (11)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/golang%E7%AC%94%E8%AE%B0/">golang笔记 (1)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/investment/">investment (2)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/linux/">linux (3)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/linux/">linux (4)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/memory/">memory (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/network/">network (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/pool/">pool (1)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/structure/">structure (2)</a></li>
     
@@ -491,6 +525,12 @@
     <a href="https://nepp-an.github.io/tags/leetcode/">leetcode</a>
     
     <a href="https://nepp-an.github.io/tags/linux/">linux</a>
+    
+    <a href="https://nepp-an.github.io/tags/memory/">memory</a>
+    
+    <a href="https://nepp-an.github.io/tags/network/">network</a>
+    
+    <a href="https://nepp-an.github.io/tags/pool/">pool</a>
     
     <a href="https://nepp-an.github.io/tags/structure/">structure</a>
     
