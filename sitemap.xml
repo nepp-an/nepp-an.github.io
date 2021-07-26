@@ -13,12 +13,12 @@
   </url>
   
   <url>
-    <loc>https://nepp-an.github.io/categories/golang/</loc>
+    <loc>https://nepp-an.github.io/tags/golang/</loc>
     <lastmod>2021-07-17T15:12:44+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://nepp-an.github.io/tags/golang/</loc>
+    <loc>https://nepp-an.github.io/categories/golang/</loc>
     <lastmod>2021-07-17T15:12:44+08:00</lastmod>
   </url>
   
@@ -33,12 +33,12 @@
   </url>
   
   <url>
-    <loc>https://nepp-an.github.io/categories/pool/</loc>
+    <loc>https://nepp-an.github.io/tags/pool/</loc>
     <lastmod>2021-07-17T15:12:44+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://nepp-an.github.io/tags/pool/</loc>
+    <loc>https://nepp-an.github.io/categories/pool/</loc>
     <lastmod>2021-07-17T15:12:44+08:00</lastmod>
   </url>
   
@@ -58,12 +58,12 @@
   </url>
   
   <url>
-    <loc>https://nepp-an.github.io/tags/memory/</loc>
+    <loc>https://nepp-an.github.io/categories/memory/</loc>
     <lastmod>2021-07-14T21:12:44+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://nepp-an.github.io/categories/memory/</loc>
+    <loc>https://nepp-an.github.io/tags/memory/</loc>
     <lastmod>2021-07-14T21:12:44+08:00</lastmod>
   </url>
   
@@ -103,12 +103,12 @@
   </url>
   
   <url>
-    <loc>https://nepp-an.github.io/tags/db/</loc>
+    <loc>https://nepp-an.github.io/categories/db/</loc>
     <lastmod>2021-05-31T21:12:44+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://nepp-an.github.io/categories/db/</loc>
+    <loc>https://nepp-an.github.io/tags/db/</loc>
     <lastmod>2021-05-31T21:12:44+08:00</lastmod>
   </url>
   
@@ -153,12 +153,12 @@
   </url>
   
   <url>
-    <loc>https://nepp-an.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://nepp-an.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2021-05-03T21:12:44+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://nepp-an.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</loc>
+    <loc>https://nepp-an.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2021-05-03T21:12:44+08:00</lastmod>
   </url>
   
@@ -213,12 +213,12 @@
   </url>
   
   <url>
-    <loc>https://nepp-an.github.io/categories/investment/</loc>
+    <loc>https://nepp-an.github.io/tags/investment/</loc>
     <lastmod>2020-12-05T21:12:44+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://nepp-an.github.io/tags/investment/</loc>
+    <loc>https://nepp-an.github.io/categories/investment/</loc>
     <lastmod>2020-12-05T21:12:44+08:00</lastmod>
   </url>
   
@@ -293,7 +293,12 @@
   </url>
   
   <url>
-    <loc>https://nepp-an.github.io/post/redis%E5%AE%9E%E7%8E%B0/</loc>
+    <loc>https://nepp-an.github.io/post/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://nepp-an.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/</loc>
     <priority>0</priority>
   </url>
   

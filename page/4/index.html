@@ -93,7 +93,7 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/redis%E5%AE%9E%E7%8E%B0/" title=""></a>
+                <a href="https://nepp-an.github.io/post/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title=""></a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -101,9 +101,45 @@
         </date>
         
         <div class="post-content">
-            SDS动态字符串 1 2 3 4 5  struct sdshdr { int len; int free; char buf[]; }   Char buf[]最后一个字节保存空字符&rsquo;\0&rsquo;……
+            title: &ldquo;Redis设计与实现&rdquo; date: 2021-07-25T22:15:47+08:00 draft: false
+ Redis设计与实现的读书笔记，通过梳理结构希望能更好的理解
+数据结构与对象 Redis是kv数据库，key总是一个字符串对象 string object，而键的值可以有五种类型
+ string list hash set sorted set  SDS （simple dynamic string）简单动态字符串 1 2 3 4 5 6 7 8 9  sds.h/sdshdr struct sdshdr { //记录buf数组中已经使用字节的数量  //len(buf) 	int len; int free; //保存原始字符串，最后一个字符为空字符串&#39;\0&#39;  char buf[]; }   SDS遵循C字符串以空字符结尾的惯例，保存空字符的1字节空间不计算在SDS的len属性里面，并且为空字符分配额外的1字节空间，以及添加空字符到字符串末尾等操作，都是由SDS函数自动完成的，所以这个空字符对于SDS的使用者来说是完全透明的。遵循空字符结尾这一惯例的好处是，SDS可以直接重用一部分C字符串函数库里面的函数。
+SDS同C中字符串的区别   常数时间获取长度，O(1)
+ c中字符串需要遍历，直到遇到\0，O(n)    杜绝缓冲区溢出
+缓冲区是一块连续的计算机内存区域，可保存相同数据类型的多个实例。缓冲区可以是堆栈(自动变量)、堆(动态内存)和静态数据区(全局或静态)。在C/C++语言中，通常使用字符数组和malloc/new之类内存分配函数实现缓冲区。溢出指数据被添加到分配给该缓冲区的内存块之外。缓冲区溢出是最常见的程序缺陷。
+1 2  // c中strcat拼接字符串可能会导致缓冲区溢出 // sds中存在API sdscat函数，拼接前会检查空间是否满足要求     减少修改字符串导致的内存重分配次数
+内存重分配需要执行系统调用，是一个耗时的操作，Redis数据库中的key可能会被频繁修改，对速度有较高要求。
+ 空间预分配 长度小于1MB，会分配2倍实际所需空间；大于1MB，每次多分配1MB 惰性空间释放 删除后不会马上释放，可以通过API按需要释放    二进制安全
+ C中字符串不能保存\0，所以只能保存文本数据，不能保存二进制数据 SDS的API都是binary-safe，以处理二进制的方式去处理数据，通过len字段去判断字符串是否结束    兼容部分C字符串函数
+  链表 C语言没有内置list，Redis自己实现。
+列表键list，以有序的方式存储多个可重复的值
+LPUSH/RPUSH LPOP/RPOP 复杂度O(1)
+LLEN：返回列表长度
+LINDEX：返回给定索引的值
+LRANGE：返回给定索引范围内的值
+LSET：修改 LINSERT：插入 LREM：删除 LTRIM：修剪
+应用：可以实现社交平台的用户时间线，即bilibili动态功能
+列表的底层实现是链表。当列表键包含较多元素，或者包含的元素都是较长的字符串时，底层为链表。
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  // 双向链表节点 typedef struct listNode { struct listNode* prev; struct listNode* next; void* value; // 可以保存不同类型的值 }listNode; typedef struct list { listNode* head; listNode* tail; unsigned long len; // 节点复制  void *(*dup)(void *ptr) // 节点释放  void (*free)(void *ptr) // 节点值比较  int (*match)(void *ptr, void *key) }list;   字典 hash HLEN：返回哈希键长度……
         </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/redis%E5%AE%9E%E7%8E%B0/">阅读全文</a></p>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" title=""></a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            1年1月1日
+        </date>
+        
+        <div class="post-content">
+            1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66  package main /* 二叉搜索树 右子树所有节点均大于根节点， 左子树所有节点均小于根节点 而且左右子树需要均为二叉搜索树 */ type searchTreeNode struct { data int left *searchTreeNode right *searchTreeNode } func DeleteNode(root *searchTreeNode, value int) *searchTreeNode { if root == nil { return nil } // 待删除节点在右子树  if root.data &lt; value { root.right = DeleteNode(root.right, value) return root } // 待删除节点在左子树  if root.data &gt; value { root.left = DeleteNode(root.left, value) return root } // 待删除节点为根节点  // 找到右子树的最小值和根节点交换  // 在删除掉交换后的那个节点  if root.……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/">阅读全文</a></p>
     </article>
     
     <article class="post">
@@ -171,8 +207,8 @@
    grpc      语言基础
     c/c++为主
    HashMap底层结构 哈希表和红黑树 vector 和数组区别 volatile cpu多级缓存和内存屏障 memcpy和strcpy的差别 函数重载    结合编译和运行时
-   内存对齐的原理与意义 内存泄露 https://www.cnblogs.com/skynet/archive/2011/02/20/1959162.html      代码题目
-   排序算法，归并排序，快排 二叉树层次遍历，z型打印 LRU/堆 判断链表环 判断是否为二叉搜索树 二叉树中序遍历 根据前序遍历，中序遍历结果还原二叉树 判断平衡二叉树 求二叉树深度    /**……
+   内存对齐的原理与意义 内存泄露 https://www.cnblogs.com/skynet/archive/2011/02/20/1959162.html stack overflow      代码题目
+   排序算法，归并排序，快排 二叉树层次遍历，z型打印 LRU/堆 判断链表环 判断是否为二叉搜索树 二叉树中序遍历 根据前序遍历，中序遍历结果还原二叉树 判断平衡二叉树 求二叉树深度 二叉搜索树，添加/删除节点 链表中点    /**……
         </div>
         <p class="readmore"><a href="https://nepp-an.github.io/post/%E9%9D%A2%E8%AF%95/">阅读全文</a></p>
     </article>
