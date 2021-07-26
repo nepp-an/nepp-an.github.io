@@ -6,10 +6,19 @@
     <description>Recent content in Posts on nepp&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Jul 2021 15:12:44 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 25 Jul 2021 22:15:47 +0800</lastBuildDate>
     
 	<atom:link href="https://nepp-an.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Redis设计与实现</title>
+      <link>https://nepp-an.github.io/post/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</link>
+      <pubDate>Sun, 25 Jul 2021 22:15:47 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</guid>
+      <description>Redis设计与实现的读书笔记，通过梳理结构希望能更好的理解 数据结构与对象 Redis是kv数据库，key总是一个字符串对象 string object，而键的值可以有五种类型 string list hash set sorted set SDS （simple dynamic string）简单动态字符串 1 2 3 4 5 6 7 8 9 sds.h/sdshdr struct sdshdr { //记录buf数组中已经使用字节的数</description>
+    </item>
     
     <item>
       <title>gopool</title>
@@ -291,35 +300,6 @@
       
       <guid>https://nepp-an.github.io/post/Mysql/</guid>
       <description>title: &amp;ldquo;mysql相关&amp;rdquo; date: 2021-07-11T09:50:44+08:00 draft: false</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://nepp-an.github.io/post/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://nepp-an.github.io/post/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/</guid>
-      <description>title: &amp;ldquo;Redis设计与实现&amp;rdquo; date: 2021-07-25T22:15:47+08:00 draft: false
- Redis设计与实现的读书笔记，通过梳理结构希望能更好的理解
-数据结构与对象 Redis是kv数据库，key总是一个字符串对象 string object，而键的值可以有五种类型
- string list hash set sorted set  SDS （simple dynamic string）简单动态字符串 1 2 3 4 5 6 7 8 9  sds.h/sdshdr struct sdshdr { //记录buf数组中已经使用字节的数量  //len(buf) 	int len; int free; //保存原始字符串，最后一个字符为空字符串&amp;#39;\0&amp;#39;  char buf[]; }   SDS遵循C字符串以空字符结尾的惯例，保存空字符的1字节空间不计算在SDS的len属性里面，并且为空字符分配额外的1字节空间，以及添加空字符到字符串末尾等操作，都是由SDS函数自动完成的，所以这个空字符对于SDS的使用者来说是完全透明的。遵循空字符结尾这一惯例的好处是，SDS可以直接重用一部分C字符串函数库里面的函数。
-SDS同C中字符串的区别   常数时间获取长度，O(1)
- c中字符串需要遍历，直到遇到\0，O(n)    杜绝缓冲区溢出
-缓冲区是一块连续的计算机内存区域，可保存相同数据类型的多个实例。缓冲区可以是堆栈(自动变量)、堆(动态内存)和静态数据区(全局或静态)。在C/C++语言中，通常使用字符数组和malloc/new之类内存分配函数实现缓冲区。溢出指数据被添加到分配给该缓冲区的内存块之外。缓冲区溢出是最常见的程序缺陷。
-1 2  // c中strcat拼接字符串可能会导致缓冲区溢出 // sds中存在API sdscat函数，拼接前会检查空间是否满足要求     减少修改字符串导致的内存重分配次数
-内存重分配需要执行系统调用，是一个耗时的操作，Redis数据库中的key可能会被频繁修改，对速度有较高要求。
- 空间预分配 长度小于1MB，会分配2倍实际所需空间；大于1MB，每次多分配1MB 惰性空间释放 删除后不会马上释放，可以通过API按需要释放    二进制安全
- C中字符串不能保存\0，所以只能保存文本数据，不能保存二进制数据 SDS的API都是binary-safe，以处理二进制的方式去处理数据，通过len字段去判断字符串是否结束    兼容部分C字符串函数
-  链表 C语言没有内置list，Redis自己实现。
-列表键list，以有序的方式存储多个可重复的值
-LPUSH/RPUSH LPOP/RPOP 复杂度O(1)
-LLEN：返回列表长度
-LINDEX：返回给定索引的值
-LRANGE：返回给定索引范围内的值
-LSET：修改 LINSERT：插入 LREM：删除 LTRIM：修剪
-应用：可以实现社交平台的用户时间线，即bilibili动态功能
-列表的底层实现是链表。当列表键包含较多元素，或者包含的元素都是较长的字符串时，底层为链表。
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  // 双向链表节点 typedef struct listNode { struct listNode* prev; struct listNode* next; void* value; // 可以保存不同类型的值 }listNode; typedef struct list { listNode* head; listNode* tail; unsigned long len; // 节点复制  void *(*dup)(void *ptr) // 节点释放  void (*free)(void *ptr) // 节点值比较  int (*match)(void *ptr, void *key) }list;   字典 hash HLEN：返回哈希键长度</description>
     </item>
     
     <item>
