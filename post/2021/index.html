@@ -143,9 +143,9 @@
     <div class="post-toc-content">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#2021n">2021年的N个问题</a>
+    <li><a href="#tcp3">tcp建立连接为什么需要3次握手：</a>
       <ul>
-        <li><a href="#tcp3">tcp建立连接为什么需要3次握手：</a></li>
+        <li></li>
         <li><a href="#dnsudp">DNS为什么用UDP</a></li>
         <li><a href="#io-">I/O模型 多路复用</a></li>
       </ul>
@@ -204,7 +204,7 @@
         
         
         <div class="post-content">
-            <h2 id="2021n">2021年的N个问题</h2>
+            <h1 id="2021n">2021年的N个问题</h1>
 <p>通过问题的形式完成2021年的技术领域的学习计划，每个部分最少包含5个问题，问题总数在50个左右</p>
 <ul>
 <li>
@@ -224,12 +224,14 @@
 <li>
 <p>缓存和数据库</p>
 <ul>
+<li>mysql 丁奇的课程</li>
 <li>redis的sentinel机制 哨兵</li>
 </ul>
 </li>
 <li>
 <p>中间件 kafka CDN</p>
 <ul>
+<li>kafka极客时间的课程</li>
 <li>分布式锁的实现 redis</li>
 </ul>
 </li>
@@ -247,17 +249,28 @@
 <p>linux</p>
 <ul>
 <li>I/O模型</li>
-<li>tcp协议状态</li>
+<li></li>
+<li>协议状态</li>
 </ul>
 <p>关闭连接过程：</p>
 <ol>
-<li>客户端没有待发送的数据时，向服务端发送FIN消息，发送消息后进入FIN_WAIT_1状态；</li>
-<li>服务端接收到FIN消息后，进入CLOSE_WAIT状态并向客户端发送ACK消息，客户端接收到ACK进入到FIN_WAIT_2状态；</li>
-<li>服务端没有待发送数据时，服务端会发送FIN消息；</li>
-<li>客户端接收到FIN消息后，会进入TIME_WAIT状态，并给服务端发送ACK消息，服务端收到后CLOSED；</li>
-<li>客户端等待两个最大数据段生命周期后进入CLOSED状态。</li>
+<li>
+<p>客户端没有待发送的数据时，向服务端发送FIN消息，发送消息后进入FIN_WAIT_1状态；</p>
+</li>
+<li>
+<p>服务端接收到FIN消息后，进入CLOSE_WAIT状态并向客户端发送ACK消息，客户端接收到ACK进入到FIN_WAIT_2状态；</p>
+</li>
+<li>
+<p>服务端没有待发送数据时，服务端会发送FIN消息；</p>
+</li>
+<li>
+<p>客户端接收到FIN消息后，会进入TIME_WAIT状态，并给服务端发送ACK消息，服务端收到后CLOSED；</p>
+</li>
+<li>
+<p>客户端等待两个最大数据段生命周期后进入CLOSED状态。</p>
+</li>
 </ol>
-<h3 id="tcp3">tcp建立连接为什么需要3次握手：</h3>
+<h2 id="tcp3">tcp建立连接为什么需要3次握手：</h2>
 <h5 id="reference">reference</h5>
 <p><a href="https://draveness.me/whys-the-design-tcp-three-way-handshake/">https://draveness.me/whys-the-design-tcp-three-way-handshake/</a></p>
 <p><a href="https://mp.weixin.qq.com/s/8WmASie_DjDDMQRdQi1FDg">https://mp.weixin.qq.com/s/8WmASie_DjDDMQRdQi1FDg</a></p>
@@ -289,6 +302,7 @@
 <h3 id="dnsudp">DNS为什么用UDP</h3>
 <h3 id="io-">I/O模型 多路复用</h3>
 <p>select epoll区别</p>
+<p>&ndash; test</p>
 
         </div>
 
@@ -372,7 +386,7 @@
 
                     <footer id="footer">
     <div>
-        &copy; 2021 <a href="https://nepp-an.github.io">nepp&#39;s blog By nepp</a>
+        &copy; 2022 <a href="https://nepp-an.github.io">nepp&#39;s blog By nepp</a>
         
     </div>
     <br />
@@ -430,6 +444,18 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://nepp-an.github.io/post/%E5%8C%BA%E5%9D%97%E9%93%BE/" title="区块链小记">区块链小记</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/" title="golang相关">golang相关</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/golang_gc/" title="golang gc">golang gc</a>
+    </li>
+    
+    <li>
         <a href="https://nepp-an.github.io/post/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title="Redis设计与实现">Redis设计与实现</a>
     </li>
     
@@ -454,19 +480,7 @@
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/Ledis_db/" title="Ledis_db">Ledis_db</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/golang_worker-_pool/" title="golang worker pool 协程池">golang worker pool 协程池</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/golang%E7%BD%91%E7%BB%9C%E8%BD%AE%E8%AF%A2%E5%99%A8/" title="golang网络轮询器">golang网络轮询器</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/golang%E8%B0%83%E5%BA%A6%E5%99%A8/" title="golang调度器">golang调度器</a>
+        <a href="https://nepp-an.github.io/post/http%E8%AE%A4%E8%AF%81/" title="http 认证">http 认证</a>
     </li>
     
 </ul>
@@ -515,7 +529,7 @@
     
     <li><a href="https://nepp-an.github.io/categories/db/">db (1)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/golang/">golang (11)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/golang/">golang (12)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/golang%E7%AC%94%E8%AE%B0/">golang笔记 (1)</a></li>
     
@@ -525,11 +539,15 @@
     
     <li><a href="https://nepp-an.github.io/categories/memory/">memory (1)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/network/">network (1)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/network/">network (2)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/pool/">pool (1)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/structure/">structure (2)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/">加密货币 (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链 (1)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法 (2)</a></li>
     
@@ -559,6 +577,10 @@
     <a href="https://nepp-an.github.io/tags/pool/">pool</a>
     
     <a href="https://nepp-an.github.io/tags/structure/">structure</a>
+    
+    <a href="https://nepp-an.github.io/tags/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/">加密货币</a>
+    
+    <a href="https://nepp-an.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a>
     
     <a href="https://nepp-an.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
     

@@ -586,6 +586,203 @@
 }
 </code></pre></td></tr></table>
 </div>
+</div><h4 id="-prioroty-queue-containerheap">优先队列 prioroty queue （container/heap实现）</h4>
+<p>队列：FIFO</p>
+<p>优先队列：先pop出最高优先级的元素</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">75
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">76
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">77
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">78
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">79
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">80
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">81
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">82
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">83
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">84
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">85
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">86
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">87
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">88
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">89
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">90
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">91
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">92
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">93
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">94
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#998;font-style:italic">// 这段代码演示了如何使用堆接口构建一个优先队列。
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">package</span> main
+
+<span style="color:#000;font-weight:bold">import</span> (
+	<span style="color:#d14">&#34;container/heap&#34;</span>
+	<span style="color:#d14">&#34;fmt&#34;</span>
+)
+
+<span style="color:#998;font-style:italic">// Item 是优先队列中包含的元素。
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">type</span> Item <span style="color:#000;font-weight:bold">struct</span> {
+	value    <span style="color:#458;font-weight:bold">string</span> <span style="color:#998;font-style:italic">// 元素的值，可以是任意字符串。
+</span><span style="color:#998;font-style:italic"></span>	priority <span style="color:#458;font-weight:bold">int</span>    <span style="color:#998;font-style:italic">// 元素在队列中的优先级。
+</span><span style="color:#998;font-style:italic"></span>	<span style="color:#998;font-style:italic">// 元素的索引可以用于更新操作，它由 heap.Interface 定义的方法维护。
+</span><span style="color:#998;font-style:italic"></span>	index <span style="color:#458;font-weight:bold">int</span> <span style="color:#998;font-style:italic">// 元素在堆中的索引。
+</span><span style="color:#998;font-style:italic"></span>}
+
+<span style="color:#998;font-style:italic">// 一个实现了 heap.Interface 接口的优先队列，队列中包含任意多个 Item 结构。
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">type</span> PriorityQueue []<span style="color:#000;font-weight:bold">*</span>Item
+
+<span style="color:#000;font-weight:bold">func</span> (pq PriorityQueue) <span style="color:#900;font-weight:bold">Len</span>() <span style="color:#458;font-weight:bold">int</span> { <span style="color:#000;font-weight:bold">return</span> <span style="color:#0086b3">len</span>(pq) }
+
+<span style="color:#000;font-weight:bold">func</span> (pq PriorityQueue) <span style="color:#900;font-weight:bold">Less</span>(i, j <span style="color:#458;font-weight:bold">int</span>) <span style="color:#458;font-weight:bold">bool</span> {
+	<span style="color:#998;font-style:italic">// 我们希望 Pop 返回的是最大值而不是最小值，
+</span><span style="color:#998;font-style:italic"></span>	<span style="color:#998;font-style:italic">// 因此这里使用大于号进行对比。
+</span><span style="color:#998;font-style:italic"></span>	<span style="color:#000;font-weight:bold">return</span> pq[i].priority &gt; pq[j].priority
+}
+
+<span style="color:#000;font-weight:bold">func</span> (pq PriorityQueue) <span style="color:#900;font-weight:bold">Swap</span>(i, j <span style="color:#458;font-weight:bold">int</span>) {
+	pq[i], pq[j] = pq[j], pq[i]
+	pq[i].index = i
+	pq[j].index = j
+}
+
+<span style="color:#000;font-weight:bold">func</span> (pq <span style="color:#000;font-weight:bold">*</span>PriorityQueue) <span style="color:#900;font-weight:bold">Push</span>(x <span style="color:#000;font-weight:bold">interface</span>{}) {
+	n <span style="color:#000;font-weight:bold">:=</span> <span style="color:#0086b3">len</span>(<span style="color:#000;font-weight:bold">*</span>pq)
+	item <span style="color:#000;font-weight:bold">:=</span> x.(<span style="color:#000;font-weight:bold">*</span>Item)
+	item.index = n
+	<span style="color:#000;font-weight:bold">*</span>pq = <span style="color:#0086b3">append</span>(<span style="color:#000;font-weight:bold">*</span>pq, item)
+}
+
+<span style="color:#000;font-weight:bold">func</span> (pq <span style="color:#000;font-weight:bold">*</span>PriorityQueue) <span style="color:#900;font-weight:bold">Pop</span>() <span style="color:#000;font-weight:bold">interface</span>{} {
+	old <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">*</span>pq
+	n <span style="color:#000;font-weight:bold">:=</span> <span style="color:#0086b3">len</span>(old)
+	item <span style="color:#000;font-weight:bold">:=</span> old[n<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>]
+	item.index = <span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span> <span style="color:#998;font-style:italic">// 为了安全性考虑而做的设置
+</span><span style="color:#998;font-style:italic"></span>	<span style="color:#000;font-weight:bold">*</span>pq = old[<span style="color:#099">0</span> : n<span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span>]
+	<span style="color:#000;font-weight:bold">return</span> item
+}
+
+<span style="color:#998;font-style:italic">// 更新函数会修改队列中指定元素的优先级以及值。
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">func</span> (pq <span style="color:#000;font-weight:bold">*</span>PriorityQueue) <span style="color:#900;font-weight:bold">update</span>(item <span style="color:#000;font-weight:bold">*</span>Item, value <span style="color:#458;font-weight:bold">string</span>, priority <span style="color:#458;font-weight:bold">int</span>) {
+	item.value = value
+	item.priority = priority
+	heap.<span style="color:#900;font-weight:bold">Fix</span>(pq, item.index)
+}
+
+<span style="color:#998;font-style:italic">// 这个示例首先会创建一个优先队列，并在队列中包含一些元素
+</span><span style="color:#998;font-style:italic"></span><span style="color:#998;font-style:italic">// 接着将一个新元素添加到队列里面，并对其进行操作
+</span><span style="color:#998;font-style:italic"></span><span style="color:#998;font-style:italic">// 最后按优先级有序地移除队列中的各个元素。
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
+	<span style="color:#998;font-style:italic">// 一些元素以及它们的优先级。
+</span><span style="color:#998;font-style:italic"></span>	items <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">map</span>[<span style="color:#458;font-weight:bold">string</span>]<span style="color:#458;font-weight:bold">int</span>{
+		<span style="color:#d14">&#34;banana&#34;</span>: <span style="color:#099">3</span>, <span style="color:#d14">&#34;apple&#34;</span>: <span style="color:#099">2</span>, <span style="color:#d14">&#34;pear&#34;</span>: <span style="color:#099">4</span>,
+	}
+
+	<span style="color:#998;font-style:italic">// 创建一个优先队列，并将上述元素放入到队列里面，
+</span><span style="color:#998;font-style:italic"></span>	<span style="color:#998;font-style:italic">// 然后对队列进行初始化以满足优先队列（堆）的不变性。
+</span><span style="color:#998;font-style:italic"></span>	pq <span style="color:#000;font-weight:bold">:=</span> <span style="color:#0086b3">make</span>(PriorityQueue, <span style="color:#0086b3">len</span>(items))
+	i <span style="color:#000;font-weight:bold">:=</span> <span style="color:#099">0</span>
+	<span style="color:#000;font-weight:bold">for</span> value, priority <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">range</span> items {
+		pq[i] = <span style="color:#000;font-weight:bold">&amp;</span>Item{
+			value:    value,
+			priority: priority,
+			index:    i,
+		}
+		i<span style="color:#000;font-weight:bold">++</span>
+	}
+	heap.<span style="color:#900;font-weight:bold">Init</span>(<span style="color:#000;font-weight:bold">&amp;</span>pq)
+
+	<span style="color:#998;font-style:italic">// 插入一个新元素，然后修改它的优先级。
+</span><span style="color:#998;font-style:italic"></span>	item <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">&amp;</span>Item{
+		value:    <span style="color:#d14">&#34;orange&#34;</span>,
+		priority: <span style="color:#099">1</span>,
+	}
+	heap.<span style="color:#900;font-weight:bold">Push</span>(<span style="color:#000;font-weight:bold">&amp;</span>pq, item)
+	pq.<span style="color:#900;font-weight:bold">update</span>(item, item.value, <span style="color:#099">5</span>)
+
+	<span style="color:#998;font-style:italic">// 以降序形式取出并打印队列中的所有元素。
+</span><span style="color:#998;font-style:italic"></span>	<span style="color:#000;font-weight:bold">for</span> pq.<span style="color:#900;font-weight:bold">Len</span>() &gt; <span style="color:#099">0</span> {
+		item <span style="color:#000;font-weight:bold">:=</span> heap.<span style="color:#900;font-weight:bold">Pop</span>(<span style="color:#000;font-weight:bold">&amp;</span>pq).(<span style="color:#000;font-weight:bold">*</span>Item)
+		fmt.<span style="color:#900;font-weight:bold">Printf</span>(<span style="color:#d14">&#34;%.2d:%s &#34;</span>, item.priority, item.value)
+	}
+}
+
+</code></pre></td></tr></table>
+</div>
 </div>
         </div>
 
@@ -607,8 +804,6 @@
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/post/go_%E4%BD%BF%E7%94%A8/">golang相关</a></li>
-        
         <li><a href="/post/golang%E8%BF%9B%E9%98%B6summary/">geektime golang课程总结</a></li>
         
         <li><a href="/post/distributed_lock/">distributed locks</a></li>
@@ -616,6 +811,8 @@
         <li><a href="/post/2021/">2021 schedule</a></li>
         
         <li><a href="/post/stock/">stock</a></li>
+        
+        <li><a href="/post/sync.Pool_golang/">sync_Pool_golang</a></li>
         
     </ul>
 </div>
@@ -669,7 +866,7 @@
 
                     <footer id="footer">
     <div>
-        &copy; 2021 <a href="https://nepp-an.github.io">nepp&#39;s blog By nepp</a>
+        &copy; 2022 <a href="https://nepp-an.github.io">nepp&#39;s blog By nepp</a>
         
     </div>
     <br />
@@ -727,6 +924,18 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://nepp-an.github.io/post/%E5%8C%BA%E5%9D%97%E9%93%BE/" title="区块链小记">区块链小记</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/" title="golang相关">golang相关</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/golang_gc/" title="golang gc">golang gc</a>
+    </li>
+    
+    <li>
         <a href="https://nepp-an.github.io/post/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title="Redis设计与实现">Redis设计与实现</a>
     </li>
     
@@ -751,19 +960,7 @@
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/Ledis_db/" title="Ledis_db">Ledis_db</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/golang_worker-_pool/" title="golang worker pool 协程池">golang worker pool 协程池</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/golang%E7%BD%91%E7%BB%9C%E8%BD%AE%E8%AF%A2%E5%99%A8/" title="golang网络轮询器">golang网络轮询器</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/golang%E8%B0%83%E5%BA%A6%E5%99%A8/" title="golang调度器">golang调度器</a>
+        <a href="https://nepp-an.github.io/post/http%E8%AE%A4%E8%AF%81/" title="http 认证">http 认证</a>
     </li>
     
 </ul>
@@ -812,7 +1009,7 @@
     
     <li><a href="https://nepp-an.github.io/categories/db/">db (1)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/golang/">golang (11)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/golang/">golang (12)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/golang%E7%AC%94%E8%AE%B0/">golang笔记 (1)</a></li>
     
@@ -822,11 +1019,15 @@
     
     <li><a href="https://nepp-an.github.io/categories/memory/">memory (1)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/network/">network (1)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/network/">network (2)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/pool/">pool (1)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/structure/">structure (2)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/">加密货币 (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链 (1)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法 (2)</a></li>
     
@@ -856,6 +1057,10 @@
     <a href="https://nepp-an.github.io/tags/pool/">pool</a>
     
     <a href="https://nepp-an.github.io/tags/structure/">structure</a>
+    
+    <a href="https://nepp-an.github.io/tags/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/">加密货币</a>
+    
+    <a href="https://nepp-an.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a>
     
     <a href="https://nepp-an.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
     

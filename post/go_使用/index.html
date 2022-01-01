@@ -13,10 +13,10 @@
     <meta property="og:title" content="golang相关 - nepp&#39;s blog">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2021-02-15T10:49:44&#43;08:00'>
+    <meta property="article:published_time" content='2021-10-15T10:49:44&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2021-02-15T10:49:44&#43;08:00'>
+    <meta property="article:modified_time" content='2021-10-15T10:49:44&#43;08:00'>
         
     <meta name="Keywords" content="golang,go语言">
     <meta name="description" content="golang相关">
@@ -147,6 +147,13 @@
       <ul>
         <li><a href="#go-test-">go test 介绍</a></li>
         <li><a href="#go-modules">go modules</a></li>
+        <li><a href="#slice">slice</a></li>
+        <li><a href="#map">map</a></li>
+        <li><a href="#interface">interface</a></li>
+        <li><a href="#channel">channel</a></li>
+        <li><a href="#heading">调度</a></li>
+        <li><a href="#gc">gc</a></li>
+        <li><a href="#heading-1">并发</a></li>
       </ul>
     </li>
   </ul>
@@ -185,7 +192,7 @@
             <h1 class="post-title">golang相关</h1>
         </header>
         <date class="post-meta meta-date">
-            2021年2月15日
+            2021年10月15日
         </date>
         
         <div class="post-meta">
@@ -209,6 +216,82 @@
 <h3 id="go-modules">go modules</h3>
 <p>依赖管理</p>
 <p><a href="https://blog.golang.org/using-go-modules">https://blog.golang.org/using-go-modules</a></p>
+<h3 id="slice">slice</h3>
+<p>go中数组的赋值和函数传参都是值传递。</p>
+<p>切片是对数组的一个连续片段的引用。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">type</span> slice <span style="color:#000;font-weight:bold">struct</span> {
+  len <span style="color:#458;font-weight:bold">int</span>
+  cap <span style="color:#458;font-weight:bold">int</span>              <span style="color:#998;font-style:italic">// cap &gt;= len
+</span><span style="color:#998;font-style:italic"></span>  array unsafe.Pointer <span style="color:#998;font-style:italic">//指向数组的指针
+</span><span style="color:#998;font-style:italic"></span>}
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>扩容
+<ul>
+<li>首先判断，如果新申请容量（cap）大于2倍的旧容量（old.cap），最终容量（newcap）就是新申请的容量（cap）</li>
+<li>否则判断，如果旧切片的长度小于1024，则最终容量(newcap)就是旧容量(old.cap)的两倍，即（newcap=doublecap）</li>
+<li>否则判断，如果旧切片长度大于等于1024，则最终容量（newcap）从旧容量（old.cap）开始循环增加原来的 1/4，即（newcap=old.cap,for {newcap += newcap/4}）直到最终容量（newcap）大于等于新申请的容量(cap)，即（newcap &gt;= cap）</li>
+<li>如果最终容量（cap）计算值溢出，则最终容量（cap）就是新申请容量（cap）</li>
+</ul>
+</li>
+</ul>
+<p>数组容量cap超过最大值时，才会创建新的底层数组。</p>
+<p>slice range value为值拷贝</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#000;font-weight:bold">func</span> <span style="color:#900;font-weight:bold">main</span>() {
+	slice <span style="color:#000;font-weight:bold">:=</span> []<span style="color:#458;font-weight:bold">int</span>{<span style="color:#099">10</span>, <span style="color:#099">20</span>, <span style="color:#099">30</span>, <span style="color:#099">40</span>}
+	<span style="color:#000;font-weight:bold">for</span> index, value <span style="color:#000;font-weight:bold">:=</span> <span style="color:#000;font-weight:bold">range</span> slice {
+		fmt.<span style="color:#900;font-weight:bold">Printf</span>(<span style="color:#d14">&#34;value = %d , value-addr = %x , slice-addr = %x\n&#34;</span>, value, <span style="color:#000;font-weight:bold">&amp;</span>value, <span style="color:#000;font-weight:bold">&amp;</span>slice[index])
+	}
+}
+
+<span style="color:#998;font-style:italic">/***
+</span><span style="color:#998;font-style:italic">value = 10 , value-addr = c4200aedf8 , slice-addr = c4200b0320
+</span><span style="color:#998;font-style:italic">value = 20 , value-addr = c4200aedf8 , slice-addr = c4200b0328
+</span><span style="color:#998;font-style:italic">value = 30 , value-addr = c4200aedf8 , slice-addr = c4200b0330
+</span><span style="color:#998;font-style:italic">value = 40 , value-addr = c4200aedf8 , slice-addr = c4200b0338
+</span><span style="color:#998;font-style:italic">*/</span>
+由于 Value 是值拷贝的<span style="color:#a61717;background-color:#e3d2d2">，</span>并非引用传递<span style="color:#a61717;background-color:#e3d2d2">，</span>所以直接改 Value 是达不到更改原切片值的目的的<span style="color:#a61717;background-color:#e3d2d2">，</span>需要通过 <span style="color:#000;font-weight:bold">&amp;</span>slice[index] 获取真实的地址<span style="color:#a61717;background-color:#e3d2d2">。</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="map">map</h3>
+<p>map的key只能为可以进行比较的类型；float类型也可以，但是map在进行比较float类型时会先转换为int64再进行比较，会有意想不到的效果，有坑。</p>
+<p>map的数据结构：hash table和search tree</p>
+<p>哈希查找表用一个哈希函数将 key 分配到不同的桶（bucket，也就是数组的不同 index）。这样，开销主要在哈希函数的计算以及数组的常数访问时间。在很多场景下，哈希查找表的性能很高。</p>
+<p>哈希查找表一般会存在“碰撞”的问题，就是说不同的 key 被哈希到了同一个 bucket。一般有两种应对方法：<code>链表法</code>和<code>开放地址法</code>。<code>链表法</code>将一个 bucket 实现成一个链表，落在同一个 bucket 中的 key 都会插入这个链表。<code>开放地址法</code>则是碰撞发生后，通过一定的规律，在数组的后面挑选“空位”，用来放置新的 key。</p>
+<h3 id="interface">interface</h3>
+<h3 id="channel">channel</h3>
+<h3 id="heading">调度</h3>
+<h3 id="gc">gc</h3>
+<p>/Users/anpuqiang/Documents/hugoblog/blog/content/post/golang_gc.md</p>
+<h3 id="heading-1">并发</h3>
 
         </div>
 
@@ -230,15 +313,15 @@
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/post/golang%E8%BF%9B%E9%98%B6summary/">geektime golang课程总结</a></li>
+        <li><a href="/post/golang_gc/">golang gc</a></li>
         
-        <li><a href="/post/2021/">2021 schedule</a></li>
+        <li><a href="/post/gopool/">gopool</a></li>
         
-        <li><a href="/post/sync.Pool_golang/">sync_Pool_golang</a></li>
+        <li><a href="/post/golang%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/">golang的内存模型</a></li>
         
-        <li><a href="/post/golang%E5%9D%91/">golang中的坑</a></li>
+        <li><a href="/post/runtime/">runtime</a></li>
         
-        <li><a href="/post/lru/">lru的实现</a></li>
+        <li><a href="/post/Ledis_db/">Ledis_db</a></li>
         
     </ul>
 </div>
@@ -292,7 +375,7 @@
 
                     <footer id="footer">
     <div>
-        &copy; 2021 <a href="https://nepp-an.github.io">nepp&#39;s blog By nepp</a>
+        &copy; 2022 <a href="https://nepp-an.github.io">nepp&#39;s blog By nepp</a>
         
     </div>
     <br />
@@ -350,6 +433,18 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://nepp-an.github.io/post/%E5%8C%BA%E5%9D%97%E9%93%BE/" title="区块链小记">区块链小记</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/" title="golang相关">golang相关</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/golang_gc/" title="golang gc">golang gc</a>
+    </li>
+    
+    <li>
         <a href="https://nepp-an.github.io/post/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title="Redis设计与实现">Redis设计与实现</a>
     </li>
     
@@ -374,19 +469,7 @@
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/Ledis_db/" title="Ledis_db">Ledis_db</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/golang_worker-_pool/" title="golang worker pool 协程池">golang worker pool 协程池</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/golang%E7%BD%91%E7%BB%9C%E8%BD%AE%E8%AF%A2%E5%99%A8/" title="golang网络轮询器">golang网络轮询器</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/golang%E8%B0%83%E5%BA%A6%E5%99%A8/" title="golang调度器">golang调度器</a>
+        <a href="https://nepp-an.github.io/post/http%E8%AE%A4%E8%AF%81/" title="http 认证">http 认证</a>
     </li>
     
 </ul>
@@ -435,7 +518,7 @@
     
     <li><a href="https://nepp-an.github.io/categories/db/">db (1)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/golang/">golang (11)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/golang/">golang (12)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/golang%E7%AC%94%E8%AE%B0/">golang笔记 (1)</a></li>
     
@@ -445,11 +528,15 @@
     
     <li><a href="https://nepp-an.github.io/categories/memory/">memory (1)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/network/">network (1)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/network/">network (2)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/pool/">pool (1)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/structure/">structure (2)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/">加密货币 (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链 (1)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法 (2)</a></li>
     
@@ -479,6 +566,10 @@
     <a href="https://nepp-an.github.io/tags/pool/">pool</a>
     
     <a href="https://nepp-an.github.io/tags/structure/">structure</a>
+    
+    <a href="https://nepp-an.github.io/tags/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/">加密货币</a>
+    
+    <a href="https://nepp-an.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a>
     
     <a href="https://nepp-an.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
     

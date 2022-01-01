@@ -79,6 +79,106 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/http%E8%AE%A4%E8%AF%81/" title="http 认证">http 认证</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年5月31日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/network'>network</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            http basic 把 username和 password 做成 username:password 的样子（用冒号分隔） 进行Base64编码。Base64(&quot;username:password&quot;) 得到一个字符串（如：把 haoel:coolshell 进行base64 后可以得到 aGFvZW86Y29vbHNoZWxsCg ） 把 aGFvZW86Y29vbHNoZWxsCg放到HTTP头中 Authorization 字段中，形成 Authorization:……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/http%E8%AE%A4%E8%AF%81/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/golang_worker-_pool/" title="golang worker pool 协程池">golang worker pool 协程池</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年5月25日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            协程池 golang语言原生的goroutine和channel等机制，对于并发编程提供了很简单的实现。一个go关键字即可生成一个独立的协程。协程的管理需要协程池去实现。 对worker的总协程数量进行限制 限制并发 有任务排队时也不阻塞任务的提交 数据结构 1 2 3 4 5 6 7 8 9 10 11 12 type TaskHandler func() error……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/golang_worker-_pool/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/golang%E7%BD%91%E7%BB%9C%E8%BD%AE%E8%AF%A2%E5%99%A8/" title="golang网络轮询器">golang网络轮询器</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年5月15日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            网络轮询器 大部分服务都是I/O密集型的，程序会花费大量时间等待I/O操作的完成。网络轮询器是golang runtime用来处理I/O操作的关键部件，它使用了操作系统提供的I/O多路复用机制增强并发能力。 设计原理 网络轮询器不仅用于监控网络I/O，还用于监控文件I/O。 I/O模型 操作……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/golang%E7%BD%91%E7%BB%9C%E8%BD%AE%E8%AF%A2%E5%99%A8/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/golang%E8%B0%83%E5%BA%A6%E5%99%A8/" title="golang调度器">golang调度器</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年5月14日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            调度器 golang语言强大的并发编程能力，得益于语言在原生层面对并发的支持。接下来介绍go语言运行时调度器的设计和实现，以及运行调度相关的数据结构。 进程与线程 process/thread 多个线程可以同属于一个进程，并共享内存空间。线程之间的通信就是通过基于共享的内存进行的，与重量的进程相比，线程更轻。但是……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/golang%E8%B0%83%E5%BA%A6%E5%99%A8/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://nepp-an.github.io/post/%E6%92%AD%E6%94%BE%E5%8E%86%E5%8F%B2%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/" title="播放历史架构设计">播放历史架构设计</a>
             </h1>
         </header>
@@ -181,31 +281,6 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/" title="golang相关">golang相关</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年2月15日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            go test 介绍 https://geektutu.com/post/quick-go-test.html https://pkg.go.dev/testing go modules 依赖管理 https://blog.golang.org/using-go-modules……
-        </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
                 <a href="https://nepp-an.github.io/post/golang%E8%BF%9B%E9%98%B6summary/" title="geektime golang课程总结">geektime golang课程总结</a>
             </h1>
         </header>
@@ -246,81 +321,6 @@
     
     
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/2021/" title="2021 schedule">2021 schedule</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2021年1月10日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/categories/%E8%AE%A1%E5%88%92'>计划</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            2021年的N个问题 通过问题的形式完成2021年的技术领域的学习计划，每个部分最少包含5个问题，问题总数在50个左右 数据结构与算法 决策树是什么 深度优先遍历 广度优先遍历 设计模式 分布式的AP CP CAP什么意思 缓存和数据库 redis的sentinel机制 哨兵 中间件 kafka CDN 分布式锁的实现 redis 编程……
-        </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/2021/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/sync.Pool_golang/" title="sync_Pool_golang">sync_Pool_golang</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年12月5日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/categories/golang'>golang</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            syn.Pool leak.Pool io.Writer在使用sync.Pool之后，延迟变高 golang bufio的用法……
-        </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/sync.Pool_golang/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://nepp-an.github.io/post/stock/" title="stock">stock</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年12月5日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='/categories/investment'>investment</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            基本原则 闲钱投资 不动用大资产 经历完整牛熊过的人才是有经验的 提高胜率才是最主要的 关键要素 趋势投资，以月或者周为周期，建立分析系统 买卖策略，来行情该买什么 投资纪律和经验，怎样持续盈利 分析和判断市场 把影响市场的因素明确 政策：货币，财政 技术图：K线图，关注资金量 市场情绪：很难量化 资金变化……
-        </div>
-        <p class="readmore"><a href="https://nepp-an.github.io/post/stock/">阅读全文</a></p>
-    </article>
-    
-    
-    
 
 
 
@@ -348,6 +348,10 @@
         <a href="https://nepp-an.github.io/post/page/4/">4</a>
     </li>
     
+    <li >
+        <a href="https://nepp-an.github.io/post/page/5/">5</a>
+    </li>
+    
 
     
     <li class="next">
@@ -362,7 +366,7 @@
 
                     <footer id="footer">
     <div>
-        &copy; 2021 <a href="https://nepp-an.github.io">nepp&#39;s blog By nepp</a>
+        &copy; 2022 <a href="https://nepp-an.github.io">nepp&#39;s blog By nepp</a>
         
     </div>
     <br />
@@ -410,6 +414,18 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://nepp-an.github.io/post/%E5%8C%BA%E5%9D%97%E9%93%BE/" title="区块链小记">区块链小记</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/" title="golang相关">golang相关</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/golang_gc/" title="golang gc">golang gc</a>
+    </li>
+    
+    <li>
         <a href="https://nepp-an.github.io/post/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title="Redis设计与实现">Redis设计与实现</a>
     </li>
     
@@ -434,19 +450,7 @@
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/Ledis_db/" title="Ledis_db">Ledis_db</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/golang_worker-_pool/" title="golang worker pool 协程池">golang worker pool 协程池</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/golang%E7%BD%91%E7%BB%9C%E8%BD%AE%E8%AF%A2%E5%99%A8/" title="golang网络轮询器">golang网络轮询器</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/golang%E8%B0%83%E5%BA%A6%E5%99%A8/" title="golang调度器">golang调度器</a>
+        <a href="https://nepp-an.github.io/post/http%E8%AE%A4%E8%AF%81/" title="http 认证">http 认证</a>
     </li>
     
 </ul>
@@ -495,7 +499,7 @@
     
     <li><a href="https://nepp-an.github.io/categories/db/">db (1)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/golang/">golang (11)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/golang/">golang (12)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/golang%E7%AC%94%E8%AE%B0/">golang笔记 (1)</a></li>
     
@@ -505,11 +509,15 @@
     
     <li><a href="https://nepp-an.github.io/categories/memory/">memory (1)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/network/">network (1)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/network/">network (2)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/pool/">pool (1)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/structure/">structure (2)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/">加密货币 (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链 (1)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法 (2)</a></li>
     
@@ -539,6 +547,10 @@
     <a href="https://nepp-an.github.io/tags/pool/">pool</a>
     
     <a href="https://nepp-an.github.io/tags/structure/">structure</a>
+    
+    <a href="https://nepp-an.github.io/tags/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/">加密货币</a>
+    
+    <a href="https://nepp-an.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a>
     
     <a href="https://nepp-an.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
     

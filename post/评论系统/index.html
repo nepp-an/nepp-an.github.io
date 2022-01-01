@@ -254,8 +254,6 @@
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/post/go_%E4%BD%BF%E7%94%A8/">golang相关</a></li>
-        
         <li><a href="/post/golang%E8%BF%9B%E9%98%B6summary/">geektime golang课程总结</a></li>
         
         <li><a href="/post/2021/">2021 schedule</a></li>
@@ -263,6 +261,8 @@
         <li><a href="/post/sync.Pool_golang/">sync_Pool_golang</a></li>
         
         <li><a href="/post/golang%E5%9D%91/">golang中的坑</a></li>
+        
+        <li><a href="/post/lru/">lru的实现</a></li>
         
     </ul>
 </div>
@@ -318,7 +318,7 @@
 
                     <footer id="footer">
     <div>
-        &copy; 2021 <a href="https://nepp-an.github.io">nepp&#39;s blog By nepp</a>
+        &copy; 2022 <a href="https://nepp-an.github.io">nepp&#39;s blog By nepp</a>
         
     </div>
     <br />
@@ -376,6 +376,18 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://nepp-an.github.io/post/%E5%8C%BA%E5%9D%97%E9%93%BE/" title="区块链小记">区块链小记</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/" title="golang相关">golang相关</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/golang_gc/" title="golang gc">golang gc</a>
+    </li>
+    
+    <li>
         <a href="https://nepp-an.github.io/post/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title="Redis设计与实现">Redis设计与实现</a>
     </li>
     
@@ -400,19 +412,7 @@
     </li>
     
     <li>
-        <a href="https://nepp-an.github.io/post/Ledis_db/" title="Ledis_db">Ledis_db</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/golang_worker-_pool/" title="golang worker pool 协程池">golang worker pool 协程池</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/golang%E7%BD%91%E7%BB%9C%E8%BD%AE%E8%AF%A2%E5%99%A8/" title="golang网络轮询器">golang网络轮询器</a>
-    </li>
-    
-    <li>
-        <a href="https://nepp-an.github.io/post/golang%E8%B0%83%E5%BA%A6%E5%99%A8/" title="golang调度器">golang调度器</a>
+        <a href="https://nepp-an.github.io/post/http%E8%AE%A4%E8%AF%81/" title="http 认证">http 认证</a>
     </li>
     
 </ul>
@@ -461,7 +461,7 @@
     
     <li><a href="https://nepp-an.github.io/categories/db/">db (1)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/golang/">golang (11)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/golang/">golang (12)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/golang%E7%AC%94%E8%AE%B0/">golang笔记 (1)</a></li>
     
@@ -471,11 +471,15 @@
     
     <li><a href="https://nepp-an.github.io/categories/memory/">memory (1)</a></li>
     
-    <li><a href="https://nepp-an.github.io/categories/network/">network (1)</a></li>
+    <li><a href="https://nepp-an.github.io/categories/network/">network (2)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/pool/">pool (1)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/structure/">structure (2)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/">加密货币 (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链 (1)</a></li>
     
     <li><a href="https://nepp-an.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法 (2)</a></li>
     
@@ -505,6 +509,10 @@
     <a href="https://nepp-an.github.io/tags/pool/">pool</a>
     
     <a href="https://nepp-an.github.io/tags/structure/">structure</a>
+    
+    <a href="https://nepp-an.github.io/tags/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/">加密货币</a>
+    
+    <a href="https://nepp-an.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a>
     
     <a href="https://nepp-an.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
     
