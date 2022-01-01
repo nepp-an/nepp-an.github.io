@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>区块链 on nepp&#39;s blog</title>
+    <link>https://nepp-an.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/</link>
+    <description>Recent content in 区块链 on nepp&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 07 Dec 2021 21:12:44 +0800</lastBuildDate>
+    
+	<atom:link href="https://nepp-an.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>区块链小记</title>
+      <link>https://nepp-an.github.io/post/%E5%8C%BA%E5%9D%97%E9%93%BE/</link>
+      <pubDate>Tue, 07 Dec 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/%E5%8C%BA%E5%9D%97%E9%93%BE/</guid>
+      <description>P2P网络协议 分布式一致性算法 加密签名算法 账户与存储模型 普通账户/账户余额模型：跨行转账需要可信任的第三方做中介 UTXO模型: Unspent Transaction Output 未花费的交易输出 记录交易事件，类似于binlog 优质的核心企业信用无法向供应链上下游传导，中小企业融资难，贵。 供应链金融是指“以核心客户为依托，以真</description>
+    </item>
+    
+  </channel>
+</rss>

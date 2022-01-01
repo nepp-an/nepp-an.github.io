@@ -20,5 +20,14 @@
       <description>epoll epoll是一种I/O事件通知机制，是linux内核实现IO多路复用的一种方式。select和poll属于轮询机制。 假设有大量的请求和一个进程保持着TCP连接，但是其中只有一小部分是活跃的，这需要监听这些连接，在需要的时候返回，从而对其进行读写操作。 https://www.jianshu.com/p/31cdfd6f5a48</description>
     </item>
     
+    <item>
+      <title>http 认证</title>
+      <link>https://nepp-an.github.io/post/http%E8%AE%A4%E8%AF%81/</link>
+      <pubDate>Mon, 31 May 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/http%E8%AE%A4%E8%AF%81/</guid>
+      <description>http basic 把 username和 password 做成 username:password 的样子（用冒号分隔） 进行Base64编码。Base64(&amp;quot;username:password&amp;quot;) 得到一个字符串（如：把 haoel:coolshell 进行base64 后可以得到 aGFvZW86Y29vbHNoZWxsCg ） 把 aGFvZW86Y29vbHNoZWxsCg放到HTTP头中 Authorization 字段中，形成 Authorization:</description>
+    </item>
+    
   </channel>
 </rss>

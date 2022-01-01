@@ -6,15 +6,33 @@
     <description>Recent content in Tags on nepp&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Jul 2021 15:12:44 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 07 Dec 2021 21:12:44 +0800</lastBuildDate>
     
 	<atom:link href="https://nepp-an.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>加密货币</title>
+      <link>https://nepp-an.github.io/tags/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/</link>
+      <pubDate>Tue, 07 Dec 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/tags/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>区块链</title>
+      <link>https://nepp-an.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/</link>
+      <pubDate>Tue, 07 Dec 2021 21:12:44 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>golang</title>
       <link>https://nepp-an.github.io/tags/golang/</link>
-      <pubDate>Sat, 17 Jul 2021 15:12:44 +0800</pubDate>
+      <pubDate>Fri, 15 Oct 2021 10:49:44 +0800</pubDate>
       
       <guid>https://nepp-an.github.io/tags/golang/</guid>
       <description></description>
