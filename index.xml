@@ -6,10 +6,64 @@
     <description>Recent content on nepp&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 07 Dec 2021 21:12:44 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 02 Jan 2022 11:47:11 +0800</lastBuildDate>
     
 	<atom:link href="https://nepp-an.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Side_project_todo</title>
+      <link>https://nepp-an.github.io/post/side_project_todo/</link>
+      <pubDate>Sun, 02 Jan 2022 11:47:11 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/side_project_todo/</guid>
+      <description>个人side_project ledis实现</description>
+    </item>
+    
+    <item>
+      <title>Write_todo</title>
+      <link>https://nepp-an.github.io/post/write_todo/</link>
+      <pubDate>Sun, 02 Jan 2022 11:46:59 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/write_todo/</guid>
+      <description>Blog 投资类 构建长期投资体系，长期目标实现稳定的被动收入 工作相关</description>
+    </item>
+    
+    <item>
+      <title>Study_todo</title>
+      <link>https://nepp-an.github.io/post/study_todo/</link>
+      <pubDate>Sun, 02 Jan 2022 11:46:48 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/study_todo/</guid>
+      <description>book golang go语言设计与实现 推荐系统与机器学习 深度学习推荐系统 数据结构和算法 算法4 devops bash脚本 https://wangdoc.com/bash/ 云原生 Kubernetes in action 数据库 视频 B站收藏夹内的视频 分布式6.824课程</description>
+    </item>
+    
+    <item>
+      <title>Goal_todo</title>
+      <link>https://nepp-an.github.io/post/goal_todo/</link>
+      <pubDate>Sun, 02 Jan 2022 11:46:38 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/goal_todo/</guid>
+      <description>个人四维提升计划 身体提升 体重控制在143斤 2022年1月1日为148斤 2022累计跑步200km （一次健身环锻炼可以抵2km） 能力提升 技术提升 golang编程能力 数据库相关 redis ElasticSearch Mysql 操作系统相关 分布式 系统架构能力 算法能力 k8s云原生开发能力 devops基本的运维能力 基础的机器学习应用</description>
+    </item>
+    
+    <item>
+      <title>Inbox_todo</title>
+      <link>https://nepp-an.github.io/post/inbox_todo/</link>
+      <pubDate>Sun, 02 Jan 2022 11:46:16 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/inbox_todo/</guid>
+      <description>inbox 完成长期提升计划，包括四个todo leetcode 简历与面试</description>
+    </item>
+    
+    <item>
+      <title>2022计划</title>
+      <link>https://nepp-an.github.io/post/2022%E8%AE%A1%E5%88%92/</link>
+      <pubDate>Sat, 01 Jan 2022 19:01:41 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/2022%E8%AE%A1%E5%88%92/</guid>
+      <description>又是一年元旦，新的一年，新的开始。 2022计划如约而至 今年的计划我打算将其升级为终身的长期计划 参考DaviedMa博客的一篇文章 https://www.bmpi.dev/self/build-personal-knowledge-system/ 根据这篇文章的思想可以将待办事项分为五个部分 1 2 3 4 5 6 7 /* inbox 正在进行的 goal 目标 study 学习计划 write 写作计划 side_project 个人项目 */</description>
+    </item>
     
     <item>
       <title>区块链小记</title>

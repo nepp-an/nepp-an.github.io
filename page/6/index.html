@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta name="generator" content="Hugo 0.61.0" />
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>nepp&#39;s blog | 专注于golang, 软件架构,金融理财</title>
+    <meta property="og:title" content="nepp&#39;s blog | 专注于golang, 软件架构,金融理财">
+    <meta property="og:type" content="website">
+    <meta name="Keywords" content="golang,go语言">
+    <meta name="description" content="专注于IT互联网和金融理财">
+    <meta property="og:url" content="https://nepp-an.github.io/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <link rel="alternate" type="application/rss+xml+xml" href="https://nepp-an.github.io/index.xml" title="nepp's blog" />
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <h1>
+                        <a id="logo" href="https://nepp-an.github.io">
+                            nepp&#39;s blog
+                        </a>
+                    </h1>
+                
+                <p class="description">专注于golang, 软件架构,金融理财</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://nepp-an.github.io">首页</a>
+                    
+                    <a  href="https://nepp-an.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://nepp-an.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://nepp-an.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" title=""></a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            1年1月1日
+        </date>
+        
+        <div class="post-content">
+            RNN/LSTM、Encoder-Decoder 和 Attention
+RNN：循环神经网络
+LSTM：long short-term memory
+语言模型（ language model）定义了自然语言中标记序列的概率分布。
+Embedding几乎是在 NLP 任务使用深度学习的标准步骤。我们可以通过 Word2Vec、GloVe 等从未标注数据无监督的学习到词的 Embedding，然后把它用到不同的特定任务中。这种方法得到的 Embedding 叫作预训练的 (pretrained)Embedding。如果特定任务训练数据较多，那么我们可以用预训练的 Embedding 来初始化模型的 Embedding，然后用特定任务的监督数据来 fine-tuning。如果监督数据较少，我们可以固定 (fix)Embedding，只让模型学习其它的参数。这也可以看成一种 Transfer Learning。
+Transformer
+BERT stands for “Bidirectional Encoder Representation with Transformers”. To put it in simple words BERT extracts patterns or representations from the data or word embeddings by passing it through an encoder. The encoder itself is a transformer architecture that is stacked together. It is a bidirectional transformer which means that during training it considers the context from both left and right of the vocabulary to extract patterns or representations.
+BERT uses two training paradigms: Pre-training and Fine-tuning.
+During pre-training, the model is trained on a large dataset to extract patterns. This is generally an unsupervised learning task where the model is trained on an unlabelled dataset like the data from a big corpus like Wikipedia.……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title=""></a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            1年1月1日
+        </date>
+        
+        <div class="post-content">
+            title: &ldquo;UNIX环境高级编程&rdquo; date: 2021-05-03T21:12:44+08:00 draft: false categories: [&ldquo;数据结构与算法&rdquo;] tags: [&ldquo;数据结构与算法&rdquo;]
+第15章 进程间通信 ![image-20210512113039490](/Users/anpuqiang/Library/Application Support/typora-user-images/image-20210512113039490.png)……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/%E9%9C%80%E6%B1%82/" title=""></a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            1年1月1日
+        </date>
+        
+        <div class="post-content">
+            Ai push scheduler分时区发送增加俄罗斯  在us-en基础上增加ru-ru 本地落盘缓存延迟发送的token  原有实现将延迟发送的token和延迟时间保存在内存中sleep 程序重启后内存中数据会丢失，增加落盘    落盘实现  分文件保存，文件名称country_language_send_time(send_time加个随机，防止重复) delayWriteAIMsgsToKafka中函数开始写文件，若成功发送后删除缓存文件 缓存文件内格式- json 重启后，获取local-time， 遍历缓存文件，计算sleep-time  图片服务   错误图片替换
+ 复用upload页面 后台增加cdn删除接口的调用    搜索近似图的过程展示
+​
+  expresswallet://user/kyc/result?id=xxx (根据id来查询kyc结果) expresswallet://user/complaint/detail?id=xxx (根据id来查询complaint结果) expresswallet://trans/history/detail?id=xxx&amp;type=订单类型(id为订单id，后端定义的订单类型，买、卖、转账等)
+expresswallet://home expresswallet://invest expresswallet://earn expresswallet://profile
+push后台mysql字段……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/%E9%9C%80%E6%B1%82/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://nepp-an.github.io/post/%E9%9D%A2%E8%AF%95/" title=""></a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            1年1月1日
+        </date>
+        
+        <div class="post-content">
+            title: &ldquo;面试&rdquo; date: 2021-05-03T21:12:44+08:00 draft: false categories: [&ldquo;面试&rdquo;] tags: [&ldquo;面试&rdquo;]
+  自我介绍
+   考察表达能力，面试准备情况 5    校内情况讨论
+    项目、竞赛、论文方面
+   硕士期间研究方向    考察对计算机的学习热情、自主学习能力 4
+    计算机基础
+    基于简历，从操作系统、网络、编译原理和体系结构里出2-3个问题
+    进程
+  操作系统运行程序大概流程
+   必须做的第一件事是将代码和所有静态数据（例如初始化变量）加载（load）到内存中，加载到进程的地址空间中。 堆/栈区别    线程 共享地址空间
+  字节序 数据在内存中的存储顺序 大端/小端
+  tcp/udp 传输层区别
+  tcp三次握手/四次挥手
+  I/O多路复用，select poll epoll
+    考察专业基础是否扎实
+   grpc      语言基础
+   c/c++为主   HashMap底层结构 哈希表和红黑树 vector 和数组区别 volatile cpu多级缓存和内存屏障 memcpy和strcpy的差别 函数重载 this指针   结合编译和运行时   内存对齐的原理与意义 内存泄露 https://www.cnblogs.com/skynet/archive/2011/02/20/1959162.html stack overflow      代码题目
+   排序算法，归并排序，快排 二叉树层次遍历，z型打印 LRU/堆 判断链表环 判断是否为二叉搜索树 二叉树中序遍历 根据前序遍历，中序遍历结果还原二叉树 判断平衡二叉树 求二叉树深度 二叉搜索树，添加/删除节点 链表中点    /**……
+        </div>
+        <p class="readmore"><a href="https://nepp-an.github.io/post/%E9%9D%A2%E8%AF%95/">阅读全文</a></p>
+    </article>
+    
+    
+
+
+
+<ol class="page-navigator">
+    
+    <li class="prev">
+        <a href="https://nepp-an.github.io/page/5/">上一页</a>
+    </li>
+    
+
+    
+    <li >
+        <a href="https://nepp-an.github.io/">1</a>
+    </li>
+    
+    <li >
+        <a href="https://nepp-an.github.io/page/2/">2</a>
+    </li>
+    
+    <li >
+        <a href="https://nepp-an.github.io/page/3/">3</a>
+    </li>
+    
+    <li >
+        <a href="https://nepp-an.github.io/page/4/">4</a>
+    </li>
+    
+    <li >
+        <a href="https://nepp-an.github.io/page/5/">5</a>
+    </li>
+    
+    <li  class="current">
+        <a href="https://nepp-an.github.io/page/6/">6</a>
+    </li>
+    
+
+    
+</ol>
+
+
+
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2022 <a href="https://nepp-an.github.io">nepp&#39;s blog By nepp</a>
+        
+    </div>
+    <br />
+    <div>
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://nepp-an.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://nepp-an.github.io">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/side_project_todo/" title="Side_project_todo">Side_project_todo</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/write_todo/" title="Write_todo">Write_todo</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/study_todo/" title="Study_todo">Study_todo</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/goal_todo/" title="Goal_todo">Goal_todo</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/inbox_todo/" title="Inbox_todo">Inbox_todo</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/2022%E8%AE%A1%E5%88%92/" title="2022计划">2022计划</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/%E5%8C%BA%E5%9D%97%E9%93%BE/" title="区块链小记">区块链小记</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/go_%E4%BD%BF%E7%94%A8/" title="golang相关">golang相关</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/golang_gc/" title="golang gc">golang gc</a>
+    </li>
+    
+    <li>
+        <a href="https://nepp-an.github.io/post/Redis%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/" title="Redis设计与实现">Redis设计与实现</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title" style="color:red">福利派送</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a href="" title="" target="_blank" style="color:red">
+                
+                    
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="" title="" target="_blank" style="color:red">
+                
+                    
+                
+            </a>
+        </li>
+        
+        <li>
+            <a href="" title="" target="_blank" style="color:red">
+                
+                    
+                
+            </a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://nepp-an.github.io/categories/algorithm/">algorithm (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/atomic/">atomic (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/db/">db (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/golang/">golang (12)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/golang%E7%AC%94%E8%AE%B0/">golang笔记 (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/investment/">investment (2)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/linux/">linux (4)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/memory/">memory (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/network/">network (2)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/pool/">pool (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/structure/">structure (2)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/todo/">todo (5)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/">加密货币 (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链 (1)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法 (2)</a></li>
+    
+    <li><a href="https://nepp-an.github.io/categories/%E8%AE%A1%E5%88%92/">计划 (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="https://nepp-an.github.io/tags/db/">db</a>
+    
+    <a href="https://nepp-an.github.io/tags/golang/">golang</a>
+    
+    <a href="https://nepp-an.github.io/tags/investment/">investment</a>
+    
+    <a href="https://nepp-an.github.io/tags/leetcode/">leetcode</a>
+    
+    <a href="https://nepp-an.github.io/tags/linux/">linux</a>
+    
+    <a href="https://nepp-an.github.io/tags/memory/">memory</a>
+    
+    <a href="https://nepp-an.github.io/tags/network/">network</a>
+    
+    <a href="https://nepp-an.github.io/tags/pool/">pool</a>
+    
+    <a href="https://nepp-an.github.io/tags/structure/">structure</a>
+    
+    <a href="https://nepp-an.github.io/tags/todo/">todo</a>
+    
+    <a href="https://nepp-an.github.io/tags/%E5%8A%A0%E5%AF%86%E8%B4%A7%E5%B8%81/">加密货币</a>
+    
+    <a href="https://nepp-an.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链</a>
+    
+    <a href="https://nepp-an.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>
+    
+    <a href="https://nepp-an.github.io/tags/%E8%AE%A1%E5%88%92/">计划</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="http://yuedu.baidu.com/ebook/14a722970740be1e640e9a3e" title="Android Gradle权威指南">Android Gradle权威指南</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://nepp-an.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

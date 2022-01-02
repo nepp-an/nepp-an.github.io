@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>todo on nepp&#39;s blog</title>
+    <link>https://nepp-an.github.io/tags/todo/</link>
+    <description>Recent content in todo on nepp&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 02 Jan 2022 11:47:11 +0800</lastBuildDate>
+    
+	<atom:link href="https://nepp-an.github.io/tags/todo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Side_project_todo</title>
+      <link>https://nepp-an.github.io/post/side_project_todo/</link>
+      <pubDate>Sun, 02 Jan 2022 11:47:11 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/side_project_todo/</guid>
+      <description>个人side_project ledis实现</description>
+    </item>
+    
+    <item>
+      <title>Write_todo</title>
+      <link>https://nepp-an.github.io/post/write_todo/</link>
+      <pubDate>Sun, 02 Jan 2022 11:46:59 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/write_todo/</guid>
+      <description>Blog 投资类 构建长期投资体系，长期目标实现稳定的被动收入 工作相关</description>
+    </item>
+    
+    <item>
+      <title>Study_todo</title>
+      <link>https://nepp-an.github.io/post/study_todo/</link>
+      <pubDate>Sun, 02 Jan 2022 11:46:48 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/study_todo/</guid>
+      <description>book golang go语言设计与实现 推荐系统与机器学习 深度学习推荐系统 数据结构和算法 算法4 devops bash脚本 https://wangdoc.com/bash/ 云原生 Kubernetes in action 数据库 视频 B站收藏夹内的视频 分布式6.824课程</description>
+    </item>
+    
+    <item>
+      <title>Goal_todo</title>
+      <link>https://nepp-an.github.io/post/goal_todo/</link>
+      <pubDate>Sun, 02 Jan 2022 11:46:38 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/goal_todo/</guid>
+      <description>个人四维提升计划 身体提升 体重控制在143斤 2022年1月1日为148斤 2022累计跑步200km （一次健身环锻炼可以抵2km） 能力提升 技术提升 golang编程能力 数据库相关 redis ElasticSearch Mysql 操作系统相关 分布式 系统架构能力 算法能力 k8s云原生开发能力 devops基本的运维能力 基础的机器学习应用</description>
+    </item>
+    
+    <item>
+      <title>Inbox_todo</title>
+      <link>https://nepp-an.github.io/post/inbox_todo/</link>
+      <pubDate>Sun, 02 Jan 2022 11:46:16 +0800</pubDate>
+      
+      <guid>https://nepp-an.github.io/post/inbox_todo/</guid>
+      <description>inbox 完成长期提升计划，包括四个todo leetcode 简历与面试</description>
+    </item>
+    
+  </channel>
+</rss>
